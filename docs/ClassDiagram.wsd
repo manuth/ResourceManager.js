@@ -1,0 +1,48 @@
+@startuml ResourceManager.js
+abstract Resource
+{
+    + constructor(CultureInfo locale)
+    + CultureInfo Locale
+    # any ResourceStore
+
+    + T Get<T>(string id)
+    + bool Exists(string id)
+}
+
+class ResourceManager
+{
+    + constructor(string baseFileName)
+    + constructor(string baseFileName, CultureInfo locale)
+    + constructor(Resource[] resources)
+    + constructor(Resource[] resources, CultureInfo locale)
+    + CultureInfo Locale
+    # Resource[] Resources
+
+    + T Get<T>(string id)
+}
+
+Resource -* ResourceManager
+
+class FileResource
+{
+    # ParseFile(string fileName)
+}
+
+FileResource -|> Resource
+
+class JSONResource
+{
+}
+
+class YAMLResource
+{
+}
+
+class JavaScriptResource
+{
+}
+
+JSONResource --|> FileResource
+YAMLResource --|> FileResource
+JavaScriptResource --|> FileResource
+@enduml
