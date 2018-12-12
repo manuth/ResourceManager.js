@@ -1,0 +1,5 @@
+suite(
+    "ResourceManager.js",
+    () =>
+    {
+    });
