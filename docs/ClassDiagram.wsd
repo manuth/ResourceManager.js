@@ -1,34 +1,39 @@
 @startuml ResourceManager.js
-abstract Resource
+abstract class ResourceFileHandler
 {
-    + constructor(CultureInfo locale)
-    + CultureInfo Locale
-    # any ResourceStore
+    + ResourceFileHandler()
+    + CheckApplicability(string fileName) : bool
+    + Create(string fileName) : FileResouce
+}
 
-    + T Get<T>(string id)
-    + bool Exists(string id)
+abstract class Resource
+{
+    - locale : CultureInfo
+    + Resource(CultureInfo locale)
+    + Locale { get; set; } : CultureInfo
+    # ResourceStore { get; } : object
+    + Get<T>(string id) : T
+    + Exists(string id) : bool
 }
 
 class ResourceManager
 {
-    + constructor(string baseFileName)
-    + constructor(string baseFileName, CultureInfo locale)
-    + constructor(Resource[] resources)
-    + constructor(Resource[] resources, CultureInfo locale)
-    + CultureInfo Locale
-    # Resource[] Resources
-
-    + T Get<T>(string id)
+    + ResourceManager(string baseFileName)
+    + ResourceManager(string baseFileName, CultureInfo locale)
+    + ResourceManager(Resource[] resources)
+    + ResourceManager(Resource[] resources, CultureInfo locale)
+    + Locale { get; set; } : CultureInfo
+    # ResourceFileHandlers { get; } : ResourceFileHandler[]
+    # Resources { get; } : Resource[]
+    + Get<T>(string id) : T
+    # ResourceFromFile(string fileName) : FileResouce
 }
-
-Resource -* ResourceManager
 
 class FileResource
 {
-    # ParseFile(string fileName)
+    + Cached { get; set; } : bool
+    # ParseFile(string fileName) : object
 }
-
-FileResource -|> Resource
 
 class JSONResource
 {
@@ -45,4 +50,7 @@ class JavaScriptResource
 JSONResource --|> FileResource
 YAMLResource --|> FileResource
 JavaScriptResource --|> FileResource
+FileResource -|> Resource
+Resource -* ResourceManager
+ResourceFileHandler --* ResourceManager
 @enduml
