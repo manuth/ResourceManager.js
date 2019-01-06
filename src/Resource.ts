@@ -16,9 +16,9 @@ export abstract class Resource
      * @param locale
      * The locale of the resource.
      */
-    public constructor(locale: CultureInfo)
+    public constructor(locale?: CultureInfo)
     {
-        this.locale = locale;
+        this.locale = locale || CultureInfo.InvariantCulture;
     }
 
     /**
@@ -27,11 +27,6 @@ export abstract class Resource
     public get Locale()
     {
         return this.locale;
-    }
-
-    public set Locale(value)
-    {
-        this.locale = value;
     }
 
     /**

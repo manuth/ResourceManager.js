@@ -19,7 +19,7 @@ suite(
         suiteSetup(
             () =>
             {
-                resource = new TestResource(CultureInfo.InvariantCulture);
+                resource = new TestResource();
                 rootID = "Root.Distinguishable.Resource";
                 rootValue = "Root-Item";
 

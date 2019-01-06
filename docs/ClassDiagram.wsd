@@ -10,7 +10,7 @@ abstract class Resource
 {
     - locale : CultureInfo
     + Resource(CultureInfo locale)
-    + Locale { get; set; } : CultureInfo
+    + Locale { get; } : CultureInfo
     # ResourceStore { get; } : object
     + Get<T>(string id) : T
     + Exists(string id) : bool
