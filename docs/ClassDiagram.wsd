@@ -1,17 +1,24 @@
 @startuml ResourceManager.js
-abstract class ResourceFileHandler
+interface IResourceFileHandler
+{
+    CheckApplicability(string fileName) : bool
+    Create(string fileName) : FileResource
+}
+
+abstract class ResourceFileHandler<T extends FileResource>
 {
     + ResourceFileHandler()
-    + CheckApplicability(string fileName) : bool
-    + Create(string fileName) : FileResouce
+    + {abstract} CheckApplicability(string fileName) : bool
+    + {abstract} Create(string fileName) : T
 }
 
 abstract class Resource
 {
     - locale : CultureInfo
+    + Resource()
     + Resource(CultureInfo locale)
     + Locale { get; } : CultureInfo
-    # ResourceStore { get; } : object
+    # {abstract} ResourceStore { get; } : object
     + Get<T>(string id) : T
     + Exists(string id) : bool
 }
@@ -52,5 +59,6 @@ YAMLResource --|> FileResource
 JavaScriptResource --|> FileResource
 FileResource -|> Resource
 Resource -* ResourceManager
+IResourceFileHandler -|> ResourceFileHandler
 ResourceFileHandler --* ResourceManager
 @enduml
