@@ -5,18 +5,34 @@ import { Resource } from "../Resource";
  */
 export class TestResource extends Resource
 {
-    protected ResourceStore: any;
+    /**
+     * The store of the resource.
+     */
+    private resource: any;
+
+    protected get ResourceStore()
+    {
+        return this.resource;
+    }
+
+    /**
+     * Initializes a new instance of the `TestResource` class.
+     */
+    public constructor()
+    {
+        super();
+    }
 
     /**
      * Gets or sets the resource-store of the resource.
      */
     public get Resource()
     {
-        return this.ResourceStore;
+        return this.resource;
     }
 
     public set Resource(value)
     {
-        this.ResourceStore = value;
+        this.resource = value;
     }
 }
