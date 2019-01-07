@@ -7,6 +7,11 @@ import { Resource } from "./Resource";
 export abstract class FileResource extends Resource
 {
     /**
+     * The path to the resource-file.
+     */
+    private fileName: string;
+
+    /**
      * A value indicating whether the resource is cached.
      */
     private cached = false;
@@ -30,9 +35,18 @@ export abstract class FileResource extends Resource
      * @param locale
      * The locale of the resource.
      */
-    public constructor(fileName: string, locale: CultureInfo)
+    public constructor(fileName: string, locale?: CultureInfo)
     {
         super(locale);
+        this.fileName = fileName;
+    }
+
+    /**
+     * Gets the path to the resource-file
+     */
+    public get FileName()
+    {
+        return this.fileName;
     }
 
     /**
@@ -86,8 +100,7 @@ export abstract class FileResource extends Resource
     {
         if (this.RefreshPending)
         {
-            this.RefreshPending = false;
-            this.cache = this.Load();
+            this.Refresh();
         }
 
         return this.cache;
@@ -105,7 +118,12 @@ export abstract class FileResource extends Resource
     {
         if (this.Cached)
         {
-            this.RefreshPending = true;
+            this.RefreshPending = false;
+            this.cache = this.Load();
+        }
+        else
+        {
+            this.cache = null;
         }
     }
 
