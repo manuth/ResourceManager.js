@@ -3,4 +3,5 @@ suite(
     () =>
     {
         require("./Resource.test");
+        require("./FileResource.test");
     });
