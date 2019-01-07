@@ -67,6 +67,6 @@ YAMLResource --|> FileResource
 JavaScriptResource --|> FileResource
 FileResource -|> Resource
 Resource -* ResourceManager
-IResourceFileHandler -|> ResourceFileHandler
+IResourceFileHandler <|- ResourceFileHandler
 ResourceFileHandler --* ResourceManager
 @enduml
