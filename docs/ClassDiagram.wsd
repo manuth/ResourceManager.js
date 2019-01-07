@@ -40,13 +40,11 @@ abstract class FileResource
 {
     - fileName : string
     - cached : bool
-    - refreshPending: bool
     - cache : object
     + FileResource(string fileName)
     + FileResource(string fileName, CultureInfo locale)
     + FileName { get; } : string
     + Cached { get; set; } : bool
-    # RefreshPending { get; set; } : bool
     # Cache { get; set; } : object
     + Refresh() : void
     # {abstract} Load() : object
