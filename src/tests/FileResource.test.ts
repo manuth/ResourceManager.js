@@ -36,7 +36,7 @@ suite(
             });
 
         suite(
-            "Get(id)",
+            "Get<T>(id)",
             () =>
             {
                 test(

@@ -4,4 +4,5 @@ suite(
     {
         require("./Resource.test");
         require("./FileResource.test");
+        require("./JSONFileResource.test");
     });
