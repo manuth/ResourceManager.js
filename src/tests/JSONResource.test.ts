@@ -26,6 +26,12 @@ suite(
                 resource = new JSONResource(tempFile.FullName);
             });
 
+        suiteTeardown(
+            () =>
+            {
+                tempFile.Dispose();
+            });
+
         suite(
             "Get<T>(id)",
             () =>
