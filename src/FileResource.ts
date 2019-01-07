@@ -17,11 +17,6 @@ export abstract class FileResource extends Resource
     private cached = false;
 
     /**
-     * A value indicating whether the cache should be refreshed.
-     */
-    private refreshPending = true;
-
-    /**
      * The cache of the resource.
      */
     private cache: any;
@@ -59,13 +54,8 @@ export abstract class FileResource extends Resource
 
     public set Cached(value)
     {
-        if (!value)
-        {
-            this.Cache = null;
-            this.RefreshPending = true;
-        }
-
         this.cached = value;
+        this.Refresh();
     }
 
     protected get ResourceStore(): any
@@ -81,28 +71,10 @@ export abstract class FileResource extends Resource
     }
 
     /**
-     * Gets or sets a value indicating whether the cache should be refreshed.
-     */
-    protected get RefreshPending(): boolean
-    {
-        return this.refreshPending;
-    }
-
-    protected set RefreshPending(value)
-    {
-        this.refreshPending = value;
-    }
-
-    /**
      * Gets or sets the cache of the resource.
      */
     protected get Cache(): any
     {
-        if (this.RefreshPending)
-        {
-            this.Refresh();
-        }
-
         return this.cache;
     }
 
@@ -118,7 +90,6 @@ export abstract class FileResource extends Resource
     {
         if (this.Cached)
         {
-            this.RefreshPending = false;
             this.cache = this.Load();
         }
         else
