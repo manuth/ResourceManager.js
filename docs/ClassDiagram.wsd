@@ -22,7 +22,18 @@ class JSONResourceHandler
 {
     + JSONResourceHandler()
     + CheckApplicability(string fileName) : bool
+    + Create(string fileName) : JSONResourceHandler
     + Create(string fileName, CultureInfo locale) : JSONResourceHandler
+}
+
+YAMLResourceHandler --|> ResourceFileHandler
+
+class YAMLResourceHandler
+{
+    + YAMLResourceHandler()
+    + CheckApplicability(string fileName) : bool
+    + Create(string fileName) : YAMLResource
+    + Create(string fileName, CultureInfo locale) : YAMLResource
 }
 
 abstract class Resource
