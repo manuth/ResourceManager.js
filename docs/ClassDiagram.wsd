@@ -16,6 +16,15 @@ abstract class ResourceFileHandler<T extends FileResource>
     + {abstract} Create(string fileName, CultureInfo locale) : T
 }
 
+JSONResourceHandler --|> ResourceFileHandler
+
+class JSONResourceHandler
+{
+    + JSONResourceHandler()
+    + CheckApplicability(string fileName) : bool
+    + Create(string fileName, CultureInfo locale) : JSONResourceHandler
+}
+
 abstract class Resource
 {
     - locale : CultureInfo
