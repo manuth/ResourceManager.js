@@ -4,7 +4,7 @@ import { ResourceFileHandler } from "./ResourceFileHandler(T)";
 import { YAMLResource } from "./YAMLResource";
 
 /**
- * Provides the functionality to handle json-files with comments.
+ * Provides the functionality to handle yaml-files with comments.
  */
 export class YAMLResourceHandler extends ResourceFileHandler<YAMLResource>
 {
