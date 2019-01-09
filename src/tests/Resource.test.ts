@@ -59,7 +59,7 @@ suite(
             });
 
         suite(
-            "Get(id)",
+            "Get(string id)",
             () =>
             {
                 test(
@@ -93,7 +93,7 @@ suite(
             });
 
         suite(
-            "Exists(id)",
+            "Exists(string id)",
             () =>
             {
                 test(
