@@ -59,6 +59,20 @@ suite(
             });
 
         suite(
+            "constructor(CultureInfo locale)",
+            () =>
+            {
+                test(
+                    "Checking whether the generated resources have the correct locale…",
+                    () =>
+                    {
+                        let englishCulture = new CultureInfo("en");
+                        Assert.strictEqual(new TestResource().Locale.Name, CultureInfo.InvariantCulture.Name);
+                        Assert.strictEqual(new TestResource(englishCulture).Locale.Name, englishCulture.Name);
+                    });
+            });
+
+        suite(
             "Get(string id)",
             () =>
             {

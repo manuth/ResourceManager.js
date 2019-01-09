@@ -16,14 +16,6 @@ export class TestResource extends Resource
     }
 
     /**
-     * Initializes a new instance of the `TestResource` class.
-     */
-    public constructor()
-    {
-        super();
-    }
-
-    /**
      * Gets or sets the resource-store of the resource.
      */
     public get Resource()
