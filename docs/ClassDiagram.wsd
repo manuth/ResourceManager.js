@@ -1,41 +1,4 @@
 @startuml ResourceManager.js
-interface IResourceFileHandler
-{
-    CheckApplicability(string fileName) : bool
-    Create(string fileName) : FileResource
-}
-
-
-ResourceFileHandler -|> IResourceFileHandler
-
-abstract class ResourceFileHandler<T extends FileResource>
-{
-    + ResourceFileHandler()
-    + {abstract} CheckApplicability(string fileName) : bool
-    + {abstract} Create(string fileName) : T
-    + {abstract} Create(string fileName, CultureInfo locale) : T
-}
-
-JSONResourceHandler --|> ResourceFileHandler
-
-class JSONResourceHandler
-{
-    + JSONResourceHandler()
-    + CheckApplicability(string fileName) : bool
-    + Create(string fileName) : JSONResourceHandler
-    + Create(string fileName, CultureInfo locale) : JSONResourceHandler
-}
-
-YAMLResourceHandler --|> ResourceFileHandler
-
-class YAMLResourceHandler
-{
-    + YAMLResourceHandler()
-    + CheckApplicability(string fileName) : bool
-    + Create(string fileName) : YAMLResource
-    + Create(string fileName, CultureInfo locale) : YAMLResource
-}
-
 abstract class Resource
 {
     - locale : CultureInfo
@@ -45,22 +8,6 @@ abstract class Resource
     # {abstract} ResourceStore { get; } : object
     + Get<T>(string id) : T
     + Exists(string id) : bool
-}
-
-Resource -* ResourceManager
-ResourceFileHandler --* ResourceManager
-
-class ResourceManager
-{
-    + ResourceManager(string baseFileName)
-    + ResourceManager(string baseFileName, CultureInfo locale)
-    + ResourceManager(Resource[] resources)
-    + ResourceManager(Resource[] resources, CultureInfo locale)
-    + Locale { get; set; } : CultureInfo
-    # ResourceFileHandlers { get; } : ResourceFileHandler[]
-    # Resources { get; } : Resource[]
-    + Get<T>(string id) : T
-    # ResourceFromFile(string fileName) : FileResouce
 }
 
 FileResource -|> Resource
@@ -98,5 +45,67 @@ JavaScriptResource --|> FileResource
 
 class JavaScriptResource
 {
+}
+
+interface IResourceFileHandler
+{
+    CheckApplicability(string fileName) : bool
+    Create(string fileName) : FileResource
+}
+
+ResourceFileHandler -|> IResourceFileHandler
+
+abstract class ResourceFileHandler<T extends FileResource>
+{
+    + ResourceFileHandler()
+    + {abstract} CheckApplicability(string fileName) : bool
+    + {abstract} Create(string fileName) : T
+    + {abstract} Create(string fileName, CultureInfo locale) : T
+}
+
+YAMLResourceHandler --|> ResourceFileHandler
+
+class YAMLResourceHandler
+{
+    + YAMLResourceHandler()
+    + CheckApplicability(string fileName) : bool
+    + Create(string fileName) : YAMLResource
+    + Create(string fileName, CultureInfo locale) : YAMLResource
+}
+
+JSONResourceHandler --|> ResourceFileHandler
+
+class JSONResourceHandler
+{
+    + JSONResourceHandler()
+    + CheckApplicability(string fileName) : bool
+    + Create(string fileName) : JSONResource
+    + Create(string fileName, CultureInfo locale) : JSONResource
+}
+
+JavaScriptResourceHandler --|> ResourceFileHandler
+
+class JavaScriptResourceHandler
+{
+    + JavaScriptResourceHandler()
+    + CheckApplicability(string fileName) : bool
+    + Create(string fileName) : JavaScriptResource
+    + Create(string fileName, CultureInfo locale) : JavaScriptResource
+}
+
+Resource -* ResourceManager
+IResourceFileHandler --* ResourceManager
+
+class ResourceManager
+{
+    + ResourceManager(string baseFileName)
+    + ResourceManager(string baseFileName, CultureInfo locale)
+    + ResourceManager(Resource[] resources)
+    + ResourceManager(Resource[] resources, CultureInfo locale)
+    + Locale { get; set; } : CultureInfo
+    # ResourceFileHandlers { get; } : IResourceFileHandler[]
+    # Resources { get; } : Resource[]
+    + Get<T>(string id) : T
+    # ResourceFromFile(string fileName) : FileResouce
 }
 @enduml
