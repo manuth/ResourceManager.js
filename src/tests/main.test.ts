@@ -7,4 +7,5 @@ suite(
         require("./YAMLResource.test");
         require("./JSONFileResource.test");
         require("./JavaScriptResource.test");
+        require("./ResourceFileHandlers/main.test");
     });
