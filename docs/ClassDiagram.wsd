@@ -5,11 +5,15 @@ interface IResourceFileHandler
     Create(string fileName) : FileResource
 }
 
+
+ResourceFileHandler -|> IResourceFileHandler
+
 abstract class ResourceFileHandler<T extends FileResource>
 {
     + ResourceFileHandler()
     + {abstract} CheckApplicability(string fileName) : bool
     + {abstract} Create(string fileName) : T
+    + {abstract} Create(string fileName, CultureInfo locale) : T
 }
 
 abstract class Resource
@@ -22,6 +26,9 @@ abstract class Resource
     + Get<T>(string id) : T
     + Exists(string id) : bool
 }
+
+Resource -* ResourceManager
+ResourceFileHandler --* ResourceManager
 
 class ResourceManager
 {
@@ -36,6 +43,8 @@ class ResourceManager
     # ResourceFromFile(string fileName) : FileResouce
 }
 
+FileResource -|> Resource
+
 abstract class FileResource
 {
     - fileName : string
@@ -46,27 +55,28 @@ abstract class FileResource
     + FileName { get; } : string
     + Cached { get; set; } : bool
     # Cache { get; set; } : object
+    # ResourceStore { get; } : object
     + Refresh() : void
     # {abstract} Load() : object
 }
 
+JSONResource --|> FileResource
+
 class JSONResource
 {
+    + JSONResource(string fileName, CultureInfo locale)
+    # Load() : void
 }
+
+YAMLResource --|> FileResource
 
 class YAMLResource
 {
 }
 
+JavaScriptResource --|> FileResource
+
 class JavaScriptResource
 {
 }
-
-JSONResource --|> FileResource
-YAMLResource --|> FileResource
-JavaScriptResource --|> FileResource
-FileResource -|> Resource
-Resource -* ResourceManager
-IResourceFileHandler <|- ResourceFileHandler
-ResourceFileHandler --* ResourceManager
 @enduml
