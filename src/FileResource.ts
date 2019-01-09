@@ -58,18 +58,6 @@ export abstract class FileResource extends Resource
         this.Refresh();
     }
 
-    protected get ResourceStore(): any
-    {
-        if (this.Cached)
-        {
-            return this.Cache;
-        }
-        else
-        {
-            return this.Load();
-        }
-    }
-
     /**
      * Gets or sets the cache of the resource.
      */
@@ -81,6 +69,18 @@ export abstract class FileResource extends Resource
     protected set Cache(value)
     {
         this.cache = value;
+    }
+
+    protected get ResourceStore(): any
+    {
+        if (this.Cached)
+        {
+            return this.Cache;
+        }
+        else
+        {
+            return this.Load();
+        }
     }
 
     /**
