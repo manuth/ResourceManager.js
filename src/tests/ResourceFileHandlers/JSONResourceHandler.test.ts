@@ -12,7 +12,6 @@ suite(
         let jsonFile: TempFile;
         let jsoncFile: TempFile;
         let txtFile: TempFile;
-        let yamlFile: TempFile;
 
         suiteSetup(
             () =>
@@ -32,11 +31,6 @@ suite(
                     {
                         postfix: ".txt"
                     });
-
-                yamlFile = new TempFile(
-                    {
-                        postfix: ".yml"
-                    });
             });
 
         suiteTeardown(
@@ -45,7 +39,6 @@ suite(
                 jsonFile.Dispose();
                 jsoncFile.Dispose();
                 txtFile.Dispose();
-                yamlFile.Dispose();
             });
 
         suite(
@@ -56,10 +49,9 @@ suite(
                     "Checking whether files are classified correctly…",
                     () =>
                     {
-                        Assert.strictEqual(fileHandler.CheckApplicability("test.json"), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability("test.jsonc"), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability("test.txt"), false);
-                        Assert.strictEqual(fileHandler.CheckApplicability("test.yml"), false);
+                        Assert.strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), true);
+                        Assert.strictEqual(fileHandler.CheckApplicability(jsoncFile.FullName), true);
+                        Assert.strictEqual(fileHandler.CheckApplicability(txtFile.FullName), false);
                     });
             });
 
@@ -72,7 +64,6 @@ suite(
                     () =>
                     {
                         Assert.strictEqual(fileHandler.Create(jsonFile.FullName) instanceof JSONResource, true);
-                        Assert.strictEqual(fileHandler.Create(jsoncFile.FullName) instanceof JSONResource, true);
                     });
             });
     });
