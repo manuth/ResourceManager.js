@@ -18,7 +18,7 @@ export class YAMLResourceHandler extends ResourceFileHandler<YAMLResource>
 
     public CheckApplicability(fileName: string): boolean
     {
-        return /^\.ya?ml$/.test(Path.parse(fileName).ext);
+        return /^\.ya?ml$/.test(Path.parse(fileName.toLowerCase()).ext);
     }
 
     public Create(fileName: string, locale?: CultureInfo): YAMLResource

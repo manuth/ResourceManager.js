@@ -18,7 +18,7 @@ export class JSONResourceHandler extends ResourceFileHandler<JSONResource>
 
     public CheckApplicability(fileName: string): boolean
     {
-        return /^\.jsonc?$/.test(Path.parse(fileName).ext);
+        return /^\.jsonc?$/.test(Path.parse(fileName.toLowerCase()).ext);
     }
 
     public Create(fileName: string, locale?: CultureInfo): JSONResource
