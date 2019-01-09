@@ -5,7 +5,7 @@ suite(
         require("./Resource.test");
         require("./FileResource.test");
         require("./YAMLResource.test");
-        require("./JSONFileResource.test");
+        require("./JSONResource.test");
         require("./JavaScriptResource.test");
         require("./ResourceFileHandlers/main.test");
     });

@@ -4,7 +4,7 @@ import { TempFile } from "temp-filesystem";
 import { JSONResource } from "../JSONResource";
 
 suite(
-    "JSONFileResource",
+    "JSONResource",
     () =>
     {
         let tempFile: TempFile;
