@@ -42,28 +42,20 @@ export abstract class Resource
      */
     public Get<T>(id: string): T
     {
-        let relativeID = id;
-        let idParts = id.split(".");
-        let resourceStore = this.ResourceStore;
+        let result = this.Extract<T>(id, this.ResourceStore);
 
-        for (let idPart of idParts)
+        if (result.length === 0)
         {
-            if (relativeID in resourceStore)
-            {
-                return resourceStore[relativeID] as T;
-            }
-            else if (idPart in resourceStore)
-            {
-                resourceStore = resourceStore[idPart];
-                relativeID = relativeID.substr(idPart.length).replace(/^\./, "");
-            }
-            else
-            {
-                throw new RangeError(`An object with the id "${id}" doesn't exist!`);
-            }
+            throw new RangeError(`A resource-item with the specified ID "${id}" does not exist!`);
         }
-
-        return resourceStore as T;
+        else if (result.length > 1)
+        {
+            throw new RangeError(`The specified ID "${id}" is not distinguishable!`);
+        }
+        else
+        {
+            return result[0];
+        }
     }
 
     /**
@@ -86,5 +78,40 @@ export abstract class Resource
         {
             return false;
         }
+    }
+
+    /**
+     * Extracts all items with the specified `id` from the `resourceStore`.
+     *
+     * @param id
+     * The id to look for.
+     *
+     * @param resourceStore
+     * The resource-store to browse.
+     *
+     * @returns
+     * All resource-items with the specified id.
+     */
+    protected Extract<T>(id: string, resourceStore: any): T[]
+    {
+        let result: T[] = [];
+        let dotIndex = id.indexOf(".");
+
+        if (id in resourceStore)
+        {
+            result.push(resourceStore[id]);
+        }
+
+        if (dotIndex >= 0)
+        {
+            let idPart = id.substr(0, dotIndex);
+
+            if (idPart in resourceStore)
+            {
+                result.push(...this.Extract<T>(id.substr(dotIndex + 1), resourceStore[idPart]));
+            }
+        }
+
+        return result;
     }
 }

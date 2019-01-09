@@ -91,15 +91,14 @@ suite(
                     });
 
                 test(
-                    "Checking whether root-elements have a higher priority than nested elements…",
+                    "Checking whether resolving duplicate IDs throws an exception…",
                     () =>
                     {
-                        Assert.notEqual(resource.Get(duplicateID), duplicateNestedValue);
-                        Assert.strictEqual(resource.Get(duplicateID), duplicateRootValue);
+                        Assert.throws(() => resource.Get(duplicateID));
                     });
 
                 test(
-                    "Checking whether querying an inexistent id triggers an error…",
+                    "Checking whether resolving an inexistent id triggers an error…",
                     () =>
                     {
                         Assert.throws(() => resource.Get(inexistentID));
