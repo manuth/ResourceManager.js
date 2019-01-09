@@ -81,7 +81,21 @@ suite(
                     "Checking whether properties are read correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(`${containerID}.${propertyID}`), (new Function(propertyFormula))());
+                        /**
+                         * Represents a function.
+                         */
+                        class MyFunction extends Function
+                        {
+                            /**
+                             * Initializes a new instance of the `MyFunction` class.
+                             */
+                            constructor(...args: string[])
+                            {
+                                super(...args);
+                            }
+                        }
+
+                        Assert.strictEqual(resource.Get(`${containerID}.${propertyID}`), (new MyFunction(propertyFormula))());
                     });
             });
     });
