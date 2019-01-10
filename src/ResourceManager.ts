@@ -60,10 +60,8 @@ export class ResourceManager
         if (resourceDeclarations instanceof CultureInfo)
         {
             locale = resourceDeclarations;
-            resourceDeclarations = null;
         }
-
-        if (!isNullOrUndefined(resourceDeclarations))
+        else if (!isNullOrUndefined(resourceDeclarations))
         {
             if (typeof resourceDeclarations === "string")
             {
@@ -99,6 +97,10 @@ export class ResourceManager
                         }
                     }
                 }
+            }
+            else
+            {
+                resources = resourceDeclarations;
             }
         }
 
