@@ -2,10 +2,11 @@ import { CultureInfo } from "culture-info";
 import FileSystem = require("fs-extra");
 import Path = require("path");
 import { isNullOrUndefined } from "util";
-import { FileResource } from "./FileResource";
+import { DuplicateKeyException } from "./DuplicateKeyException";
 import { IResourceFileHandler } from "./IResourceFileHandler";
 import { JavaScriptResourceHandler } from "./JavaScriptResourceHandler";
 import { JSONResourceHandler } from "./JSONResourceHandler";
+import { KeyNotFoundException } from "./KeyNotFoundException";
 import { Resource } from "./Resource";
 import { YAMLResourceHandler } from "./YAMLResourceHandler";
 
@@ -156,20 +157,7 @@ export class ResourceManager
     public Get<T>(id: string, locale?: CultureInfo): T
     {
         locale = locale || this.Locale;
-        let result = this.Extract<T>(id, locale);
-
-        if (result.length === 0)
-        {
-            throw new RangeError(`A resource-item with the specified ID "${id}" does not exist for the culture "${locale}"!`);
-        }
-        else if (result.length > 1)
-        {
-            throw new RangeError(`The specified ID "${id}" is not distinguishable for the culture "${locale}"!`);
-        }
-        else
-        {
-            return result[0];
-        }
+        return this.Extract(id, locale);
     }
 
     /**
@@ -181,32 +169,60 @@ export class ResourceManager
      * @returns
      * The resource-item with the specified id.
      */
-    protected Extract<T>(id: string, locale: CultureInfo): T[]
+    protected Extract<T>(id: string, locale: CultureInfo): T
     {
-        let result: T[] = [];
-
-        for (let resource of this.Resources)
+        try
         {
-            if (resource.Locale.Name === locale.Name)
+            let result: T[] = [];
+
+            for (let resource of this.Resources)
             {
-                try
+                if (resource.Locale.Name === locale.Name)
                 {
-                    result.push(resource.Get(id));
+                    try
+                    {
+                        result.push(resource.Get(id));
+                    }
+                    catch (exception)
+                    {
+                        if (exception instanceof DuplicateKeyException)
+                        {
+                            throw exception;
+                        }
+                    }
                 }
-                catch
-                { }
+            }
+
+            if (result.length === 0)
+            {
+                if (locale === CultureInfo.InvariantCulture)
+                {
+                    throw new KeyNotFoundException(`A resource-item with the specified ID "${id}" does not exist for the culture "${locale}"!`);
+                }
+                else
+                {
+                    return this.Extract(id, locale.Parent);
+                }
+            }
+            else if (result.length > 1)
+            {
+                throw new DuplicateKeyException();
+            }
+            else
+            {
+                return result[0];
             }
         }
-
-        if (
-            result.length === 0 &&
-            locale !== CultureInfo.InvariantCulture)
+        catch (exception)
         {
-            return this.Extract(id, locale.Parent);
-        }
-        else
-        {
-            return result;
+            if (exception instanceof DuplicateKeyException)
+            {
+                throw new DuplicateKeyException(`The specified ID "${id}" is not distinguishable for the culture "${locale}"!`);
+            }
+            else
+            {
+                throw exception;
+            }
         }
     }
 }
