@@ -136,7 +136,7 @@ export class ResourceManager
     /**
      * Gets the resources of the resource-manager.
      */
-    protected get Resources(): Resource[]
+    protected get Resources()
     {
         return this.resources;
     }
@@ -181,7 +181,7 @@ export class ResourceManager
      * @returns
      * The resource-item with the specified id.
      */
-    public Extract<T>(id: string, locale: CultureInfo): T[]
+    protected Extract<T>(id: string, locale: CultureInfo): T[]
     {
         let result: T[] = [];
 
