@@ -98,6 +98,8 @@ IResourceFileHandler --* ResourceManager
 
 class ResourceManager
 {
+    - locale : CultureInfo
+    - resources : Resource[]
     + ResourceManager(string baseFileName)
     + ResourceManager(string baseFileName, CultureInfo locale)
     + ResourceManager(Resource[] resources)
@@ -106,6 +108,6 @@ class ResourceManager
     # ResourceFileHandlers { get; } : IResourceFileHandler[]
     # Resources { get; } : Resource[]
     + Get<T>(string id) : T
-    # ResourceFromFile(string fileName) : FileResouce
+    + Get<T>(string id, CultureInfo locale) : T
 }
 @enduml
