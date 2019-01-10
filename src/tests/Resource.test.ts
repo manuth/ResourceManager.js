@@ -1,5 +1,7 @@
 import Assert = require("assert");
 import { CultureInfo } from "culture-info";
+import { DuplicateKeyException } from "../DuplicateKeyException";
+import { KeyNotFoundException } from "../KeyNotFoundException";
 import { TestResource } from "./TestResource";
 
 suite(
@@ -94,14 +96,14 @@ suite(
                     "Checking whether resolving duplicate IDs throws an exception…",
                     () =>
                     {
-                        Assert.throws(() => resource.Get(duplicateID));
+                        Assert.throws(() => resource.Get(duplicateID), DuplicateKeyException);
                     });
 
                 test(
                     "Checking whether resolving an inexistent id triggers an error…",
                     () =>
                     {
-                        Assert.throws(() => resource.Get(inexistentID));
+                        Assert.throws(() => resource.Get(inexistentID), KeyNotFoundException);
                     });
             });
 

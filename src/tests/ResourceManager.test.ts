@@ -3,6 +3,7 @@ import { CultureInfo } from "culture-info";
 import FileSystem = require("fs-extra");
 import { TempDirectory } from "temp-filesystem";
 import YAML = require("yaml");
+import { DuplicateKeyException } from "../DuplicateKeyException";
 import { Resource } from "../Resource";
 import { ResourceManager } from "../ResourceManager";
 import { TestFile } from "./TestFile";
@@ -286,14 +287,14 @@ suite(
                     "Checking whether resolving a resource-id which exists multiple times in the same file throws…",
                     () =>
                     {
-                        Assert.throws(() => manager.Get(duplicate, duplicateLocale));
+                        Assert.throws(() => manager.Get(duplicate, duplicateLocale), DuplicateKeyException);
                     });
 
                 test(
                     "Checking whether resolving a resource-id which exists in multiple files of the same locale throws…",
                     () =>
                     {
-                        Assert.throws(() => manager.Get(fileDuplicate));
+                        Assert.throws(() => manager.Get(fileDuplicate), DuplicateKeyException);
                     });
             });
     });
