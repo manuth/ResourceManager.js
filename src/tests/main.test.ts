@@ -8,4 +8,5 @@ suite(
         require("./JSONResource.test");
         require("./JavaScriptResource.test");
         require("./ResourceFileHandlers/main.test");
+        require("./ResourceManager.test");
     });
