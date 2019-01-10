@@ -39,20 +39,20 @@ export abstract class Resource
     /**
      * Gets an object of the resource-store.
      *
-     * @param id
-     * The id of the object to get.
+     * @param name
+     * The `name` of the object to get.
      */
-    public Get<T>(id: string): T
+    public Get<T>(name: string): T
     {
-        let result = this.Extract<T>(id, this.ResourceStore);
+        let result = this.Extract<T>(name, this.ResourceStore);
 
         if (result.length === 0)
         {
-            throw new KeyNotFoundException(`A resource-item with the specified ID "${id}" does not exist!`);
+            throw new KeyNotFoundException(`A resource-item with the specified ID "${name}" does not exist!`);
         }
         else if (result.length > 1)
         {
-            throw new DuplicateKeyException(`The specified ID "${id}" is not distinguishable!`);
+            throw new DuplicateKeyException(`The specified ID "${name}" is not distinguishable!`);
         }
         else
         {
@@ -61,48 +61,48 @@ export abstract class Resource
     }
 
     /**
-     * Checks whether a resource-element with the specified `id` exists.
+     * Checks whether a resource-element with the specified `name` exists.
      *
-     * @param id
-     * The id that is to be checked for existence.
+     * @param name
+     * The `name` that is to be checked for existence.
      *
      * @returns
-     * A value indicating whether a resource-element with the specified `id` exists.
+     * A value indicating whether a resource-element with the specified `name` exists.
      */
-    public Exists(id: string): boolean
+    public Exists(name: string): boolean
     {
-        return this.Extract(id, this.ResourceStore).length > 0;
+        return this.Extract(name, this.ResourceStore).length > 0;
     }
 
     /**
-     * Extracts all items with the specified `id` from the `resourceStore`.
+     * Extracts all items with the specified `name` from the `resourceStore`.
      *
-     * @param id
-     * The id to look for.
+     * @param name
+     * The `name` to look for.
      *
      * @param resourceStore
      * The resource-store to browse.
      *
      * @returns
-     * All resource-items with the specified id.
+     * All resource-items with the specified `name`.
      */
-    protected Extract<T>(id: string, resourceStore: any): T[]
+    protected Extract<T>(name: string, resourceStore: any): T[]
     {
         let result: T[] = [];
-        let dotIndex = id.indexOf(".");
+        let dotIndex = name.indexOf(".");
 
-        if (id in resourceStore)
+        if (name in resourceStore)
         {
-            result.push(resourceStore[id]);
+            result.push(resourceStore[name]);
         }
 
         if (dotIndex >= 0)
         {
-            let idPart = id.substr(0, dotIndex);
+            let namePart = name.substr(0, dotIndex);
 
-            if (idPart in resourceStore)
+            if (namePart in resourceStore)
             {
-                result.push(...this.Extract<T>(id.substr(dotIndex + 1), resourceStore[idPart]));
+                result.push(...this.Extract<T>(name.substr(dotIndex + 1), resourceStore[namePart]));
             }
         }
 

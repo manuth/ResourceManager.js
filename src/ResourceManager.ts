@@ -145,31 +145,34 @@ export class ResourceManager
     /**
      * Gets a resource-item from the a resource with the locale of the resource-manager.
      *
-     * @param id
-     * The id of the resource-item to get.
+     * @param name
+     * The `name` of the resource-item to get.
      *
      * @param locale
      * The locale of the resource-item to get.
      *
      * @returns
-     * The resource-item with the specified id.
+     * The resource-item with the specified `name`.
      */
-    public Get<T>(id: string, locale?: CultureInfo): T
+    public Get<T>(name: string, locale?: CultureInfo): T
     {
         locale = locale || this.Locale;
-        return this.Extract(id, locale);
+        return this.Extract(name, locale);
     }
 
     /**
-     * Extracts all items with the specified `id` from the resources.
+     * Extracts all items with the specified `name` from the resources.
+     *
+     * @param name
+     * The `name` of the resource-item to get.
      *
      * @param locale
      * The locale of the resource-item to get.
      *
      * @returns
-     * The resource-item with the specified id.
+     * The resource-item with the specified `name`.
      */
-    protected Extract<T>(id: string, locale: CultureInfo): T
+    protected Extract<T>(name: string, locale: CultureInfo): T
     {
         try
         {
@@ -181,7 +184,7 @@ export class ResourceManager
                 {
                     try
                     {
-                        result.push(resource.Get(id));
+                        result.push(resource.Get(name));
                     }
                     catch (exception)
                     {
@@ -197,11 +200,11 @@ export class ResourceManager
             {
                 if (locale === CultureInfo.InvariantCulture)
                 {
-                    throw new KeyNotFoundException(`A resource-item with the specified ID "${id}" does not exist for the culture "${locale}"!`);
+                    throw new KeyNotFoundException(`A resource-item with the specified ID "${name}" does not exist for the culture "${locale}"!`);
                 }
                 else
                 {
-                    return this.Extract(id, locale.Parent);
+                    return this.Extract(name, locale.Parent);
                 }
             }
             else if (result.length > 1)
@@ -217,7 +220,7 @@ export class ResourceManager
         {
             if (exception instanceof DuplicateKeyException)
             {
-                throw new DuplicateKeyException(`The specified ID "${id}" is not distinguishable for the culture "${locale}"!`);
+                throw new DuplicateKeyException(`The specified ID "${name}" is not distinguishable for the culture "${locale}"!`);
             }
             else
             {

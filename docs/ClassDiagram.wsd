@@ -6,8 +6,8 @@ abstract class Resource
     + Resource(CultureInfo locale)
     + Locale { get; } : CultureInfo
     # {abstract} ResourceStore { get; } : object
-    + Get<T>(string id) : T
-    + Exists(string id) : bool
+    + Get<T>(string name) : T
+    + Exists(string name) : bool
 }
 
 FileResource -|> Resource
@@ -107,7 +107,7 @@ class ResourceManager
     + Locale { get; set; } : CultureInfo
     # ResourceFileHandlers { get; } : IResourceFileHandler[]
     # Resources { get; } : Resource[]
-    + Get<T>(string id) : T
-    + Get<T>(string id, CultureInfo locale) : T
+    + Get<T>(string name) : T
+    + Get<T>(string name, CultureInfo locale) : T
 }
 @enduml
