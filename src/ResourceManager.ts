@@ -102,7 +102,7 @@ export class ResourceManager
             }
         }
 
-        this.Locale = locale;
+        this.Locale = locale || CultureInfo.InvariantCulture;
         this.resources = resources;
     }
 
