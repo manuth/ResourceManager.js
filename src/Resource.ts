@@ -1,4 +1,6 @@
 import { CultureInfo } from "culture-info";
+import { DuplicateKeyException } from "./DuplicateKeyException";
+import { KeyNotFoundException } from "./KeyNotFoundException";
 
 /**
  * Represents a resource.
@@ -46,11 +48,11 @@ export abstract class Resource
 
         if (result.length === 0)
         {
-            throw new RangeError(`A resource-item with the specified ID "${id}" does not exist!`);
+            throw new KeyNotFoundException(`A resource-item with the specified ID "${id}" does not exist!`);
         }
         else if (result.length > 1)
         {
-            throw new RangeError(`The specified ID "${id}" is not distinguishable!`);
+            throw new DuplicateKeyException(`The specified ID "${id}" is not distinguishable!`);
         }
         else
         {
