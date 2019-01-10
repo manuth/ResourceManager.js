@@ -1,4 +1,5 @@
 import Assert = require("assert");
+import Case = require("case");
 import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { JSONResource } from "../../JSONResource";
@@ -19,17 +20,17 @@ suite(
                 fileHandler = new JSONResourceHandler();
                 jsonFile = new TempFile(
                     {
-                        postfix: ".json"
+                        postfix: Case.random(".json")
                     });
 
                 jsoncFile = new TempFile(
                     {
-                        postfix: ".jsonc"
+                        postfix: Case.random(".jsonc")
                     });
 
                 txtFile = new TempFile(
                     {
-                        postfix: ".txt"
+                        postfix: Case.random(".txt")
                     });
             });
 

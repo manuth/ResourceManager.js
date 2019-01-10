@@ -1,4 +1,5 @@
 import Assert = require("assert");
+import Case = require("case");
 import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { JavaScriptResource } from "../../JavaScriptResource";
@@ -18,12 +19,12 @@ suite(
                 fileHandler = new JavaScriptResourceHandler();
                 jsFile = new TempFile(
                     {
-                        postfix: ".js"
+                        postfix: Case.random(".js")
                     });
 
                 txtFile = new TempFile(
                     {
-                        postfix: ".txt"
+                        postfix: Case.random(".txt")
                     });
             });
 

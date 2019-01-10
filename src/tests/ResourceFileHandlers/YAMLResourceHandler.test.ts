@@ -1,4 +1,5 @@
 import Assert = require("assert");
+import Case = require("case");
 import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { YAMLResource } from "../../YAMLResource";
@@ -19,17 +20,17 @@ suite(
                 fileHandler = new YAMLResourceHandler();
                 ymlFile = new TempFile(
                     {
-                        postfix: ".yml"
+                        postfix: Case.random(".yml")
                     });
 
                 yamlFile = new TempFile(
                     {
-                        postfix: ".yaml"
+                        postfix: Case.random(".yaml")
                     });
 
                 jsonFile = new TempFile(
                     {
-                        postfix: ".json"
+                        postfix: Case.random(".json")
                     });
             });
 
