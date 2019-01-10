@@ -69,15 +69,7 @@ export abstract class Resource
      */
     public Exists(id: string): boolean
     {
-        try
-        {
-            this.Get(id);
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+        return this.Extract(id, this.ResourceStore).length > 0;
     }
 
     /**

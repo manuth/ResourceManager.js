@@ -116,5 +116,12 @@ suite(
                         Assert.strictEqual(resource.Exists(rootID), true);
                         Assert.strictEqual(resource.Exists(inexistentID), false);
                     });
+
+                test(
+                    "Checking whether the method detects whether duplicate IDs exist…",
+                    () =>
+                    {
+                        Assert.strictEqual(resource.Exists(duplicateID), true);
+                    });
             });
     });
