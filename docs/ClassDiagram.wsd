@@ -1,4 +1,12 @@
 @startuml ResourceManager.js
+class KeyNotFoundException
+{
+}
+
+class DuplicateKeyException
+{
+}
+
 abstract class Resource
 {
     - locale : CultureInfo
@@ -8,6 +16,7 @@ abstract class Resource
     # {abstract} ResourceStore { get; } : object
     + Get<T>(string name) : T
     + Exists(string name) : bool
+    # Extract<T>(string name) : T[]
 }
 
 FileResource -|> Resource
@@ -31,6 +40,7 @@ JSONResource --|> FileResource
 
 class JSONResource
 {
+    + JSONResource(string fileName)
     + JSONResource(string fileName, CultureInfo locale)
     # Load() : void
 }
@@ -39,12 +49,18 @@ YAMLResource --|> FileResource
 
 class YAMLResource
 {
+    + YAMLResource(string fileName)
+    + YAMLResource(string fileName, CultureInfo locale)
+    # Load() : void
 }
 
 JavaScriptResource --|> FileResource
 
 class JavaScriptResource
 {
+    + JavaScriptResource(string fileName)
+    + JavaScriptResource(string fileName, CultureInfo locale)
+    # Load() : void
 }
 
 interface IResourceFileHandler
@@ -100,6 +116,8 @@ class ResourceManager
 {
     - locale : CultureInfo
     - resources : Resource[]
+    + ResourceManager()
+    + ResourceManager(CultureInfo locale)
     + ResourceManager(string baseFileName)
     + ResourceManager(string baseFileName, CultureInfo locale)
     + ResourceManager(Resource[] resources)
@@ -109,5 +127,6 @@ class ResourceManager
     # Resources { get; } : Resource[]
     + Get<T>(string name) : T
     + Get<T>(string name, CultureInfo locale) : T
+    + Extract<T>(string name, CultureInfo locale) : T
 }
 @enduml
