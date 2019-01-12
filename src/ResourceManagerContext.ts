@@ -3,14 +3,14 @@ import { Context } from "mustache";
 import { ResourceManager } from "./ResourceManager";
 
 /**
- * Provides the functionality to resolve resource-items.
+ * Provides the functionality to resolve resource-items from a resource-manager.
  */
-export class ResourceContext extends Context
+export class ResourceManagerContext extends Context
 {
     /**
-     * The resource of the context.
+     * The resource-manager of the context.
      */
-    private resource: ResourceManager;
+    private resourceManager: ResourceManager;
 
     /**
      * The locale of the resource-items to get.
@@ -18,10 +18,10 @@ export class ResourceContext extends Context
     private locale: CultureInfo;
 
     /**
-     * Initializes a new instance of the `ResourceContext` class.
+     * Initializes a new instance of the `ResourceManagerContext` class.
      *
-     * @param resource
-     * The resource to get the lookup-values from.
+     * @param resourceManager
+     * The resource-manager to get the lookup-values from.
      *
      * @param locale
      * The locale of the resource-items to get.
@@ -29,19 +29,19 @@ export class ResourceContext extends Context
      * @param view
      * The parent view of the context.
      */
-    public constructor(resource: ResourceManager, locale?: CultureInfo, view?: any)
+    public constructor(resourceManager: ResourceManager, locale?: CultureInfo, view?: any)
     {
         super(view);
-        this.resource = resource;
+        this.resourceManager = resourceManager;
         this.locale = locale;
     }
 
     /**
-     * Gets the resource of the context.
+     * Gets the resource-manager of the context.
      */
-    public get Resource(): ResourceManager
+    public get ResourceManager(): ResourceManager
     {
-        return this.resource;
+        return this.resourceManager;
     }
 
     /**
@@ -60,6 +60,6 @@ export class ResourceContext extends Context
      */
     public lookup(name: string): any
     {
-        return this.Resource.Get(name, this.Locale);
+        return this.ResourceManager.Get(name, this.Locale);
     }
 }
