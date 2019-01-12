@@ -1,5 +1,5 @@
 import Assert = require("assert");
-import dedent = require("dedent");
+import Dedent = require("dedent");
 import FileSystem = require("fs-extra");
 import { TempFile } from "temp-filesystem";
 import { JavaScriptResource } from "../JavaScriptResource";
@@ -38,7 +38,7 @@ suite(
 
                 await FileSystem.writeFile(
                     tempFile.FullName,
-                    dedent(
+                    Dedent(
                         `
                             module.exports = {
                                 ${id}: ${JSON.stringify(value)},

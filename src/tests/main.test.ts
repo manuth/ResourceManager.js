@@ -9,4 +9,5 @@ suite(
         require("./JavaScriptResource.test");
         require("./ResourceFileHandlers/main.test");
         require("./ResourceManager.test");
+        require("./Mustache/main.test");
     });
