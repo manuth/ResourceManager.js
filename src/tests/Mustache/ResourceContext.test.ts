@@ -45,12 +45,12 @@ suite(
             () =>
             {
                 Assert.strictEqual(
+                    Mustache.render(templateString, context),
                     Mustache.render(
                         templateString,
                         {
                             [id]: value
-                        }),
-                        Mustache.render(templateString, context));
+                        }));
             });
 
         test(

@@ -3,4 +3,5 @@ suite(
     () =>
     {
         require("./ResourceContext.test");
+        require("./MustacheResoutce.test");
     });
