@@ -204,10 +204,6 @@ export class ResourceManager
             {
                 throw duplicateException;
             }
-            else if (exception instanceof KeyNotFoundException)
-            {
-                throw keyNotFoundException;
-            }
             else
             {
                 throw exception;
