@@ -1,11 +1,12 @@
 import { CultureInfo } from "culture-info";
 import { DuplicateKeyException } from "./DuplicateKeyException";
+import { IResource } from "./IResource";
 import { KeyNotFoundException } from "./KeyNotFoundException";
 
 /**
  * Represents a resource.
  */
-export abstract class Resource
+export abstract class Resource implements IResource
 {
     /**
      * The locale of the resource.
@@ -23,9 +24,6 @@ export abstract class Resource
         this.locale = locale || CultureInfo.InvariantCulture;
     }
 
-    /**
-     * Gets or sets the locale of the resource.
-     */
     public get Locale()
     {
         return this.locale;
@@ -36,12 +34,6 @@ export abstract class Resource
      */
     protected abstract get ResourceStore(): any;
 
-    /**
-     * Gets an object of the resource-store.
-     *
-     * @param name
-     * The `name` of the object to get.
-     */
     public Get<T>(name: string): T
     {
         let result = this.Extract<T>(name, this.ResourceStore);
@@ -60,15 +52,6 @@ export abstract class Resource
         }
     }
 
-    /**
-     * Checks whether a resource-element with the specified `name` exists.
-     *
-     * @param name
-     * The `name` that is to be checked for existence.
-     *
-     * @returns
-     * A value indicating whether a resource-element with the specified `name` exists.
-     */
     public Exists(name: string): boolean
     {
         return this.Extract(name, this.ResourceStore).length > 0;

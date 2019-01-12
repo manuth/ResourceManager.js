@@ -3,11 +3,11 @@ import FileSystem = require("fs-extra");
 import Path = require("path");
 import { isNullOrUndefined } from "util";
 import { DuplicateKeyException } from "./DuplicateKeyException";
+import { IResource } from "./IResource";
 import { IResourceFileHandler } from "./IResourceFileHandler";
 import { JavaScriptResourceHandler } from "./JavaScriptResourceHandler";
 import { JSONResourceHandler } from "./JSONResourceHandler";
 import { KeyNotFoundException } from "./KeyNotFoundException";
-import { Resource } from "./Resource";
 import { YAMLResourceHandler } from "./YAMLResourceHandler";
 
 /**
@@ -23,7 +23,7 @@ export class ResourceManager
     /**
      * The resources of the resource-manager.
      */
-    private resources: Resource[];
+    private resources: IResource[];
 
     /**
      * Initializes a new instance of the `ResourceManager` class.
@@ -53,10 +53,10 @@ export class ResourceManager
      * @param locale
      * The locale of the resource-items to resolve.
      */
-    public constructor(resources?: Resource[], locale?: CultureInfo);
-    public constructor(resourceDeclarations: CultureInfo | string | Resource[] = null, locale?: CultureInfo)
+    public constructor(resources?: IResource[], locale?: CultureInfo);
+    public constructor(resourceDeclarations: CultureInfo | string | IResource[] = null, locale?: CultureInfo)
     {
-        let resources: Resource[] = [];
+        let resources: IResource[] = [];
 
         if (resourceDeclarations instanceof CultureInfo)
         {
