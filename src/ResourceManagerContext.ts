@@ -45,11 +45,16 @@ export class ResourceManagerContext extends Context
     }
 
     /**
-     * Gets sets the locale of the resource-items to get.
+     * Gets or sets the locale of the resource-items to get.
      */
-    public get Locale(): CultureInfo
+    public get Locale()
     {
         return this.locale;
+    }
+
+    public set Locale(value)
+    {
+        this.locale = value;
     }
 
     /**
