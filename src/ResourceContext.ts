@@ -13,9 +13,9 @@ export class ResourceContext extends Context
     private resource: ResourceManager;
 
     /**
-     * The culture which resource to get.
+     * The locale of the resource-items to get.
      */
-    private culture: CultureInfo;
+    private locale: CultureInfo;
 
     /**
      * Initializes a new instance of the `ResourceContext` class.
@@ -23,14 +23,17 @@ export class ResourceContext extends Context
      * @param resource
      * The resource to get the lookup-values from.
      *
+     * @param locale
+     * The locale of the resource-items to get.
+     *
      * @param view
      * The parent view of the context.
      */
-    public constructor(resource: ResourceManager, culture?: CultureInfo, view?: any)
+    public constructor(resource: ResourceManager, locale?: CultureInfo, view?: any)
     {
         super(view);
         this.resource = resource;
-        this.culture = culture;
+        this.locale = locale;
     }
 
     /**
@@ -42,11 +45,11 @@ export class ResourceContext extends Context
     }
 
     /**
-     * Gets the culture which resource to get.
+     * Gets sets the locale of the resource-items to get.
      */
-    public get Culture(): CultureInfo
+    public get Locale(): CultureInfo
     {
-        return this.culture;
+        return this.locale;
     }
 
     /**
@@ -57,6 +60,6 @@ export class ResourceContext extends Context
      */
     public lookup(name: string): any
     {
-        return this.Resource.Get(name, this.Culture);
+        return this.Resource.Get(name, this.Locale);
     }
 }
