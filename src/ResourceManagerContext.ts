@@ -1,6 +1,6 @@
 import { CultureInfo } from "culture-info";
 import { Context } from "mustache";
-import { ResourceManager } from "./ResourceManager";
+import { IResourceManager } from "./IResourceManager";
 
 /**
  * Provides the functionality to resolve resource-items from a resource-manager.
@@ -10,7 +10,7 @@ export class ResourceManagerContext extends Context
     /**
      * The resource-manager of the context.
      */
-    private resourceManager: ResourceManager;
+    private resourceManager: IResourceManager;
 
     /**
      * The locale of the resource-items to get.
@@ -29,7 +29,7 @@ export class ResourceManagerContext extends Context
      * @param view
      * The parent view of the context.
      */
-    public constructor(resourceManager: ResourceManager, locale?: CultureInfo, view?: any)
+    public constructor(resourceManager: IResourceManager, locale?: CultureInfo, view?: any)
     {
         super(view);
         this.resourceManager = resourceManager;
@@ -39,7 +39,7 @@ export class ResourceManagerContext extends Context
     /**
      * Gets the resource-manager of the context.
      */
-    public get ResourceManager(): ResourceManager
+    public get ResourceManager(): IResourceManager
     {
         return this.resourceManager;
     }

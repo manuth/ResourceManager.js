@@ -5,6 +5,7 @@ import { isNullOrUndefined } from "util";
 import { DuplicateKeyException } from "./DuplicateKeyException";
 import { IResource } from "./IResource";
 import { IResourceFileHandler } from "./IResourceFileHandler";
+import { IResourceManager } from "./IResourceManager";
 import { JavaScriptResourceHandler } from "./JavaScriptResourceHandler";
 import { JSONResourceHandler } from "./JSONResourceHandler";
 import { KeyNotFoundException } from "./KeyNotFoundException";
@@ -13,7 +14,7 @@ import { YAMLResourceHandler } from "./YAMLResourceHandler";
 /**
  * Provides the functionality to manage localized resources.
  */
-export class ResourceManager
+export class ResourceManager implements IResourceManager
 {
     /**
      * The locale of the resource-items to resolve.
@@ -109,9 +110,6 @@ export class ResourceManager
         this.resources = resources;
     }
 
-    /**
-     * Gets or sets the locale of the resource-items to resolve.
-     */
     public get Locale()
     {
         return this.locale;
@@ -142,18 +140,6 @@ export class ResourceManager
         return this.resources;
     }
 
-    /**
-     * Gets a resource-item from the a resource with the locale of the resource-manager.
-     *
-     * @param name
-     * The `name` of the resource-item to get.
-     *
-     * @param locale
-     * The locale of the resource-item to get.
-     *
-     * @returns
-     * The resource-item with the specified `name`.
-     */
     public Get<T>(name: string, locale?: CultureInfo): T
     {
         locale = locale || this.Locale;
