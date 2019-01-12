@@ -174,10 +174,12 @@ export class ResourceManager
      */
     protected Extract<T>(name: string, locale: CultureInfo): T
     {
+        let result: T[] = [];
+        let keyNotFoundException = new KeyNotFoundException(`A resource-item with the specified ID "${name}" does not exist for the ${locale === CultureInfo.InvariantCulture ? "invariant culture" : `culture "${locale}"`}!`);
+        let duplicateException = new DuplicateKeyException(`The specified ID "${name}" is not distinguishable for the ${locale === CultureInfo.InvariantCulture ? "invariant culture" : `culture "${locale}"`}!`);
+
         try
         {
-            let result: T[] = [];
-
             for (let resource of this.Resources)
             {
                 if (resource.Locale.Name === locale.Name)
@@ -195,37 +197,55 @@ export class ResourceManager
                     }
                 }
             }
-
-            if (result.length === 0)
-            {
-                if (locale === CultureInfo.InvariantCulture)
-                {
-                    throw new KeyNotFoundException(`A resource-item with the specified ID "${name}" does not exist for the culture "${locale}"!`);
-                }
-                else
-                {
-                    return this.Extract(name, locale.Parent);
-                }
-            }
-            else if (result.length > 1)
-            {
-                throw new DuplicateKeyException();
-            }
-            else
-            {
-                return result[0];
-            }
         }
         catch (exception)
         {
             if (exception instanceof DuplicateKeyException)
             {
-                throw new DuplicateKeyException(`The specified ID "${name}" is not distinguishable for the culture "${locale}"!`);
+                throw duplicateException;
+            }
+            else if (exception instanceof KeyNotFoundException)
+            {
+                throw keyNotFoundException;
             }
             else
             {
                 throw exception;
             }
+        }
+
+        if (result.length === 0)
+        {
+            if (locale === CultureInfo.InvariantCulture)
+            {
+                throw keyNotFoundException;
+            }
+            else
+            {
+                try
+                {
+                    return this.Extract(name, locale.Parent);
+                }
+                catch (exception)
+                {
+                    if (exception instanceof KeyNotFoundException)
+                    {
+                        throw keyNotFoundException;
+                    }
+                    else
+                    {
+                        throw exception;
+                    }
+                }
+            }
+        }
+        else if (result.length > 1)
+        {
+            throw duplicateException;
+        }
+        else
+        {
+            return result[0];
         }
     }
 }
