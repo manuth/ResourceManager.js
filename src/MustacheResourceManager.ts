@@ -13,6 +13,17 @@ export class MustacheResourceManager implements IResourceManager
      */
     private resourceManager: IResourceManager;
 
+    /**
+     * Initializes a new instance of the `MustacheResourceManager` class.
+     *
+     * @param resourceManager
+     * The resource-manager which serves the resource-items.
+     */
+    public constructor(resourceManager: IResourceManager)
+    {
+        this.resourceManager = resourceManager;
+    }
+
     public get Locale()
     {
         return this.ResourceManager.Locale;
