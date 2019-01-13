@@ -40,23 +40,28 @@ suite(
                 context = new ResourceContext(resource);
             });
 
-        test(
-            "Checking whether the resource can be used as a mustache-context correctly…",
+        suite(
+            "lookup(string name)",
             () =>
             {
-                Assert.strictEqual(
-                    Mustache.render(templateString, context),
-                    Mustache.render(
-                        templateString,
-                        {
-                            [id]: value
-                        }));
-            });
+                test(
+                    "Checking whether the resource can be used as a mustache-context correctly…",
+                    () =>
+                    {
+                        Assert.strictEqual(
+                            Mustache.render(templateString, context),
+                            Mustache.render(
+                                templateString,
+                                {
+                                    [id]: value
+                                }));
+                    });
 
-        test(
-            "Checking whether resolving inexistent IDs throws…",
-            () =>
-            {
-                Assert.throws(() => Mustache.render(`{{${inexistentID}}}`, context));
+                test(
+                    "Checking whether resolving inexistent IDs throws…",
+                    () =>
+                    {
+                        Assert.throws(() => Mustache.render(`{{${inexistentID}}}`, context));
+                    });
             });
     });

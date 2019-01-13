@@ -38,17 +38,22 @@ suite(
                 resource = new MustacheResource(internalResource);
             });
 
-        test(
-            "Checking whether the values of the resources are preprocessed using mustache…",
+        suite(
+            "Get<T>(string name)",
             () =>
             {
-                Assert.strictEqual(
-                    resource.Get(compositeItemID),
-                    Mustache.render(
-                        compositeItemValue,
-                        {
-                            [firstItemID]: firstItemValue,
-                            [secondItemID]: secondItemValue
-                        }));
+                test(
+                    "Checking whether the values of the resources are preprocessed using mustache…",
+                    () =>
+                    {
+                        Assert.strictEqual(
+                            resource.Get(compositeItemID),
+                            Mustache.render(
+                                compositeItemValue,
+                                {
+                                    [firstItemID]: firstItemValue,
+                                    [secondItemID]: secondItemValue
+                                }));
+                    });
             });
     });

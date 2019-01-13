@@ -50,7 +50,7 @@ suite(
             });
 
         suite(
-            "General",
+            "lookup(string name)",
             () =>
             {
 
