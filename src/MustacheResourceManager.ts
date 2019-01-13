@@ -19,9 +19,10 @@ export class MustacheResourceManager implements IResourceManager
      * @param resourceManager
      * The resource-manager which serves the resource-items.
      */
-    public constructor(resourceManager: IResourceManager)
+    public constructor(resourceManager: IResourceManager, locale?: CultureInfo)
     {
         this.resourceManager = resourceManager;
+        this.Locale = locale;
     }
 
     public get Locale()
