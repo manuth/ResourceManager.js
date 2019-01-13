@@ -17,9 +17,6 @@ export class ResourceContext extends Context
      * @param resource
      * The resource to get the lookup-values from.
      *
-     * @param locale
-     * The locale of the resource-items to get.
-     *
      * @param view
      * The parent view of the context.
      */
