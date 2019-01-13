@@ -106,7 +106,7 @@ export class ResourceManager implements IResourceManager
             }
         }
 
-        this.Locale = locale || CultureInfo.InvariantCulture;
+        this.Locale = locale;
         this.resources = resources;
     }
 
@@ -117,7 +117,7 @@ export class ResourceManager implements IResourceManager
 
     public set Locale(value)
     {
-        this.locale = value;
+        this.locale = value || CultureInfo.InvariantCulture;
     }
 
     /**
