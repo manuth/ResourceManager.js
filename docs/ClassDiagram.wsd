@@ -1,11 +1,44 @@
 @startuml ResourceManager.js
+package lib.es5
+{
+    class RangeError
+    {
+    }
+}
+
+package mustache
+{
+    class Context
+    {
+        + view : object
+        + parentContext : Context
+        + Context(object view)
+        + Context(object view, Context parentContext)
+        + push(object view) : Context
+        + lookup(string name) : object
+    }
+}
+
+KeyNotFoundException --|> RangeError
+
 class KeyNotFoundException
 {
 }
 
+DuplicateKeyException --|> RangeError
+
 class DuplicateKeyException
 {
 }
+
+interface IResource
+{
+    Locale { get; } : CultureInfo
+    Get<T>(string name) : T
+    Exists(string name) : bool
+}
+
+Resource --|> IResource
 
 abstract class Resource
 {
@@ -16,7 +49,7 @@ abstract class Resource
     # {abstract} ResourceStore { get; } : object
     + Get<T>(string name) : T
     + Exists(string name) : bool
-    # Extract<T>(string name) : T[]
+    # Extract<T>(string name, object resourceStore) : T[]
 }
 
 FileResource -|> Resource
@@ -42,7 +75,7 @@ class JSONResource
 {
     + JSONResource(string fileName)
     + JSONResource(string fileName, CultureInfo locale)
-    # Load() : void
+    # Load() : object
 }
 
 YAMLResource --|> FileResource
@@ -51,7 +84,7 @@ class YAMLResource
 {
     + YAMLResource(string fileName)
     + YAMLResource(string fileName, CultureInfo locale)
-    # Load() : void
+    # Load() : object
 }
 
 JavaScriptResource --|> FileResource
@@ -60,18 +93,19 @@ class JavaScriptResource
 {
     + JavaScriptResource(string fileName)
     + JavaScriptResource(string fileName, CultureInfo locale)
-    # Load() : void
+    # Load() : object
 }
 
 interface IResourceFileHandler
 {
     CheckApplicability(string fileName) : bool
     Create(string fileName) : FileResource
+    Create(string fileName, CultureInfo locale) : FileResource
 }
 
 ResourceFileHandler -|> IResourceFileHandler
 
-abstract class ResourceFileHandler<T extends FileResource>
+abstract class ResourceFileHandler<T : FileResource>
 {
     + ResourceFileHandler()
     + {abstract} CheckApplicability(string fileName) : bool
@@ -109,24 +143,86 @@ class JavaScriptResourceHandler
     + Create(string fileName, CultureInfo locale) : JavaScriptResource
 }
 
-Resource -* ResourceManager
+interface IResourceManager
+{
+    Locale { get; set; } : CultureInfo
+    Get<T>(string name) : T
+    Get<T>(string name, CultureInfo locale) : T
+}
+
+ResourceManager -|> IResourceManager
+IResource -* ResourceManager
 IResourceFileHandler --* ResourceManager
 
 class ResourceManager
 {
     - locale : CultureInfo
-    - resources : Resource[]
+    - resources : IResource[]
     + ResourceManager()
     + ResourceManager(CultureInfo locale)
     + ResourceManager(string baseFileName)
     + ResourceManager(string baseFileName, CultureInfo locale)
-    + ResourceManager(Resource[] resources)
-    + ResourceManager(Resource[] resources, CultureInfo locale)
+    + ResourceManager(IResource[] resources)
+    + ResourceManager(IResource[] resources, CultureInfo locale)
     + Locale { get; set; } : CultureInfo
     # ResourceFileHandlers { get; } : IResourceFileHandler[]
-    # Resources { get; } : Resource[]
+    # Resources { get; } : IResource[]
     + Get<T>(string name) : T
     + Get<T>(string name, CultureInfo locale) : T
-    + Extract<T>(string name, CultureInfo locale) : T
+    # Extract<T>(string name, CultureInfo locale) : T
+}
+
+ResourceContext --|> Context
+ResourceContext -> IResource
+
+class ResourceContext
+{
+    - resource : IResource
+    + ResourceContext(IResource resource)
+    + ResourceContext(IResource resource, object view)
+    + Resource { get; } : IResource
+    + lookup(string name) : object
+}
+
+Context <|- ResourceManagerContext
+IResourceManager <-- ResourceManagerContext
+
+class ResourceManagerContext
+{
+    - resourceManager : IResourceManager
+    - locale : CultureInfo
+    + ResourceManagerContext(IResourceManager resourceManager)
+    + ResourceManagerContext(IResourceManager resourceManager, CultureInfo locale)
+    + ResourceManagerContext(IResourceManager resourceManager, CultureInfo locale, object view)
+    + ResourceManager { get; } : IResourceManager
+    + Locale { get; set; } : CultureInfo
+    + lookup(string name) : object
+}
+
+MustacheResource --|> IResource
+MustacheResource --> IResource
+
+class MustacheResource
+{
+    - resource : IResource
+    + MustacheResource(IResource resource)
+    + Locale { get; } : CultureInfo
+    + Resource { get; } : IResource
+    + Get<T>(string name) : T
+    + Exists(string name) : bool
+}
+
+IResourceManager <|- MustacheResourceManager
+IResourceManager <- MustacheResourceManager
+
+class MustacheResourceManager
+{
+    - resourceManager : IResourceManager
+    + MustacheResourceManager(IResourceManager resourceManager)
+    + MustacheResourceManager(IResourceManager resourceManager, CultureInfo locale)
+    + Locale { get; set; } : CultureInfo
+    + ResourceManager { get; } : IResourceManager
+    + Get<T>(string name) : T
+    + Get<T>(string name, CultureInfo locale) : T
 }
 @enduml
