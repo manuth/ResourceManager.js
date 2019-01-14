@@ -4,8 +4,7 @@ A manager for localized resources.
 ## General
 `ResourceManager.js` allows you to load and resolve resource-objects from different files.
 
-It has also the capability to load and manage localized resources which allows you to resolve resource-items for the locale of your choice
-and taking care of locales and their parental relationships which simplifies the creation of resources for different dialects of the same language.
+It also has the capability to load and manage localized resources which allows you to resolve resource-items for the locale of your choice and to take care of locales and their parental relationships which simplifies the creation of resources for different dialects of the same language.
 
 ## Table of Contents
 - [ResourceManager.js](#resourcemanagerjs)
@@ -34,7 +33,7 @@ npm install --save localized-resource-manager
 ```
 
 ## Resources
-You might to work with a resource rather than a resource-manager if you don't care about localization.
+You might want to work with a resource rather than a resource-manager, if you don't care about localization.
 
 `ResourceManager.js` provides classes for loading resources from different file-types:
   - `JSONResource` for `JSON` and `JSON with Comment`-files
@@ -69,8 +68,8 @@ console.log(resource.Get("Duplicate.Test")); // Throws a "DuplicateKeyException"
 ```
 
 ### Caching
-When working with file-resources you can also enable the Cache-Mode by setting `FileResource.Cached`.  
-This forces the system to cache the resource-items of the file and reading resource-items from the cache rather than from the file.
+When working with file-resources you can also enable the cache-mode by setting `FileResource.Cached`.  
+This forces the system to cache the resource-items of the file and to read resource-items from the cache rather than from the file.
 
 #### Example
 ```js
@@ -114,11 +113,10 @@ My App © by m@nuth
 ```
 
 ## Localized Resources
-One thing you might have missed is that a resource also contains information about its locale (default is the global, invariant culture).
+One thing you might have missed is that a resource also contains information about its locale (the default is the global, invariant culture).
+This information is used by the `ResourceManager` to resolve resource-items of the best-matching culture.
 
-This information is used by the `ResourceManager` for resolving resource-items of the best-matching culture.
-
-The `ResourceManager` is capable to load resource-files automatically based on its file-name if they follow the path-convention:
+The `ResourceManager` is capable to load resource-files automatically based on their file-name if they follow the path-convention:
 ```
 { BaseFileName }[.{ locale-abbreviation }].{ File-Extension }
 ```
@@ -179,7 +177,7 @@ console.log(manager.Get("Duplicate.File")); // Throws a DuplicateKeyException
 
 ### Mustache-ResourceManager
 The resource-manager is mustachable, too!  
-Above example can be simplified by wrapping the resource-manager with a `MustacheResourceManager` which allows you to pre-process localized resource-items.
+The above example can be simplified by wrapping the resource-manager with a `MustacheResourceManager` which allows you to pre-process localized resource-items.
 
 #### Example
 ***Resource.en.json:***
@@ -209,7 +207,7 @@ console.log(manager.Get("ColorError", new CultureInfo("en"))); // "Please specif
 ```
 
 ## Use with Mustache
-The `ResourceContext` and `ResourceManagerContext`-classes allow you to use a resource or a resource-manager as mustache-contexts which might be useful for you:
+The `ResourceContext` and `ResourceManagerContext`-classes allow you to use a resource or a resource-manager as a mustache-context, which might be useful for you:
 
 ### Example
 ```js
