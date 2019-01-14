@@ -151,7 +151,7 @@ This might be very useful if you work with similar languages and dialects.
 
 ***Resource.en.yml:***
 ```yml
-Duplicate.Test: ""
+Duplicate.File: ""
 ```
 
 ***Resource.en-GB.json:***
