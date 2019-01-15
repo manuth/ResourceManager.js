@@ -1,5 +1,5 @@
+import { CultureInfo } from "culture-info";
 import Path = require("path");
-import { CultureInfo } from ".";
 import { FileResource } from "./FileResource";
 
 /**
