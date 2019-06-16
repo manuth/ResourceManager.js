@@ -10,6 +10,9 @@ export class TestResource extends Resource
      */
     private resource: any;
 
+    /**
+     * @inheritdoc
+     */
     protected get ResourceStore()
     {
         return this.resource;

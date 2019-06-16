@@ -25,11 +25,17 @@ export class MustacheResourceManager implements IResourceManager
         this.Locale = locale || this.Locale;
     }
 
+    /**
+     * @inheritdoc
+     */
     public get Locale()
     {
         return this.ResourceManager.Locale;
     }
 
+    /**
+     * @inheritdoc
+     */
     public set Locale(value)
     {
         this.ResourceManager.Locale = value;
@@ -43,6 +49,9 @@ export class MustacheResourceManager implements IResourceManager
         return this.resourceManager;
     }
 
+    /**
+     * @inheritdoc
+     */
     public Get<T>(name: string, locale?: CultureInfo): T
     {
         let result = this.ResourceManager.Get<T>(name, locale);

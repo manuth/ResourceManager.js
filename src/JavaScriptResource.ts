@@ -21,6 +21,9 @@ export class JavaScriptResource extends FileResource
         super(fileName, locale);
     }
 
+    /**
+     * @inheritdoc
+     */
     protected Load()
     {
         return require(Path.resolve(this.FileName));

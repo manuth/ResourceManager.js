@@ -23,6 +23,9 @@ export class MustacheResource implements IResource
         this.resource = resource;
     }
 
+    /**
+     * @inheritdoc
+     */
     public get Locale()
     {
         return this.Resource.Locale;
@@ -36,6 +39,9 @@ export class MustacheResource implements IResource
         return this.resource;
     }
 
+    /**
+     * @inheritdoc
+     */
     public Get<T>(name: string): T
     {
         let result = this.Resource.Get<T>(name);
@@ -50,6 +56,9 @@ export class MustacheResource implements IResource
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public Exists(name: string): boolean
     {
         return this.Resource.Exists(name);

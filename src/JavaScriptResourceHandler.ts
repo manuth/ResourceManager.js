@@ -16,11 +16,17 @@ export class JavaScriptResourceHandler extends ResourceFileHandler<JavaScriptRes
         super();
     }
 
+    /**
+     * @inheritdoc
+     */
     public CheckApplicability(fileName: string): boolean
     {
         return Path.parse(fileName.toLowerCase()).ext === ".js";
     }
 
+    /**
+     * @inheritdoc
+     */
     public Create(fileName: string, locale?: CultureInfo): JavaScriptResource
     {
         return new JavaScriptResource(fileName, locale);

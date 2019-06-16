@@ -31,6 +31,9 @@ export class TestFileResource extends FileResource
         this.resource = value;
     }
 
+    /**
+     * @inheritdoc
+     */
     protected Load()
     {
         return {

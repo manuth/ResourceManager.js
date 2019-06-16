@@ -71,6 +71,9 @@ export abstract class FileResource extends Resource
         this.cache = value;
     }
 
+    /**
+     * @inheritdoc
+     */
     protected get ResourceStore(): any
     {
         if (this.Cached)

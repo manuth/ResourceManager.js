@@ -16,11 +16,17 @@ export class YAMLResourceHandler extends ResourceFileHandler<YAMLResource>
         super();
     }
 
+    /**
+     * @inheritdoc
+     */
     public CheckApplicability(fileName: string): boolean
     {
         return /^\.ya?ml$/.test(Path.parse(fileName.toLowerCase()).ext);
     }
 
+    /**
+     * @inheritdoc
+     */
     public Create(fileName: string, locale?: CultureInfo): YAMLResource
     {
         return new YAMLResource(fileName, locale);

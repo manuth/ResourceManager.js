@@ -39,7 +39,7 @@ suite(
                     [duplicateID]: duplicateRootValue
                 };
 
-                let idValuePairs: [string, any][] = [[nestedID, nestedValue], [duplicateID, duplicateNestedValue]];
+                let idValuePairs: Array<[string, any]> = [[nestedID, nestedValue], [duplicateID, duplicateNestedValue]];
 
                 for (let idValuePair of idValuePairs)
                 {
