@@ -22,7 +22,7 @@ export class MustacheResourceManager implements IResourceManager
     public constructor(resourceManager: IResourceManager, locale?: CultureInfo)
     {
         this.resourceManager = resourceManager;
-        this.Locale = locale;
+        this.Locale = locale || this.Locale;
     }
 
     public get Locale()
