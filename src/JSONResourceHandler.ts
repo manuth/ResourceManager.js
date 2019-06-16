@@ -16,11 +16,17 @@ export class JSONResourceHandler extends ResourceFileHandler<JSONResource>
         super();
     }
 
+    /**
+     * @inheritdoc
+     */
     public CheckApplicability(fileName: string): boolean
     {
         return /^\.jsonc?$/.test(Path.parse(fileName.toLowerCase()).ext);
     }
 
+    /**
+     * @inheritdoc
+     */
     public Create(fileName: string, locale?: CultureInfo): JSONResource
     {
         return new JSONResource(fileName, locale);

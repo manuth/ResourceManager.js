@@ -22,6 +22,9 @@ export class JSONResource extends FileResource
         super(fileName, locale);
     }
 
+    /**
+     * @inheritdoc
+     */
     protected Load()
     {
         return JSON.parse(FileSystem.readFileSync(this.FileName).toString(), null, true);

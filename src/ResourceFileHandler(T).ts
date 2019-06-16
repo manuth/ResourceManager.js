@@ -14,7 +14,13 @@ export abstract class ResourceFileHandler<T extends FileResource> implements IRe
     {
     }
 
+    /**
+     * @inheritdoc
+     */
     public abstract CheckApplicability(fileName: string): boolean;
 
+    /**
+     * @inheritdoc
+     */
     public abstract Create(fileName: string, locale?: CultureInfo): T;
 }

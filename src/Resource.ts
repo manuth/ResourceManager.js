@@ -24,6 +24,9 @@ export abstract class Resource implements IResource
         this.locale = locale || CultureInfo.InvariantCulture;
     }
 
+    /**
+     * @inheritdoc
+     */
     public get Locale()
     {
         return this.locale;
@@ -34,6 +37,9 @@ export abstract class Resource implements IResource
      */
     protected abstract get ResourceStore(): any;
 
+    /**
+     * @inheritdoc
+     */
     public Get<T>(name: string): T
     {
         let result = this.Extract<T>(name, this.ResourceStore);
@@ -52,6 +58,9 @@ export abstract class Resource implements IResource
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public Exists(name: string): boolean
     {
         return this.Extract(name, this.ResourceStore).length > 0;

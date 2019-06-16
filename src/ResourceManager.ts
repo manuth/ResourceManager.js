@@ -110,11 +110,17 @@ export class ResourceManager implements IResourceManager
         this.resources = resources;
     }
 
+    /**
+     * @inheritdoc
+     */
     public get Locale()
     {
         return this.locale;
     }
 
+    /**
+     * @inheritdoc
+     */
     public set Locale(value)
     {
         this.locale = value || CultureInfo.InvariantCulture;
@@ -140,6 +146,9 @@ export class ResourceManager implements IResourceManager
         return this.resources;
     }
 
+    /**
+     * @inheritdoc
+     */
     public Get<T>(name: string, locale?: CultureInfo): T
     {
         locale = locale || this.Locale;

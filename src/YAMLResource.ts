@@ -22,6 +22,9 @@ export class YAMLResource extends FileResource
         super(fileName, locale);
     }
 
+    /**
+     * @inheritdoc
+     */
     protected Load()
     {
         return YAML.parse(FileSystem.readFileSync(this.FileName).toString());
