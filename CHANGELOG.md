@@ -8,13 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Fix a dependency-issue
   - Improve the stability of the code
 
-[Show differences][v1.0.1]
+[Show differences](https://github.com/manuth/ResourceManager.js/compare/v1.0.0...v1.0.1)
 
 ## ResourceManager.js v1.0.0
   - First release of the module
 
-[Show differences][v1.0.0]
-
-<!--- References -->
-[v1.0.0]: https://github.com/manuth/ResourceManager.js/compare/778febc...v1.0.0
-[v1.0.1]: https://github.com/manuth/ResourceManager.js/compare/v1.0.0...v1.0.1
+[Show differences](https://github.com/manuth/ResourceManager.js/compare/778febc5500c982cecec0422111018cb912613f2...v1.0.0)
