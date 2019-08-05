@@ -1,6 +1,6 @@
 {
   "name": "localized-resource-manager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A manager for localized resources",
   "author": "Manuel Thalmann <m@nuth.ch>",
   "license": "MIT",
