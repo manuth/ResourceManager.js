@@ -88,14 +88,19 @@ export abstract class Resource implements IResource
             result.push(resourceStore[name]);
         }
 
-        if (dotIndex >= 0)
+        while (dotIndex >= 0)
         {
             let namePart = name.substr(0, dotIndex);
 
             if (namePart in resourceStore)
             {
-                result.push(...this.Extract<T>(name.substr(dotIndex + 1), resourceStore[namePart]));
+                if (typeof resourceStore[namePart] === "object")
+                {
+                    result.push(...this.Extract<T>(name.substr(dotIndex + 1), resourceStore[namePart]));
+                }
             }
+
+            dotIndex = name.indexOf(".", dotIndex + 1);
         }
 
         return result;
