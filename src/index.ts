@@ -3,6 +3,7 @@ export { KeyNotFoundException } from "./KeyNotFoundException";
 export { DuplicateKeyException } from "./DuplicateKeyException";
 export { IResource } from "./IResource";
 export { Resource } from "./Resource";
+export { ObjectResource } from "./ObjectResource";
 export { FileResource } from "./FileResource";
 export { JSONResource } from "./JSONResource";
 export { YAMLResource } from "./YAMLResource";

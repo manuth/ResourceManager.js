@@ -1,33 +1,13 @@
-import { Resource } from "../Resource";
+import { CultureInfo } from "culture-info";
+import { ObjectResource } from "../ObjectResource";
 
 /**
  * Provides an implementation of the `Resource` class for testing.
  */
-export class TestResource extends Resource
+export class TestResource extends ObjectResource
 {
-    /**
-     * The store of the resource.
-     */
-    private resource: any;
-
-    /**
-     * @inheritdoc
-     */
-    protected get ResourceStore()
+    public constructor(locale?: CultureInfo)
     {
-        return this.resource;
-    }
-
-    /**
-     * Gets or sets the resource-store of the resource.
-     */
-    public get Resource()
-    {
-        return this.resource;
-    }
-
-    public set Resource(value)
-    {
-        this.resource = value;
+        super(undefined, locale);
     }
 }
