@@ -16,6 +16,13 @@ suite(
         let duplicateID: string;
         let duplicateRootValue: any;
         let duplicateNestedValue: any;
+        let independentID: string;
+        let composedID: string;
+        let nestedComposedKey: string;
+        let independentInIndependent: any;
+        let independentInComposed: any;
+        let composedInIndependent: any;
+        let composedInComposed: any;
         let inexistentID: string;
 
         suiteSetup(
@@ -32,11 +39,23 @@ suite(
                 duplicateRootValue = "Root-Duplicate";
                 duplicateNestedValue = "Nested-Duplicate";
 
+                independentID = "This";
+                composedID = "This.Is.A";
+                nestedComposedKey = "Composed.Key";
+
                 inexistentID = "This.ID.Doesn.Not.Exist";
 
                 resource.Resource = {
                     [rootID]: rootValue,
-                    [duplicateID]: duplicateRootValue
+                    [duplicateID]: duplicateRootValue,
+                    [independentID]: {
+                        [independentID]: independentInIndependent,
+                        [composedID]: composedInIndependent
+                    },
+                    [composedID]: {
+                        [independentID]: independentInComposed,
+                        [composedID]: composedInComposed
+                    }
                 };
 
                 let idValuePairs: Array<[string, any]> = [[nestedID, nestedValue], [duplicateID, duplicateNestedValue]];
@@ -104,6 +123,34 @@ suite(
                     () =>
                     {
                         Assert.throws(() => resource.Get(inexistentID), KeyNotFoundException);
+                    });
+
+                test(
+                    "Checking whether independent key in independent keys are resolved correctly…",
+                    () =>
+                    {
+                        Assert.strictEqual(resource.Get(`${independentID}.${independentID}`), independentInIndependent);
+                    });
+
+                test(
+                    "Checking whether composed keys in independent keys are resolved correctly…",
+                    () =>
+                    {
+                        Assert.strictEqual(resource.Get(`${independentID}.${composedID}`), composedInIndependent);
+                    });
+
+                test(
+                    "Checking whether independent keys in composed keys are resolved correctly…",
+                    () =>
+                    {
+                        Assert.strictEqual(resource.Get(`${composedID}.${independentID}`), independentInComposed);
+                    });
+
+                test(
+                    "Checking whether composed keys in composed keys are resolved correctly…",
+                    () =>
+                    {
+                        Assert.strictEqual(resource.Get(`${composedID}.${composedID}`), composedInComposed);
                     });
             });
 

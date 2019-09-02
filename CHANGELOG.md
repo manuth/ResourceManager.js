@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## ResourceManager.js v1.2.0
+  - Provide the functionality to store resources with composed IDs
+
+[Show differences](https://github.com/manuth/ResourceManager.js/compare/v1.1.0...v1.2.0)
+
 ## ResourceManager.js v1.1.0
   - Provide the functionality to create resources based on objects
   - Update all packages
