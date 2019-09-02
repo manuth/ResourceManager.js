@@ -38,7 +38,8 @@ You might want to work with a resource rather than a resource-manager, if you do
 `ResourceManager.js` provides classes for loading resources from different file-types:
   - `JSONResource` for `JSON` and `JSON with Comment`-files
   - `YAMLResource` for `YAML`-files
-  - `JavaScript` for `.js`-files
+  - `JavaScriptResource` for `.js`-files
+  - `ObjectResource` for objects
 
 ### Example
 ***Messages.json:***
@@ -56,15 +57,34 @@ You might want to work with a resource rather than a resource-manager, if you do
 }
 ```
 
+***Messages.yml:***
+```yaml
+Test: YAML-Resource
+```
+
+***Messages.js:***
+```js
+module.exports = {
+    StartMessage: "JavaScript-Resource"
+}
+```
+
 ```js
 const Dialog = require("dialog");
-const { JSONResource } = require("localized-resource-manager");
+const { JSONResource, ObjectResource, YAMLResource } = require("localized-resource-manager");
 
-let resource = new JSONResource("./Messages.json");
-console.log(resource.Get("StartMessage"));
-Dialog.info(resource.Get("WelcomeMessage.Message"), resource.Get("WelcomeMessage.Title"), () =>{});
-console.log(resource.Get("Inexistent.Key")); //Throws a "KeyNotFoundException"
-console.log(resource.Get("Duplicate.Test")); // Throws a "DuplicateKeyException"
+let jsonResource = new JSONResource("./Messages.json");
+let yamlResource = new YAMLResource("./Messages.yml");
+let jsResource = new JavaScriptResource("./Messages.js");
+let objectResource = new ObjectResource(require("./Messages"));
+
+console.log(jsonResource.Get("StartMessage"));
+Dialog.info(jsonResource.Get("WelcomeMessage.Message"), jsonResource.Get("WelcomeMessage.Title"), () =>{});
+console.log(jsonResource.Get("Inexistent.Key")); //Throws a "KeyNotFoundException"
+console.log(jsonResource.Get("Duplicate.Test")); // Throws a "DuplicateKeyException"
+console.log(yamlResource.Get("Test")); // Logs "YAML-Resource"
+console.log(jsResource.Get("Test")); // Logs "JavaScript-Resource"
+console.log(objectResource.Get("Test")); // Logs "JavaScript-Resource"
 ```
 
 ### Caching
