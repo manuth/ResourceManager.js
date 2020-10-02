@@ -29,12 +29,14 @@ suite(
                 compositeItemValue = `{{${firstItemID}}} © by {{${secondItemID}}} ${new Date().getFullYear()}`;
                 inexistentID = "This.ID.Does.Not.Exist";
                 inexistenceTestID = "Inexistence.Test";
+
                 internalResource.Resource = {
                     [firstItemID]: firstItemValue,
                     [secondItemID]: secondItemValue,
                     [compositeItemID]: compositeItemValue,
                     [inexistenceTestID]: inexistentID
                 };
+
                 resource = new MustacheResource(internalResource);
             });
 

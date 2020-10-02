@@ -1,5 +1,6 @@
 import { strictEqual, throws } from "assert";
 import { CultureInfo } from "@manuth/culture-info";
+import { randexp } from "randexp";
 import { DuplicateKeyException } from "../DuplicateKeyException";
 import { KeyNotFoundException } from "../KeyNotFoundException";
 import { TestResource } from "./TestResource";
@@ -27,24 +28,25 @@ suite(
         suiteSetup(
             () =>
             {
+                let idPattern = /[a-z]*(\.[a-z]*){3}/;
                 resource = new TestResource();
-                rootID = "Root.Distinguishable.Resource";
-                rootValue = "Root-Item";
+                rootID = randexp(idPattern);
+                rootValue = randexp(/.{10}/);
 
-                nestedID = "Nested.Distinguishable.Resource";
-                nestedValue = "Nested-Item";
+                nestedID = randexp(idPattern);
+                nestedValue = randexp(/.{11}/);
 
-                duplicateID = "Duplicate.Resource";
-                duplicateRootValue = "Root-Duplicate";
-                duplicateNestedValue = "Nested-Duplicate";
+                duplicateID = randexp(idPattern);
+                duplicateRootValue = randexp(/.{12}/);
+                duplicateNestedValue = randexp(/.{13}/);
 
-                independentID = "This";
-                composedID = "This.Is.A";
+                independentID = randexp(/[a-z]*/);
+                composedID = randexp(idPattern);
 
-                independentInIndependent = "Test-value";
-                independentInComposed = "Other test-value";
-                composedInIndependent = "One more test-value";
-                composedInComposed = "One last test-value";
+                independentInIndependent = randexp(/.{14}/);
+                independentInComposed = randexp(/.{15}/);
+                composedInIndependent = randexp(/.{16}/);
+                composedInComposed = randexp(/.{17}/);
 
                 inexistentID = "This.ID.Doesn.Not.Exist";
 

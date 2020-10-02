@@ -31,10 +31,12 @@ suite(
                 templateString = "{{Street}}";
                 fallbackTemplateString = "Am Ende der {{Street}} steht ein {{House}} am See";
                 let swissResource = new TestResource(new CultureInfo("de-ch"));
+
                 swissResource.Resource = {
                     [id]: value
                 };
                 let germanResource = new TestResource(new CultureInfo("de"));
+
                 germanResource.Resource = {
                     [id]: parentValue,
                     [fallbackID]: fallbackValue
