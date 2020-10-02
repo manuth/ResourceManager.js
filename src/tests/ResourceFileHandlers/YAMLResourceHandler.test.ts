@@ -1,6 +1,6 @@
 import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
 import { random } from "case";
-import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { YAMLResource } from "../../YAMLResource";
 import { YAMLResourceHandler } from "../../YAMLResourceHandler";
@@ -18,19 +18,20 @@ suite(
             () =>
             {
                 fileHandler = new YAMLResourceHandler();
+
                 ymlFile = new TempFile(
                     {
-                        postfix: random(".yml")
+                        Suffix: random(".yml")
                     });
 
                 yamlFile = new TempFile(
                     {
-                        postfix: random(".yaml")
+                        Suffix: random(".yaml")
                     });
 
                 jsonFile = new TempFile(
                     {
-                        postfix: random(".json")
+                        Suffix: random(".json")
                     });
             });
 

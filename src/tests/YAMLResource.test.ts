@@ -1,6 +1,6 @@
 import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
 import { writeFile } from "fs-extra";
-import { TempFile } from "temp-filesystem";
 import { stringify } from "yaml";
 import { YAMLResource } from "../YAMLResource";
 

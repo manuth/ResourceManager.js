@@ -1,6 +1,6 @@
 import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
 import { readFile, writeFile, writeJSON } from "fs-extra";
-import { TempFile } from "temp-filesystem";
 import { JSONResource } from "../JSONResource";
 
 suite(

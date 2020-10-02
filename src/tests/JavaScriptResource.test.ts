@@ -1,7 +1,7 @@
 import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
 import dedent = require("dedent");
 import { writeFile } from "fs-extra";
-import { TempFile } from "temp-filesystem";
 import { JavaScriptResource } from "../JavaScriptResource";
 
 suite(
@@ -23,7 +23,7 @@ suite(
             {
                 tempFile = new TempFile(
                     {
-                        postfix: ".js"
+                        Suffix: ".js"
                     });
 
                 resource = new JavaScriptResource(tempFile.FullName);

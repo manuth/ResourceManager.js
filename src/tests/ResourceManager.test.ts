@@ -1,7 +1,7 @@
 import Assert = require("assert");
 import { CultureInfo } from "@manuth/culture-info";
+import { TempDirectory } from "@manuth/temp-files";
 import FileSystem = require("fs-extra");
-import { TempDirectory } from "temp-filesystem";
 import YAML = require("yaml");
 import { DuplicateKeyException } from "../DuplicateKeyException";
 import { Resource } from "../Resource";

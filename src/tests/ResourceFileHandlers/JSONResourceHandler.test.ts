@@ -1,6 +1,6 @@
 import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
 import { random } from "case";
-import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { JSONResource } from "../../JSONResource";
 import { JSONResourceHandler } from "../../JSONResourceHandler";
@@ -18,19 +18,20 @@ suite(
             () =>
             {
                 fileHandler = new JSONResourceHandler();
+
                 jsonFile = new TempFile(
                     {
-                        postfix: random(".json")
+                        Suffix: random(".json")
                     });
 
                 jsoncFile = new TempFile(
                     {
-                        postfix: random(".jsonc")
+                        Suffix: random(".jsonc")
                     });
 
                 txtFile = new TempFile(
                     {
-                        postfix: random(".txt")
+                        Suffix: random(".txt")
                     });
             });
 

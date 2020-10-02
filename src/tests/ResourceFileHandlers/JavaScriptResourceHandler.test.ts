@@ -1,6 +1,6 @@
 import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
 import { random } from "case";
-import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { JavaScriptResource } from "../../JavaScriptResource";
 import { JavaScriptResourceHandler } from "../../JavaScriptResourceHandler";
@@ -17,14 +17,15 @@ suite(
             () =>
             {
                 fileHandler = new JavaScriptResourceHandler();
+
                 jsFile = new TempFile(
                     {
-                        postfix: random(".js")
+                        Suffix: random(".js")
                     });
 
                 txtFile = new TempFile(
                     {
-                        postfix: random(".txt")
+                        Suffix: random(".txt")
                     });
             });
 
