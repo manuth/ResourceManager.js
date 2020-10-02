@@ -1,5 +1,5 @@
+import { CultureInfo } from "@manuth/culture-info";
 import { parse } from "comment-json";
-import { CultureInfo } from "culture-info";
 import { readFileSync } from "fs-extra";
 import { FileResource } from "./FileResource";
 

@@ -1,5 +1,5 @@
 import { basename, dirname, join } from "path";
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { readdirSync } from "fs-extra";
 import { DuplicateKeyException } from "./DuplicateKeyException";
 import { IResource } from "./IResource";

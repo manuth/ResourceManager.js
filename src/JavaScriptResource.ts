@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { FileResource } from "./FileResource";
 
 /**

@@ -1,4 +1,4 @@
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { ObjectResource } from "../ObjectResource";
 
 /**

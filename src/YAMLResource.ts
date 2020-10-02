@@ -1,4 +1,4 @@
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { readFileSync } from "fs-extra";
 import { parse } from "yaml";
 import { FileResource } from "./FileResource";

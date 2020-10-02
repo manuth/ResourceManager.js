@@ -1,5 +1,5 @@
 import { strictEqual, throws } from "assert";
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { render } from "mustache";
 import { MustacheResourceManager } from "../../MustacheResourceManager";
 import { ResourceManager } from "../../ResourceManager";

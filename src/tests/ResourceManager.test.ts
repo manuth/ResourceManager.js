@@ -1,5 +1,5 @@
 import Assert = require("assert");
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import FileSystem = require("fs-extra");
 import { TempDirectory } from "temp-filesystem";
 import YAML = require("yaml");

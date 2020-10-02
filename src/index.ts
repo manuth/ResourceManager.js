@@ -1,4 +1,4 @@
-export { CultureInfo } from "culture-info";
+export { CultureInfo } from "@manuth/culture-info";
 export { KeyNotFoundException } from "./KeyNotFoundException";
 export { DuplicateKeyException } from "./DuplicateKeyException";
 export { IResource } from "./IResource";

@@ -1,5 +1,5 @@
 import { parse } from "path";
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { JavaScriptResource } from "./JavaScriptResource";
 import { ResourceFileHandler } from "./ResourceFileHandler";
 

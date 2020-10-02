@@ -1,4 +1,4 @@
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { render } from "mustache";
 import { IResourceManager } from "./IResourceManager";
 import { ResourceManagerContext } from "./ResourceManagerContext";

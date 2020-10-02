@@ -1,5 +1,5 @@
 import { strictEqual, throws } from "assert";
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { DuplicateKeyException } from "../DuplicateKeyException";
 import { KeyNotFoundException } from "../KeyNotFoundException";
 import { TestResource } from "./TestResource";
