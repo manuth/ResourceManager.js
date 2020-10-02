@@ -1,7 +1,7 @@
 import { parse } from "path";
 import { CultureInfo } from "culture-info";
 import { JSONResource } from "./JSONResource";
-import { ResourceFileHandler } from "./ResourceFileHandler(T)";
+import { ResourceFileHandler } from "./ResourceFileHandler";
 
 /**
  * Provides the functionality to handle json-files with comments.

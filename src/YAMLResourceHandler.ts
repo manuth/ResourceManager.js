@@ -1,6 +1,6 @@
 import { parse } from "path";
 import { CultureInfo } from "culture-info";
-import { ResourceFileHandler } from "./ResourceFileHandler(T)";
+import { ResourceFileHandler } from "./ResourceFileHandler";
 import { YAMLResource } from "./YAMLResource";
 
 /**
