@@ -1,6 +1,6 @@
-import Assert = require("assert");
+import { strictEqual, throws } from "assert";
 import { CultureInfo } from "culture-info";
-import Mustache = require("mustache");
+import { render } from "mustache";
 import { MustacheResourceManager } from "../../MustacheResourceManager";
 import { ResourceManager } from "../../ResourceManager";
 import { TestResource } from "../TestResource";
@@ -58,9 +58,9 @@ suite(
                     "Checking whether the resource-manager can be used as a mustache-context…",
                     () =>
                     {
-                        Assert.strictEqual(
+                        strictEqual(
                             manager.Get(compositeItemID),
-                            Mustache.render(
+                            render(
                                 compositeItemValue,
                                 {
                                     [id]: value
@@ -71,9 +71,9 @@ suite(
                     "Checking whether passing a custom locale affects the output correctly…",
                     () =>
                     {
-                        Assert.strictEqual(
+                        strictEqual(
                             manager.Get(compositeItemID, new CultureInfo("de")),
-                            Mustache.render(
+                            render(
                                 compositeItemValue,
                                 {
                                     [id]: parentValue
@@ -84,7 +84,7 @@ suite(
                     "Checking whether processing a resource-item with an inexistent ID throws…",
                     () =>
                     {
-                        Assert.throws(() => manager.Get(inexistenceTestID));
+                        throws(() => manager.Get(inexistenceTestID));
                     });
             });
     });

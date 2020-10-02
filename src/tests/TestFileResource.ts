@@ -8,7 +8,7 @@ export class TestFileResource extends FileResource
     /**
      * The resource-items of the resource.
      */
-    private resource: any;
+    private resource: Record<string, unknown>;
 
     /**
      * Initializes a new instance of the `TestFileResource` class.
@@ -21,11 +21,14 @@ export class TestFileResource extends FileResource
     /**
      * Gets or sets the resource-store of the resource.
      */
-    public get Resource()
+    public get Resource(): Record<string, unknown>
     {
         return this.resource;
     }
 
+    /**
+     * @inheritdoc
+     */
     public set Resource(value)
     {
         this.resource = value;
@@ -33,8 +36,11 @@ export class TestFileResource extends FileResource
 
     /**
      * @inheritdoc
+     *
+     * @returns
+     * The loaded resource.
      */
-    protected Load()
+    protected Load(): Record<string, unknown>
     {
         return {
             ...this.Resource

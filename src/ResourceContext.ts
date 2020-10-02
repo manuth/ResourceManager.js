@@ -39,8 +39,11 @@ export class ResourceContext extends Context
      *
      * @param name
      * The name to look up.
+     *
+     * @returns
+     * The value of the resource with the specified `name`.
      */
-    public lookup(name: string): any
+    public lookup(name: string): unknown
     {
         return this.Resource.Get(name);
     }

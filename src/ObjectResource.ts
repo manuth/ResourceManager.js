@@ -9,7 +9,7 @@ export class ObjectResource extends Resource
     /**
      * The store of the resource.
      */
-    private resource: any;
+    private resource: Record<string, unknown>;
 
     /**
      * Initializes a new instance of the `Resource` class.
@@ -20,7 +20,7 @@ export class ObjectResource extends Resource
      * @param locale
      * The locale of the resource.
      */
-    public constructor(resource: any, locale?: CultureInfo)
+    public constructor(resource: Record<string, unknown>, locale?: CultureInfo)
     {
         super(locale);
         this.resource = resource;
@@ -29,7 +29,7 @@ export class ObjectResource extends Resource
     /**
      * @inheritdoc
      */
-    protected get ResourceStore()
+    protected get ResourceStore(): Record<string, unknown>
     {
         return this.resource;
     }
@@ -37,11 +37,14 @@ export class ObjectResource extends Resource
     /**
      * Gets or sets the resource-store of the resource.
      */
-    public get Resource()
+    public get Resource(): Record<string, unknown>
     {
         return this.resource;
     }
 
+    /**
+     * @inheritdoc
+     */
     public set Resource(value)
     {
         this.resource = value;

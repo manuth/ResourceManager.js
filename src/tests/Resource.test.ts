@@ -1,4 +1,4 @@
-import Assert = require("assert");
+import { strictEqual, throws } from "assert";
 import { CultureInfo } from "culture-info";
 import { DuplicateKeyException } from "../DuplicateKeyException";
 import { KeyNotFoundException } from "../KeyNotFoundException";
@@ -18,7 +18,6 @@ suite(
         let duplicateNestedValue: any;
         let independentID: string;
         let composedID: string;
-        let nestedComposedKey: string;
         let independentInIndependent: any;
         let independentInComposed: any;
         let composedInIndependent: any;
@@ -41,7 +40,11 @@ suite(
 
                 independentID = "This";
                 composedID = "This.Is.A";
-                nestedComposedKey = "Composed.Key";
+
+                independentInIndependent = "Test-value";
+                independentInComposed = "Other test-value";
+                composedInIndependent = "One more test-value";
+                composedInComposed = "One last test-value";
 
                 inexistentID = "This.ID.Doesn.Not.Exist";
 
@@ -88,8 +91,8 @@ suite(
                     () =>
                     {
                         let englishCulture = new CultureInfo("en");
-                        Assert.strictEqual(new TestResource().Locale.Name, CultureInfo.InvariantCulture.Name);
-                        Assert.strictEqual(new TestResource(englishCulture).Locale.Name, englishCulture.Name);
+                        strictEqual(new TestResource().Locale.Name, CultureInfo.InvariantCulture.Name);
+                        strictEqual(new TestResource(englishCulture).Locale.Name, englishCulture.Name);
                     });
             });
 
@@ -101,56 +104,56 @@ suite(
                     "Checking whether containing dots can be resolved…",
                     () =>
                     {
-                         Assert.strictEqual(resource.Get(rootID), rootValue);
+                        strictEqual(resource.Get(rootID), rootValue);
                     });
 
                 test(
                     "Checking whether nested elements can be resolved…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(nestedID), nestedValue);
+                        strictEqual(resource.Get(nestedID), nestedValue);
                     });
 
                 test(
                     "Checking whether resolving duplicate IDs throws an exception…",
                     () =>
                     {
-                        Assert.throws(() => resource.Get(duplicateID), DuplicateKeyException);
+                        throws(() => resource.Get(duplicateID), DuplicateKeyException);
                     });
 
                 test(
                     "Checking whether resolving an inexistent id triggers an error…",
                     () =>
                     {
-                        Assert.throws(() => resource.Get(inexistentID), KeyNotFoundException);
+                        throws(() => resource.Get(inexistentID), KeyNotFoundException);
                     });
 
                 test(
                     "Checking whether independent key in independent keys are resolved correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(`${independentID}.${independentID}`), independentInIndependent);
+                        strictEqual(resource.Get(`${independentID}.${independentID}`), independentInIndependent);
                     });
 
                 test(
                     "Checking whether composed keys in independent keys are resolved correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(`${independentID}.${composedID}`), composedInIndependent);
+                        strictEqual(resource.Get(`${independentID}.${composedID}`), composedInIndependent);
                     });
 
                 test(
                     "Checking whether independent keys in composed keys are resolved correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(`${composedID}.${independentID}`), independentInComposed);
+                        strictEqual(resource.Get(`${composedID}.${independentID}`), independentInComposed);
                     });
 
                 test(
                     "Checking whether composed keys in composed keys are resolved correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(`${composedID}.${composedID}`), composedInComposed);
+                        strictEqual(resource.Get(`${composedID}.${composedID}`), composedInComposed);
                     });
             });
 
@@ -162,15 +165,15 @@ suite(
                     "Checking whether the method detects whether an ID exists…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Exists(rootID), true);
-                        Assert.strictEqual(resource.Exists(inexistentID), false);
+                        strictEqual(resource.Exists(rootID), true);
+                        strictEqual(resource.Exists(inexistentID), false);
                     });
 
                 test(
                     "Checking whether the method detects whether duplicate IDs exist…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Exists(duplicateID), true);
+                        strictEqual(resource.Exists(duplicateID), true);
                     });
             });
     });

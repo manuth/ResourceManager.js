@@ -1,4 +1,5 @@
-import Mustache = require("mustache");
+import { CultureInfo } from "culture-info";
+import { render } from "mustache";
 import { IResource } from "./IResource";
 import { ResourceContext } from "./ResourceContext";
 
@@ -26,7 +27,7 @@ export class MustacheResource implements IResource
     /**
      * @inheritdoc
      */
-    public get Locale()
+    public get Locale(): CultureInfo
     {
         return this.Resource.Locale;
     }
@@ -34,13 +35,19 @@ export class MustacheResource implements IResource
     /**
      * Gets the resource which contains the resource-items.
      */
-    public get Resource()
+    public get Resource(): IResource
     {
         return this.resource;
     }
 
     /**
      * @inheritdoc
+     *
+     * @param name
+     * The `name` of the object to get.
+     *
+     * @returns
+     * The value with the specified `name`.
      */
     public Get<T>(name: string): T
     {
@@ -48,7 +55,7 @@ export class MustacheResource implements IResource
 
         if (typeof result === "string")
         {
-            return Mustache.render(result, new ResourceContext(this)) as any;
+            return render(result, new ResourceContext(this)) as any;
         }
         else
         {
@@ -58,6 +65,12 @@ export class MustacheResource implements IResource
 
     /**
      * @inheritdoc
+     *
+     * @param name
+     * The `name` that is to be checked for existence.
+     *
+     * @returns
+     * A value indicating whether a resource-element with the specified `name` exists.
      */
     public Exists(name: string): boolean
     {

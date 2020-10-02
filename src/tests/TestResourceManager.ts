@@ -1,3 +1,5 @@
+import { IResource } from "../IResource";
+import { IResourceFileHandler } from "../IResourceFileHandler";
 import { ResourceManager } from "../ResourceManager";
 
 /**
@@ -8,7 +10,7 @@ export class TestResourceManager extends ResourceManager
     /**
      * Gets the file-handlers of thie resource-manager.
      */
-    public get FileHandlers()
+    public get FileHandlers(): IResourceFileHandler[]
     {
         return this.ResourceFileHandlers;
     }
@@ -16,7 +18,7 @@ export class TestResourceManager extends ResourceManager
     /**
      * Gets the resources managed by this resource-manager.
      */
-    public get ManagedResources()
+    public get ManagedResources(): IResource[]
     {
         return this.Resources;
     }

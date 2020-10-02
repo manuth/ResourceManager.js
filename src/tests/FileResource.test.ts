@@ -1,4 +1,4 @@
-import Assert = require("assert");
+import { strictEqual, throws } from "assert";
 import { TestFileResource } from "./TestFileResource";
 
 suite(
@@ -43,7 +43,7 @@ suite(
                     "Checking whether resource-items can be queried correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(primaryID), primaryValue);
+                        strictEqual(resource.Get(primaryID), primaryValue);
                     });
             });
 
@@ -66,7 +66,7 @@ suite(
                             () =>
                             {
                                 resource.Resource[secondaryID] = secondaryValue;
-                                Assert.strictEqual(resource.Get(secondaryID), secondaryValue);
+                                strictEqual(resource.Get(secondaryID), secondaryValue);
                             });
                     });
 
@@ -85,7 +85,7 @@ suite(
                             () =>
                             {
                                 resource.Resource[secondaryID] = secondaryValue;
-                                Assert.throws(() => resource.Get(secondaryID));
+                                throws(() => resource.Get(secondaryID));
                             });
 
                         test(
@@ -93,7 +93,7 @@ suite(
                             () =>
                             {
                                 resource.Resource = {};
-                                Assert.strictEqual(resource.Get(primaryID), primaryValue);
+                                strictEqual(resource.Get(primaryID), primaryValue);
                             });
                     });
             });

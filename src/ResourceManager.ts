@@ -1,7 +1,6 @@
+import { basename, dirname, join } from "path";
 import { CultureInfo } from "culture-info";
-import FileSystem = require("fs-extra");
-import Path = require("path");
-import { isNullOrUndefined } from "util";
+import { readdirSync } from "fs-extra";
 import { DuplicateKeyException } from "./DuplicateKeyException";
 import { IResource } from "./IResource";
 import { IResourceFileHandler } from "./IResourceFileHandler";
@@ -55,6 +54,16 @@ export class ResourceManager implements IResourceManager
      * The locale of the resource-items to resolve.
      */
     public constructor(resources?: IResource[], locale?: CultureInfo);
+
+    /**
+     * Initializes a new instance of the `ResourceManager` class.
+     *
+     * @param resourceDeclarations
+     * The resources or the locale.
+     *
+     * @param locale
+     * The locale of the resource-items to resolve.
+     */
     public constructor(resourceDeclarations: CultureInfo | string | IResource[] = null, locale?: CultureInfo)
     {
         let resources: IResource[] = [];
@@ -63,14 +72,14 @@ export class ResourceManager implements IResourceManager
         {
             locale = resourceDeclarations;
         }
-        else if (!isNullOrUndefined(resourceDeclarations))
+        else if (resourceDeclarations)
         {
             if (typeof resourceDeclarations === "string")
             {
-                let directory = Path.dirname(resourceDeclarations);
-                let baseName = Path.basename(resourceDeclarations);
+                let directory = dirname(resourceDeclarations);
+                let baseName = basename(resourceDeclarations);
                 let pattern = new RegExp(`^${baseName}(?:\\.([^.]+))?(?:\\.([^.]+))$`);
-                let fileEntries = FileSystem.readdirSync(directory);
+                let fileEntries = readdirSync(directory);
 
                 for (let fileEntry of fileEntries)
                 {
@@ -79,7 +88,7 @@ export class ResourceManager implements IResourceManager
                     if (match !== null)
                     {
                         let culture: CultureInfo;
-                        let fileName = Path.join(directory, fileEntry);
+                        let fileName = join(directory, fileEntry);
                         let fileHandlerIndex = this.ResourceFileHandlers.findIndex((handler) => handler.CheckApplicability(fileName));
 
                         if (fileHandlerIndex >= 0)
@@ -113,7 +122,7 @@ export class ResourceManager implements IResourceManager
     /**
      * @inheritdoc
      */
-    public get Locale()
+    public get Locale(): CultureInfo
     {
         return this.locale;
     }
@@ -141,13 +150,22 @@ export class ResourceManager implements IResourceManager
     /**
      * Gets the resources of the resource-manager.
      */
-    protected get Resources()
+    protected get Resources(): IResource[]
     {
         return this.resources;
     }
 
     /**
      * @inheritdoc
+     *
+     * @param name
+     * The `name` of the resource-item to get.
+     *
+     * @param locale
+     * The locale of the resource-item to get.
+     *
+     * @returns
+     * The resource-item with the specified `name`.
      */
     public Get<T>(name: string, locale?: CultureInfo): T
     {

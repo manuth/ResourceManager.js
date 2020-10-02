@@ -21,13 +21,13 @@ export abstract class Resource implements IResource
      */
     public constructor(locale?: CultureInfo)
     {
-        this.locale = locale || CultureInfo.InvariantCulture;
+        this.locale = locale ?? CultureInfo.InvariantCulture;
     }
 
     /**
      * @inheritdoc
      */
-    public get Locale()
+    public get Locale(): CultureInfo
     {
         return this.locale;
     }
@@ -35,10 +35,16 @@ export abstract class Resource implements IResource
     /**
      * Gets the store of the resource.
      */
-    protected abstract get ResourceStore(): any;
+    protected abstract get ResourceStore(): Record<string, unknown>;
 
     /**
      * @inheritdoc
+     *
+     * @param name
+     * The `name` of the object to get.
+     *
+     * @returns
+     * The value with the specified `name`.
      */
     public Get<T>(name: string): T
     {
@@ -60,6 +66,12 @@ export abstract class Resource implements IResource
 
     /**
      * @inheritdoc
+     *
+     * @param name
+     * The `name` that is to be checked for existence.
+     *
+     * @returns
+     * A value indicating whether a resource-element with the specified `name` exists.
      */
     public Exists(name: string): boolean
     {

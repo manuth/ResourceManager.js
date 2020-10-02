@@ -1,5 +1,5 @@
-import Assert = require("assert");
-import Case = require("case");
+import { strictEqual } from "assert";
+import { random } from "case";
 import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { JavaScriptResource } from "../../JavaScriptResource";
@@ -19,12 +19,12 @@ suite(
                 fileHandler = new JavaScriptResourceHandler();
                 jsFile = new TempFile(
                     {
-                        postfix: Case.random(".js")
+                        postfix: random(".js")
                     });
 
                 txtFile = new TempFile(
                     {
-                        postfix: Case.random(".txt")
+                        postfix: random(".txt")
                     });
             });
 
@@ -43,8 +43,8 @@ suite(
                     "Checking whether files are classified correctly…",
                     () =>
                     {
-                        Assert.strictEqual(fileHandler.CheckApplicability(jsFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(txtFile.FullName), false);
+                        strictEqual(fileHandler.CheckApplicability(jsFile.FullName), true);
+                        strictEqual(fileHandler.CheckApplicability(txtFile.FullName), false);
                     });
             });
 
@@ -56,7 +56,7 @@ suite(
                     "Checking whether the created resources have the correct type…",
                     () =>
                     {
-                        Assert.strictEqual(fileHandler.Create(txtFile.FullName) instanceof JavaScriptResource, true);
+                        strictEqual(fileHandler.Create(txtFile.FullName) instanceof JavaScriptResource, true);
                     });
             });
     });

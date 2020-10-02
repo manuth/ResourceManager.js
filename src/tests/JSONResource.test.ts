@@ -1,5 +1,5 @@
-import Assert = require("assert");
-import FileSystem = require("fs-extra");
+import { strictEqual } from "assert";
+import { readFile, writeFile, writeJSON } from "fs-extra";
 import { TempFile } from "temp-filesystem";
 import { JSONResource } from "../JSONResource";
 
@@ -18,11 +18,13 @@ suite(
                 tempFile = new TempFile();
                 id = "This.Is.An.ID";
                 value = "Some cool value";
-                FileSystem.writeJSON(
+
+                await writeJSON(
                     tempFile.FullName,
                     {
                         [id]: value
                     });
+
                 resource = new JSONResource(tempFile.FullName);
             });
 
@@ -40,20 +42,22 @@ suite(
                     "Checking whether ordinary .json-files are read correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(id), value);
+                        strictEqual(resource.Get(id), value);
                     });
 
                 test(
                     "Checking whether .json-files with comments are read correctly…",
                     async () =>
                     {
-                        let content = await FileSystem.readFile(tempFile.FullName);
-                        await FileSystem.writeFile(
+                        let content = await readFile(tempFile.FullName);
+
+                        await writeFile(
                             tempFile.FullName,
                             `// This is a test
                             ${content}`);
-                        Assert.strictEqual(resource.Get(id), value);
-                        await FileSystem.writeFile(tempFile.FullName, content);
+
+                        strictEqual(resource.Get(id), value);
+                        await writeFile(tempFile.FullName, content);
                     });
             });
     });

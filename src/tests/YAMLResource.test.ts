@@ -1,7 +1,7 @@
-import Assert = require("assert");
-import FileSystem = require("fs-extra");
+import { strictEqual } from "assert";
+import { writeFile } from "fs-extra";
 import { TempFile } from "temp-filesystem";
-import YAML = require("yaml");
+import { stringify } from "yaml";
 import { YAMLResource } from "../YAMLResource";
 
 suite(
@@ -19,12 +19,14 @@ suite(
                 id = "This.Is.A.Test";
                 value = "Example";
                 tempFile = new TempFile();
-                await FileSystem.writeFile(
+
+                await writeFile(
                     tempFile.FullName,
-                    YAML.stringify(
+                    stringify(
                         {
                             [id]: value
                         }));
+
                 resource = new YAMLResource(tempFile.FullName);
             });
 
@@ -36,7 +38,7 @@ suite(
                     "Checking whether .yaml-files are read correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(id), value);
+                        strictEqual(resource.Get(id), value);
                     });
             });
     });

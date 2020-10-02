@@ -1,5 +1,5 @@
-import Assert = require("assert");
-import Case = require("case");
+import { strictEqual } from "assert";
+import { random } from "case";
 import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { YAMLResource } from "../../YAMLResource";
@@ -20,17 +20,17 @@ suite(
                 fileHandler = new YAMLResourceHandler();
                 ymlFile = new TempFile(
                     {
-                        postfix: Case.random(".yml")
+                        postfix: random(".yml")
                     });
 
                 yamlFile = new TempFile(
                     {
-                        postfix: Case.random(".yaml")
+                        postfix: random(".yaml")
                     });
 
                 jsonFile = new TempFile(
                     {
-                        postfix: Case.random(".json")
+                        postfix: random(".json")
                     });
             });
 
@@ -50,9 +50,9 @@ suite(
                     "Checking whether files are classified correctly…",
                     () =>
                     {
-                        Assert.strictEqual(fileHandler.CheckApplicability(ymlFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(yamlFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), false);
+                        strictEqual(fileHandler.CheckApplicability(ymlFile.FullName), true);
+                        strictEqual(fileHandler.CheckApplicability(yamlFile.FullName), true);
+                        strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), false);
                     });
             });
 
@@ -64,7 +64,7 @@ suite(
                     "Checking whether the created resources have the correct type…",
                     () =>
                     {
-                        Assert.strictEqual(fileHandler.Create(ymlFile.FullName) instanceof YAMLResource, true);
+                        strictEqual(fileHandler.Create(ymlFile.FullName) instanceof YAMLResource, true);
                     });
             });
     });

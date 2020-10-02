@@ -15,6 +15,9 @@ export interface IResource
      *
      * @param name
      * The `name` of the object to get.
+     *
+     * @returns
+     * The value with the specified `name`.
      */
     Get<T>(name: string): T;
 

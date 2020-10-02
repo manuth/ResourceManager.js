@@ -1,6 +1,5 @@
-import Case = require("case");
+import { random } from "case";
 import { CultureInfo } from "culture-info";
-import { TempDirectory } from "temp-filesystem";
 
 /**
  * Represents a test-file.
@@ -44,7 +43,7 @@ export class TestFile
     /**
      * Gets the locale of the file.
      */
-    public get Locale()
+    public get Locale(): CultureInfo
     {
         return this.locale;
     }
@@ -52,7 +51,7 @@ export class TestFile
     /**
      * Gets the name of the file.
      */
-    public get FileName()
+    public get FileName(): string
     {
         let extension = `${this.extension}`;
 
@@ -61,6 +60,6 @@ export class TestFile
             extension = `${this.locale}.${extension}`;
         }
 
-        return `${this.baseFileName}.${Case.random(extension)}`;
+        return `${this.baseFileName}.${random(extension)}`;
     }
 }

@@ -1,6 +1,6 @@
-import Assert = require("assert");
-import Dedent = require("dedent");
-import Mustache = require("mustache");
+import { strictEqual, throws } from "assert";
+import dedent = require("dedent");
+import { render } from "mustache";
 import { ResourceContext } from "../../ResourceContext";
 import { TestResource } from "../TestResource";
 
@@ -20,7 +20,7 @@ suite(
                 id = "WelcomeMessage";
                 value = "Welcome to my project!";
                 inexistentID = "This.Item.Does.Not.Exist";
-                templateString = Dedent(
+                templateString = dedent(
                     `
                     <html>
                         <head>
@@ -34,9 +34,11 @@ suite(
                     `);
 
                 let resource = new TestResource();
+
                 resource.Resource = {
                     [id]: value
                 };
+
                 context = new ResourceContext(resource);
             });
 
@@ -48,9 +50,9 @@ suite(
                     "Checking whether the resource can be used as a mustache-context correctly…",
                     () =>
                     {
-                        Assert.strictEqual(
-                            Mustache.render(templateString, context),
-                            Mustache.render(
+                        strictEqual(
+                            render(templateString, context),
+                            render(
                                 templateString,
                                 {
                                     [id]: value
@@ -61,7 +63,7 @@ suite(
                     "Checking whether resolving inexistent IDs throws…",
                     () =>
                     {
-                        Assert.throws(() => Mustache.render(`{{${inexistentID}}}`, context));
+                        throws(() => render(`{{${inexistentID}}}`, context));
                     });
             });
     });

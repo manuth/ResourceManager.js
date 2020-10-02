@@ -1,6 +1,6 @@
-import Assert = require("assert");
-import Dedent = require("dedent");
-import FileSystem = require("fs-extra");
+import { strictEqual } from "assert";
+import dedent = require("dedent");
+import { writeFile } from "fs-extra";
 import { TempFile } from "temp-filesystem";
 import { JavaScriptResource } from "../JavaScriptResource";
 
@@ -36,9 +36,9 @@ suite(
                 propertyID = "Height";
                 propertyFormula = `return ${nestedValue} / 2`;
 
-                await FileSystem.writeFile(
+                await writeFile(
                     tempFile.FullName,
-                    Dedent(
+                    dedent(
                         `
                             module.exports = {
                                 ${id}: ${JSON.stringify(value)},
@@ -67,14 +67,14 @@ suite(
                     "Checking whether normal items are read correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(id), value);
+                        strictEqual(resource.Get(id), value);
                     });
 
                 test(
                     "Checking whether nested items are read correctly…",
                     () =>
                     {
-                        Assert.strictEqual(resource.Get(`${containerID}.${nestedID}`), nestedValue);
+                        strictEqual(resource.Get(`${containerID}.${nestedID}`), nestedValue);
                     });
 
                 test(
@@ -88,14 +88,17 @@ suite(
                         {
                             /**
                              * Initializes a new instance of the `MyFunction` class.
+                             *
+                             * @param args
+                             *The arguments for creating the function.
                              */
-                            constructor(...args: string[])
+                            public constructor(...args: string[])
                             {
                                 super(...args);
                             }
                         }
 
-                        Assert.strictEqual(resource.Get(`${containerID}.${propertyID}`), (new MyFunction(propertyFormula))());
+                        strictEqual(resource.Get(`${containerID}.${propertyID}`), (new MyFunction(propertyFormula))());
                     });
             });
     });

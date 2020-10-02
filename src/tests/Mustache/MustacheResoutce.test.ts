@@ -1,5 +1,5 @@
-import Assert = require("assert");
-import Mustache = require("mustache");
+import { strictEqual } from "assert";
+import { render } from "mustache";
 import { MustacheResource } from "../../MustacheResource";
 import { TestResource } from "../TestResource";
 
@@ -46,9 +46,9 @@ suite(
                     "Checking whether the values of the resources are preprocessed using mustache…",
                     () =>
                     {
-                        Assert.strictEqual(
+                        strictEqual(
                             resource.Get(compositeItemID),
-                            Mustache.render(
+                            render(
                                 compositeItemValue,
                                 {
                                     [firstItemID]: firstItemValue,

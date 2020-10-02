@@ -1,6 +1,6 @@
 import { CultureInfo } from "culture-info";
-import FileSystem = require("fs-extra");
-import YAML = require("yaml");
+import { readFileSync } from "fs-extra";
+import { parse } from "yaml";
 import { FileResource } from "./FileResource";
 
 /**
@@ -24,9 +24,12 @@ export class YAMLResource extends FileResource
 
     /**
      * @inheritdoc
+     *
+     * @returns
+     * The loaded resource.
      */
-    protected Load()
+    protected Load(): Record<string, unknown>
     {
-        return YAML.parse(FileSystem.readFileSync(this.FileName).toString());
+        return parse(readFileSync(this.FileName).toString());
     }
 }

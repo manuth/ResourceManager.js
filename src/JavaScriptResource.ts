@@ -1,5 +1,5 @@
+import { resolve } from "path";
 import { CultureInfo } from "culture-info";
-import Path = require("path");
 import { FileResource } from "./FileResource";
 
 /**
@@ -23,9 +23,12 @@ export class JavaScriptResource extends FileResource
 
     /**
      * @inheritdoc
+     *
+     * @returns
+     * The loaded resource.
      */
-    protected Load()
+    protected Load(): Record<string, unknown>
     {
-        return require(Path.resolve(this.FileName));
+        return require(resolve(this.FileName));
     }
 }

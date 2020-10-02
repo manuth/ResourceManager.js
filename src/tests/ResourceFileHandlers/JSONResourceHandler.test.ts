@@ -1,5 +1,5 @@
-import Assert = require("assert");
-import Case = require("case");
+import { strictEqual } from "assert";
+import { random } from "case";
 import { TempFile } from "temp-filesystem";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { JSONResource } from "../../JSONResource";
@@ -20,17 +20,17 @@ suite(
                 fileHandler = new JSONResourceHandler();
                 jsonFile = new TempFile(
                     {
-                        postfix: Case.random(".json")
+                        postfix: random(".json")
                     });
 
                 jsoncFile = new TempFile(
                     {
-                        postfix: Case.random(".jsonc")
+                        postfix: random(".jsonc")
                     });
 
                 txtFile = new TempFile(
                     {
-                        postfix: Case.random(".txt")
+                        postfix: random(".txt")
                     });
             });
 
@@ -50,9 +50,9 @@ suite(
                     "Checking whether files are classified correctly…",
                     () =>
                     {
-                        Assert.strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(jsoncFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(txtFile.FullName), false);
+                        strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), true);
+                        strictEqual(fileHandler.CheckApplicability(jsoncFile.FullName), true);
+                        strictEqual(fileHandler.CheckApplicability(txtFile.FullName), false);
                     });
             });
 
@@ -64,7 +64,7 @@ suite(
                     "Checking whether the created resources have the correct type…",
                     () =>
                     {
-                        Assert.strictEqual(fileHandler.Create(jsonFile.FullName) instanceof JSONResource, true);
+                        strictEqual(fileHandler.Create(jsonFile.FullName) instanceof JSONResource, true);
                     });
             });
     });

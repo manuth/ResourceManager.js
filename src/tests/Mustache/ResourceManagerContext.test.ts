@@ -1,6 +1,6 @@
-import Assert = require("assert");
+import { strictEqual, throws } from "assert";
 import { CultureInfo } from "culture-info";
-import Mustache = require("mustache");
+import { render } from "mustache";
 import { ResourceManager } from "../../ResourceManager";
 import { ResourceManagerContext } from "../../ResourceManagerContext";
 import { TestResource } from "../TestResource";
@@ -28,8 +28,8 @@ suite(
                 fallbackID = "House";
                 fallbackValue = "Haus";
                 inexistentID = "This.ID.Does.Not.Exist";
-                templateString = `{{Street}}`;
-                fallbackTemplateString = `Am Ende der {{Street}} steht ein {{House}} am See`;
+                templateString = "{{Street}}";
+                fallbackTemplateString = "Am Ende der {{Street}} steht ein {{House}} am See";
                 let swissResource = new TestResource(new CultureInfo("de-ch"));
                 swissResource.Resource = {
                     [id]: value
@@ -53,14 +53,13 @@ suite(
             "lookup(string name)",
             () =>
             {
-
                 test(
                     "Checking whether the resource-manager can be used as a mustache-context correctly…",
                     () =>
                     {
-                        Assert.strictEqual(
-                            Mustache.render(templateString, context),
-                            Mustache.render(
+                        strictEqual(
+                            render(templateString, context),
+                            render(
                                 templateString,
                                 {
                                     [id]: value,
@@ -72,9 +71,9 @@ suite(
                     "Checking whether resource-manager with fallback-items can be used as a mustache-context correctly…",
                     () =>
                     {
-                        Assert.strictEqual(
-                            Mustache.render(fallbackTemplateString, context),
-                            Mustache.render(
+                        strictEqual(
+                            render(fallbackTemplateString, context),
+                            render(
                                 fallbackTemplateString,
                                 {
                                     [id]: value,
@@ -86,7 +85,7 @@ suite(
                     "Checking whether resolving an inexistent ID throws…",
                     () =>
                     {
-                        Assert.throws(() => Mustache.render(`{{${inexistentID}}}`, context));
+                        throws(() => render(`{{${inexistentID}}}`, context));
                     });
             });
 
@@ -100,9 +99,9 @@ suite(
                     {
                         context.Locale = new CultureInfo("de");
 
-                        Assert.strictEqual(
-                            Mustache.render(templateString, context),
-                            Mustache.render(
+                        strictEqual(
+                            render(templateString, context),
+                            render(
                                 templateString,
                                 {
                                     [id]: parentValue
