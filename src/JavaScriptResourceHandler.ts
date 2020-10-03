@@ -1,7 +1,7 @@
-import { CultureInfo } from "culture-info";
-import Path = require("path");
+import { parse } from "path";
+import { CultureInfo } from "@manuth/culture-info";
 import { JavaScriptResource } from "./JavaScriptResource";
-import { ResourceFileHandler } from "./ResourceFileHandler(T)";
+import { ResourceFileHandler } from "./ResourceFileHandler";
 
 /**
  * Provides the functionality to handle ECMAScript-files with comments.
@@ -18,14 +18,29 @@ export class JavaScriptResourceHandler extends ResourceFileHandler<JavaScriptRes
 
     /**
      * @inheritdoc
+     *
+     * @param fileName
+     * The name of the file to check.
+     *
+     * @returns
+     * A value indicating whether the file is applicable to the resource-handler.
      */
     public CheckApplicability(fileName: string): boolean
     {
-        return Path.parse(fileName.toLowerCase()).ext === ".js";
+        return parse(fileName.toLowerCase()).ext === ".js";
     }
 
     /**
      * @inheritdoc
+     *
+     * @param fileName
+     * The name of the file to load.
+     *
+     * @param locale
+     * The locale of the resource to create.
+     *
+     * @returns
+     * The newly created resource.
      */
     public Create(fileName: string, locale?: CultureInfo): JavaScriptResource
     {

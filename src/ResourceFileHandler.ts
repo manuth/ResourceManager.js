@@ -1,4 +1,4 @@
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { FileResource } from "./FileResource";
 import { IResourceFileHandler } from "./IResourceFileHandler";
 
@@ -16,11 +16,26 @@ export abstract class ResourceFileHandler<T extends FileResource> implements IRe
 
     /**
      * @inheritdoc
+     *
+     * @param fileName
+     * The name of the file to check.
+     *
+     * @returns
+     * A value indicating whether the file is applicable to the resource-handler.
      */
     public abstract CheckApplicability(fileName: string): boolean;
 
     /**
      * @inheritdoc
+     *
+     * @param fileName
+     * The name of the file to load.
+     *
+     * @param locale
+     * The locale of the resource to create.
+     *
+     * @returns
+     * The newly created resource.
      */
     public abstract Create(fileName: string, locale?: CultureInfo): T;
 }

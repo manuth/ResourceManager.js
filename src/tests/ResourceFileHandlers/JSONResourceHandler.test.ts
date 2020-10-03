@@ -1,70 +1,77 @@
-import Assert = require("assert");
-import Case = require("case");
-import { TempFile } from "temp-filesystem";
+import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
+import { random } from "case";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { JSONResource } from "../../JSONResource";
 import { JSONResourceHandler } from "../../JSONResourceHandler";
 
-suite(
-    "JSONResourceHandler",
-    () =>
-    {
-        let fileHandler: IResourceFileHandler;
-        let jsonFile: TempFile;
-        let jsoncFile: TempFile;
-        let txtFile: TempFile;
+/**
+ * Registers tests for the `JSONResourceHandler` class.
+ */
+export function JSONResourceHandlerTests(): void
+{
+    suite(
+        "JSONResourceHandler",
+        () =>
+        {
+            let fileHandler: IResourceFileHandler;
+            let jsonFile: TempFile;
+            let jsoncFile: TempFile;
+            let txtFile: TempFile;
 
-        suiteSetup(
-            () =>
-            {
-                fileHandler = new JSONResourceHandler();
-                jsonFile = new TempFile(
-                    {
-                        postfix: Case.random(".json")
-                    });
+            suiteSetup(
+                () =>
+                {
+                    fileHandler = new JSONResourceHandler();
 
-                jsoncFile = new TempFile(
-                    {
-                        postfix: Case.random(".jsonc")
-                    });
+                    jsonFile = new TempFile(
+                        {
+                            Suffix: random(".json")
+                        });
 
-                txtFile = new TempFile(
-                    {
-                        postfix: Case.random(".txt")
-                    });
-            });
+                    jsoncFile = new TempFile(
+                        {
+                            Suffix: random(".jsonc")
+                        });
 
-        suiteTeardown(
-            () =>
-            {
-                jsonFile.Dispose();
-                jsoncFile.Dispose();
-                txtFile.Dispose();
-            });
+                    txtFile = new TempFile(
+                        {
+                            Suffix: random(".txt")
+                        });
+                });
 
-        suite(
-            "CheckApplicability(string fileName)",
-            () =>
-            {
-                test(
-                    "Checking whether files are classified correctly…",
-                    () =>
-                    {
-                        Assert.strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(jsoncFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(txtFile.FullName), false);
-                    });
-            });
+            suiteTeardown(
+                () =>
+                {
+                    jsonFile.Dispose();
+                    jsoncFile.Dispose();
+                    txtFile.Dispose();
+                });
 
-        suite(
-            "Create(string fileName, CultureInfo locale)",
-            () =>
-            {
-                test(
-                    "Checking whether the created resources have the correct type…",
-                    () =>
-                    {
-                        Assert.strictEqual(fileHandler.Create(jsonFile.FullName) instanceof JSONResource, true);
-                    });
-            });
-    });
+            suite(
+                "CheckApplicability",
+                () =>
+                {
+                    test(
+                        "Checking whether files are classified correctly…",
+                        () =>
+                        {
+                            strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), true);
+                            strictEqual(fileHandler.CheckApplicability(jsoncFile.FullName), true);
+                            strictEqual(fileHandler.CheckApplicability(txtFile.FullName), false);
+                        });
+                });
+
+            suite(
+                "Create",
+                () =>
+                {
+                    test(
+                        "Checking whether the created resources have the correct type…",
+                        () =>
+                        {
+                            strictEqual(fileHandler.Create(jsonFile.FullName) instanceof JSONResource, true);
+                        });
+                });
+        });
+}

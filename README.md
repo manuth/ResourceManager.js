@@ -29,7 +29,7 @@ It also has the capability to load and manage localized resources which allows y
 `ResourceManager.js` can be installed using following command:
 
 ```bash
-npm install --save localized-resource-manager
+npm install --save @manuth/resource-manager
 ```
 
 ## Resources
@@ -71,7 +71,7 @@ module.exports = {
 
 ```js
 const Dialog = require("dialog");
-const { JSONResource, ObjectResource, YAMLResource } = require("localized-resource-manager");
+const { JSONResource, ObjectResource, YAMLResource } = require("@manuth/resource-manager");
 
 let jsonResource = new JSONResource("./Messages.json");
 let yamlResource = new YAMLResource("./Messages.yml");
@@ -94,7 +94,7 @@ This forces the system to cache the resource-items of the file and to read resou
 #### Example
 ```js
 const FileSystem = require("fs");
-const { JSONResource } = require("localized-resource-manager");
+const { JSONResource } = require("@manuth/resource-manager");
 
 let resource = new JSONResource("./Messages.json");
 resource.Cached = true;
@@ -121,7 +121,7 @@ Console:
 ```
 
 ```js
-const { MustacheResource, YAMLResource } = require("localized-resource-manager");
+const { MustacheResource, YAMLResource } = require("@manuth/resource-manager");
 
 let resource = new MustacheResource(new YAMLResource("./MustacheResource.yml"));
 console.log(resource.Get("Console.CopyRightMessage"));
@@ -182,7 +182,7 @@ Duplicate.File: ""
 ```
 
 ```js
-const { CultureInfo, ResourceManager } = require("localized-resource-manager");
+const { CultureInfo, ResourceManager } = require("@manuth/resource-manager");
 
 let manager = new ResourceManager("./Resource", new CultureInfo("en-gb"));
 console.log(manager.Get("CopyItem")); // "Copy to Clipboard"
@@ -217,7 +217,7 @@ Color: colour
 ```
 
 ```js
-const { CultureInfo, MustacheResourceManager, ResourceManager } = require("localized-resource-manager");
+const { CultureInfo, MustacheResourceManager, ResourceManager } = require("@manuth/resource-manager");
 
 let manager = new MustacheResourceManager(new ResourceManager("./Resource"));
 manager.Locale = new CultureInfo("en-gb");
@@ -231,7 +231,7 @@ The `ResourceContext` and `ResourceManagerContext`-classes allow you to use a re
 
 ### Example
 ```js
-const { CultureInfo, ResourceManager, ResourceManagerContext } = require("localized-resource-manager");
+const { CultureInfo, ResourceManager, ResourceManagerContext } = require("@manuth/resource-manager");
 const Mustache = require("mustache");
 
 let manager = new ResourceManager("./Resource", new CultureInfo("en"));

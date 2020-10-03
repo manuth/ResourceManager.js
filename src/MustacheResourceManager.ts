@@ -1,5 +1,5 @@
-import { CultureInfo } from "culture-info";
-import Mustache = require("mustache");
+import { CultureInfo } from "@manuth/culture-info";
+import { render } from "mustache";
 import { IResourceManager } from "./IResourceManager";
 import { ResourceManagerContext } from "./ResourceManagerContext";
 
@@ -18,17 +18,24 @@ export class MustacheResourceManager implements IResourceManager
      *
      * @param resourceManager
      * The resource-manager which serves the resource-items.
+     *
+     * @param locale
+     * The locale of the resources to resolve.
      */
     public constructor(resourceManager: IResourceManager, locale?: CultureInfo)
     {
         this.resourceManager = resourceManager;
-        this.Locale = locale || this.Locale;
+
+        if (locale)
+        {
+            this.Locale = locale;
+        }
     }
 
     /**
      * @inheritdoc
      */
-    public get Locale()
+    public get Locale(): CultureInfo
     {
         return this.ResourceManager.Locale;
     }
@@ -36,7 +43,7 @@ export class MustacheResourceManager implements IResourceManager
     /**
      * @inheritdoc
      */
-    public set Locale(value)
+    public set Locale(value: CultureInfo)
     {
         this.ResourceManager.Locale = value;
     }
@@ -44,13 +51,22 @@ export class MustacheResourceManager implements IResourceManager
     /**
      * Gets the resource-manager which serves the resource-items.
      */
-    public get ResourceManager()
+    public get ResourceManager(): IResourceManager
     {
         return this.resourceManager;
     }
 
     /**
      * @inheritdoc
+     *
+     * @param name
+     * The `name` of the resource-item to get.
+     *
+     * @param locale
+     * The locale of the resource-item to get.
+     *
+     * @returns
+     * The resource-item with the specified `name`.
      */
     public Get<T>(name: string, locale?: CultureInfo): T
     {
@@ -58,7 +74,7 @@ export class MustacheResourceManager implements IResourceManager
 
         if (typeof result === "string")
         {
-            return Mustache.render(result, new ResourceManagerContext(this, locale)) as any;
+            return render(result, new ResourceManagerContext(this, locale)) as any;
         }
         else
         {

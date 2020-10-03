@@ -1,4 +1,4 @@
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { Resource } from "./Resource";
 
 /**
@@ -39,7 +39,7 @@ export abstract class FileResource extends Resource
     /**
      * Gets the path to the resource-file
      */
-    public get FileName()
+    public get FileName(): string
     {
         return this.fileName;
     }
@@ -47,12 +47,15 @@ export abstract class FileResource extends Resource
     /**
      * Gets or sets a value indicating whether the resource is cached.
      */
-    public get Cached()
+    public get Cached(): boolean
     {
         return this.cached;
     }
 
-    public set Cached(value)
+    /**
+     * @inheritdoc
+     */
+    public set Cached(value: boolean)
     {
         this.cached = value;
         this.Refresh();
@@ -66,7 +69,10 @@ export abstract class FileResource extends Resource
         return this.cache;
     }
 
-    protected set Cache(value)
+    /**
+     * @inheritdoc
+     */
+    protected set Cache(value: any)
     {
         this.cache = value;
     }
@@ -103,6 +109,9 @@ export abstract class FileResource extends Resource
 
     /**
      * Loads the resource from the file.
+     *
+     * @returns
+     * The loaded resource.
      */
-    protected abstract Load(): any;
+    protected abstract Load(): Record<string, unknown>;
 }

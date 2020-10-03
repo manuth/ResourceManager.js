@@ -1,59 +1,69 @@
-import Assert = require("assert");
-import FileSystem = require("fs-extra");
-import { TempFile } from "temp-filesystem";
+import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
+import { readFile, writeFile, writeJSON } from "fs-extra";
 import { JSONResource } from "../JSONResource";
 
-suite(
-    "JSONResource",
-    () =>
-    {
-        let tempFile: TempFile;
-        let resource: JSONResource;
-        let id: string;
-        let value: any;
+/**
+ * Registers tests for the `JSONResource` class.
+ */
+export function JSONResourceTests(): void
+{
+    suite(
+        "JSONResource",
+        () =>
+        {
+            let tempFile: TempFile;
+            let resource: JSONResource;
+            let id: string;
+            let value: any;
 
-        suiteSetup(
-            async () =>
-            {
-                tempFile = new TempFile();
-                id = "This.Is.An.ID";
-                value = "Some cool value";
-                FileSystem.writeJSON(
-                    tempFile.FullName,
-                    {
-                        [id]: value
-                    });
-                resource = new JSONResource(tempFile.FullName);
-            });
+            suiteSetup(
+                async () =>
+                {
+                    tempFile = new TempFile();
+                    id = "This.Is.An.ID";
+                    value = "Some cool value";
 
-        suiteTeardown(
-            () =>
-            {
-                tempFile.Dispose();
-            });
+                    await writeJSON(
+                        tempFile.FullName,
+                        {
+                            [id]: value
+                        });
 
-        suite(
-            "Get<T>(string id)",
-            () =>
-            {
-                test(
-                    "Checking whether ordinary .json-files are read correctly…",
-                    () =>
-                    {
-                        Assert.strictEqual(resource.Get(id), value);
-                    });
+                    resource = new JSONResource(tempFile.FullName);
+                });
 
-                test(
-                    "Checking whether .json-files with comments are read correctly…",
-                    async () =>
-                    {
-                        let content = await FileSystem.readFile(tempFile.FullName);
-                        await FileSystem.writeFile(
-                            tempFile.FullName,
-                            `// This is a test
-                            ${content}`);
-                        Assert.strictEqual(resource.Get(id), value);
-                        await FileSystem.writeFile(tempFile.FullName, content);
-                    });
-            });
-    });
+            suiteTeardown(
+                () =>
+                {
+                    tempFile.Dispose();
+                });
+
+            suite(
+                "Get",
+                () =>
+                {
+                    test(
+                        "Checking whether ordinary .json-files are read correctly…",
+                        () =>
+                        {
+                            strictEqual(resource.Get(id), value);
+                        });
+
+                    test(
+                        "Checking whether .json-files with comments are read correctly…",
+                        async () =>
+                        {
+                            let content = await readFile(tempFile.FullName);
+
+                            await writeFile(
+                                tempFile.FullName,
+                                `// This is a test
+                                ${content}`);
+
+                            strictEqual(resource.Get(id), value);
+                            await writeFile(tempFile.FullName, content);
+                        });
+                });
+        });
+}

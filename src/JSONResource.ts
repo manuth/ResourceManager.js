@@ -1,6 +1,6 @@
-import JSON = require("comment-json");
-import { CultureInfo } from "culture-info";
-import FileSystem = require("fs-extra");
+import { CultureInfo } from "@manuth/culture-info";
+import { parse } from "comment-json";
+import { readFileSync } from "fs-extra";
 import { FileResource } from "./FileResource";
 
 /**
@@ -24,9 +24,12 @@ export class JSONResource extends FileResource
 
     /**
      * @inheritdoc
+     *
+     * @returns
+     * The loaded resource.
      */
-    protected Load()
+    protected Load(): Record<string, unknown>
     {
-        return JSON.parse(FileSystem.readFileSync(this.FileName).toString(), null, true);
+        return parse(readFileSync(this.FileName).toString(), null, true);
     }
 }

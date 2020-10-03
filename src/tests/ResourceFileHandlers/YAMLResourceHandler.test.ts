@@ -1,70 +1,77 @@
-import Assert = require("assert");
-import Case = require("case");
-import { TempFile } from "temp-filesystem";
+import { strictEqual } from "assert";
+import { TempFile } from "@manuth/temp-files";
+import { random } from "case";
 import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { YAMLResource } from "../../YAMLResource";
 import { YAMLResourceHandler } from "../../YAMLResourceHandler";
 
-suite(
-    "YAMLResourceHandler",
-    () =>
-    {
-        let fileHandler: IResourceFileHandler;
-        let ymlFile: TempFile;
-        let yamlFile: TempFile;
-        let jsonFile: TempFile;
+/**
+ * Registers tests for the `YAMLResourceHandler` class.
+ */
+export function YAMLResourceHandlerTests(): void
+{
+    suite(
+        "YAMLResourceHandler",
+        () =>
+        {
+            let fileHandler: IResourceFileHandler;
+            let ymlFile: TempFile;
+            let yamlFile: TempFile;
+            let jsonFile: TempFile;
 
-        suiteSetup(
-            () =>
-            {
-                fileHandler = new YAMLResourceHandler();
-                ymlFile = new TempFile(
-                    {
-                        postfix: Case.random(".yml")
-                    });
+            suiteSetup(
+                () =>
+                {
+                    fileHandler = new YAMLResourceHandler();
 
-                yamlFile = new TempFile(
-                    {
-                        postfix: Case.random(".yaml")
-                    });
+                    ymlFile = new TempFile(
+                        {
+                            Suffix: random(".yml")
+                        });
 
-                jsonFile = new TempFile(
-                    {
-                        postfix: Case.random(".json")
-                    });
-            });
+                    yamlFile = new TempFile(
+                        {
+                            Suffix: random(".yaml")
+                        });
 
-        suiteTeardown(
-            () =>
-            {
-                ymlFile.Dispose();
-                yamlFile.Dispose();
-                jsonFile.Dispose();
-            });
+                    jsonFile = new TempFile(
+                        {
+                            Suffix: random(".json")
+                        });
+                });
 
-        suite(
-            "CheckApplicability(string fileName)",
-            () =>
-            {
-                test(
-                    "Checking whether files are classified correctly…",
-                    () =>
-                    {
-                        Assert.strictEqual(fileHandler.CheckApplicability(ymlFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(yamlFile.FullName), true);
-                        Assert.strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), false);
-                    });
-            });
+            suiteTeardown(
+                () =>
+                {
+                    ymlFile.Dispose();
+                    yamlFile.Dispose();
+                    jsonFile.Dispose();
+                });
 
-        suite(
-            "Create(string fileName, CultureInfo locale)",
-            () =>
-            {
-                test(
-                    "Checking whether the created resources have the correct type…",
-                    () =>
-                    {
-                        Assert.strictEqual(fileHandler.Create(ymlFile.FullName) instanceof YAMLResource, true);
-                    });
-            });
-    });
+            suite(
+                "CheckApplicability",
+                () =>
+                {
+                    test(
+                        "Checking whether files are classified correctly…",
+                        () =>
+                        {
+                            strictEqual(fileHandler.CheckApplicability(ymlFile.FullName), true);
+                            strictEqual(fileHandler.CheckApplicability(yamlFile.FullName), true);
+                            strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), false);
+                        });
+                });
+
+            suite(
+                "Create",
+                () =>
+                {
+                    test(
+                        "Checking whether the created resources have the correct type…",
+                        () =>
+                        {
+                            strictEqual(fileHandler.Create(ymlFile.FullName) instanceof YAMLResource, true);
+                        });
+                });
+        });
+}

@@ -1,4 +1,4 @@
-export { CultureInfo } from "culture-info";
+export { CultureInfo } from "@manuth/culture-info";
 export { KeyNotFoundException } from "./KeyNotFoundException";
 export { DuplicateKeyException } from "./DuplicateKeyException";
 export { IResource } from "./IResource";
@@ -9,7 +9,7 @@ export { JSONResource } from "./JSONResource";
 export { YAMLResource } from "./YAMLResource";
 export { JavaScriptResource } from "./JavaScriptResource";
 export { IResourceFileHandler } from "./IResourceFileHandler";
-export { ResourceFileHandler } from "./ResourceFileHandler(T)";
+export { ResourceFileHandler } from "./ResourceFileHandler";
 export { YAMLResourceHandler } from "./YAMLResourceHandler";
 export { JSONResourceHandler } from "./JSONResourceHandler";
 export { JavaScriptResourceHandler } from "./JavaScriptResourceHandler";

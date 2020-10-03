@@ -1,4 +1,4 @@
-import { CultureInfo } from "culture-info";
+import { CultureInfo } from "@manuth/culture-info";
 import { Context } from "mustache";
 import { IResourceManager } from "./IResourceManager";
 
@@ -47,12 +47,15 @@ export class ResourceManagerContext extends Context
     /**
      * Gets or sets the locale of the resource-items to get.
      */
-    public get Locale()
+    public get Locale(): CultureInfo
     {
         return this.locale;
     }
 
-    public set Locale(value)
+    /**
+     * @inheritdoc
+     */
+    public set Locale(value: CultureInfo)
     {
         this.locale = value;
     }
@@ -62,6 +65,9 @@ export class ResourceManagerContext extends Context
      *
      * @param name
      * The name to look up.
+     *
+     * @returns
+     * The value with the specified `name`.
      */
     public lookup(name: string): any
     {
