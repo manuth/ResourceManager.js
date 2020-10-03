@@ -5,67 +5,73 @@ import { IResourceFileHandler } from "../../IResourceFileHandler";
 import { YAMLResource } from "../../YAMLResource";
 import { YAMLResourceHandler } from "../../YAMLResourceHandler";
 
-suite(
-    "YAMLResourceHandler",
-    () =>
-    {
-        let fileHandler: IResourceFileHandler;
-        let ymlFile: TempFile;
-        let yamlFile: TempFile;
-        let jsonFile: TempFile;
+/**
+ * Registers tests for the `YAMLResourceHandler` class.
+ */
+export function YAMLResourceHandlerTests(): void
+{
+    suite(
+        "YAMLResourceHandler",
+        () =>
+        {
+            let fileHandler: IResourceFileHandler;
+            let ymlFile: TempFile;
+            let yamlFile: TempFile;
+            let jsonFile: TempFile;
 
-        suiteSetup(
-            () =>
-            {
-                fileHandler = new YAMLResourceHandler();
+            suiteSetup(
+                () =>
+                {
+                    fileHandler = new YAMLResourceHandler();
 
-                ymlFile = new TempFile(
-                    {
-                        Suffix: random(".yml")
-                    });
+                    ymlFile = new TempFile(
+                        {
+                            Suffix: random(".yml")
+                        });
 
-                yamlFile = new TempFile(
-                    {
-                        Suffix: random(".yaml")
-                    });
+                    yamlFile = new TempFile(
+                        {
+                            Suffix: random(".yaml")
+                        });
 
-                jsonFile = new TempFile(
-                    {
-                        Suffix: random(".json")
-                    });
-            });
+                    jsonFile = new TempFile(
+                        {
+                            Suffix: random(".json")
+                        });
+                });
 
-        suiteTeardown(
-            () =>
-            {
-                ymlFile.Dispose();
-                yamlFile.Dispose();
-                jsonFile.Dispose();
-            });
+            suiteTeardown(
+                () =>
+                {
+                    ymlFile.Dispose();
+                    yamlFile.Dispose();
+                    jsonFile.Dispose();
+                });
 
-        suite(
-            "CheckApplicability(string fileName)",
-            () =>
-            {
-                test(
-                    "Checking whether files are classified correctly…",
-                    () =>
-                    {
-                        strictEqual(fileHandler.CheckApplicability(ymlFile.FullName), true);
-                        strictEqual(fileHandler.CheckApplicability(yamlFile.FullName), true);
-                        strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), false);
-                    });
-            });
+            suite(
+                "CheckApplicability",
+                () =>
+                {
+                    test(
+                        "Checking whether files are classified correctly…",
+                        () =>
+                        {
+                            strictEqual(fileHandler.CheckApplicability(ymlFile.FullName), true);
+                            strictEqual(fileHandler.CheckApplicability(yamlFile.FullName), true);
+                            strictEqual(fileHandler.CheckApplicability(jsonFile.FullName), false);
+                        });
+                });
 
-        suite(
-            "Create(string fileName, CultureInfo locale)",
-            () =>
-            {
-                test(
-                    "Checking whether the created resources have the correct type…",
-                    () =>
-                    {
-                        strictEqual(fileHandler.Create(ymlFile.FullName) instanceof YAMLResource, true);
-                    });
-            });
-    });
+            suite(
+                "Create",
+                () =>
+                {
+                    test(
+                        "Checking whether the created resources have the correct type…",
+                        () =>
+                        {
+                            strictEqual(fileHandler.Create(ymlFile.FullName) instanceof YAMLResource, true);
+                        });
+                });
+        });
+}

@@ -4,41 +4,47 @@ import { writeFile } from "fs-extra";
 import { stringify } from "yaml";
 import { YAMLResource } from "../YAMLResource";
 
-suite(
-    "YAMLResource",
-    () =>
-    {
-        let tempFile: TempFile;
-        let resource: YAMLResource;
-        let id: string;
-        let value: any;
+/**
+ * Registers tests for the `YAMLResource` class.
+ */
+export function YAMLResourceTests(): void
+{
+    suite(
+        "YAMLResource",
+        () =>
+        {
+            let tempFile: TempFile;
+            let resource: YAMLResource;
+            let id: string;
+            let value: any;
 
-        suiteSetup(
-            async () =>
-            {
-                id = "This.Is.A.Test";
-                value = "Example";
-                tempFile = new TempFile();
+            suiteSetup(
+                async () =>
+                {
+                    id = "This.Is.A.Test";
+                    value = "Example";
+                    tempFile = new TempFile();
 
-                await writeFile(
-                    tempFile.FullName,
-                    stringify(
+                    await writeFile(
+                        tempFile.FullName,
+                        stringify(
+                            {
+                                [id]: value
+                            }));
+
+                    resource = new YAMLResource(tempFile.FullName);
+                });
+
+            suite(
+                "Get",
+                () =>
+                {
+                    test(
+                        "Checking whether .yaml-files are read correctly…",
+                        () =>
                         {
-                            [id]: value
-                        }));
-
-                resource = new YAMLResource(tempFile.FullName);
-            });
-
-        suite(
-            "Get<T>(string id)",
-            () =>
-            {
-                test(
-                    "Checking whether .yaml-files are read correctly…",
-                    () =>
-                    {
-                        strictEqual(resource.Get(id), value);
-                    });
-            });
-    });
+                            strictEqual(resource.Get(id), value);
+                        });
+                });
+        });
+}
