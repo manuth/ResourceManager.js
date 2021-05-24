@@ -11,7 +11,6 @@ export { JSONResourceHandler } from "./JSONResourceHandler";
 export { KeyNotFoundException } from "./KeyNotFoundException";
 export { MustacheResource } from "./MustacheResource";
 export { MustacheResourceManager } from "./MustacheResourceManager";
-export { ObjrectResource } from "./ObjrectResource";
 export { Resource } from "./Resource";
 export { ResourceBase } from "./ResourceBase";
 export { ResourceContext } from "./ResourceContext";
