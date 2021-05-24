@@ -11,11 +11,7 @@
             "program": "${workspaceFolder}/node_modules/mocha/bin/mocha",
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": "Build",
-            "sourceMaps": true,
-            "outFiles": [
-                "${workspaceFolder}/**/*.js",
-                "!**/node_modules/**"
-            ]
+            "sourceMaps": true
         }
     ]
 }
