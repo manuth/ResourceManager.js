@@ -13,6 +13,7 @@ export { MustacheResource } from "./MustacheResource";
 export { MustacheResourceManager } from "./MustacheResourceManager";
 export { ObjrectResource } from "./ObjrectResource";
 export { Resource } from "./Resource";
+export { ResourceBase } from "./ResourceBase";
 export { ResourceContext } from "./ResourceContext";
 export { ResourceFileHandler } from "./ResourceFileHandler";
 export { ResourceManager } from "./ResourceManager";
