@@ -43,7 +43,7 @@ export class ResourceContext extends Context
      * @returns
      * The value of the resource with the specified `name`.
      */
-    public lookup(name: string): unknown
+    public override lookup(name: string): unknown
     {
         return this.Resource.Get(name);
     }
