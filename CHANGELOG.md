@@ -5,6 +5,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## ResourceManager.js [Unreleased]
+### Breaking
+  - Replace `ObjectResource` with `Resource`-class
+  - Add a new `ResourceBase`-class
+
+### Fixed
+  - Broken drone-pipelines
+  - Drone-pipelines for multi-digit version-numbers
+
+### Added
+  - A workflow for automatically merging Dependabot-PRs
+  - A workflow for analyzin the source-code
+
+### Updated
+  - Drone-pipelines to use smaller docker-images
+  - All dependencies
 
 [Show differences](https://github.com/manuth/ResourceManager.js/compare/v1.2.3...dev)
 
