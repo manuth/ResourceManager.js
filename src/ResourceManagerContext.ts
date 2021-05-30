@@ -69,7 +69,7 @@ export class ResourceManagerContext extends Context
      * @returns
      * The value with the specified `name`.
      */
-    public lookup(name: string): any
+    public override lookup(name: string): any
     {
         return this.ResourceManager.Get(name, this.Locale);
     }

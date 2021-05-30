@@ -1,3 +1,4 @@
+import { createRequire } from "module";
 import { resolve } from "path";
 import { CultureInfo } from "@manuth/culture-info";
 import { FileResource } from "./FileResource";
@@ -29,6 +30,6 @@ export class JavaScriptResource extends FileResource
      */
     protected Load(): Record<string, unknown>
     {
-        return require(resolve(this.FileName));
+        return createRequire(__dirname)(resolve(this.FileName));
     }
 }

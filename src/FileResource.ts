@@ -1,10 +1,10 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { Resource } from "./Resource";
+import { ResourceBase } from "./ResourceBase";
 
 /**
  * Represents a resource which bases on a file.
  */
-export abstract class FileResource extends Resource
+export abstract class FileResource extends ResourceBase
 {
     /**
      * The path to the resource-file.

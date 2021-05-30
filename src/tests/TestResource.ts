@@ -1,10 +1,10 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { ObjectResource } from "../ObjectResource";
+import { Resource } from "../Resource";
 
 /**
  * Provides an implementation of the `Resource` class for testing.
  */
-export class TestResource extends ObjectResource
+export class TestResource extends Resource
 {
     /**
      * Initializes a new instance of the `TestResource` class.
