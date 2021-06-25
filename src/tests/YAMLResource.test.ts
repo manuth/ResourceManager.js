@@ -40,7 +40,7 @@ export function YAMLResourceTests(): void
                 () =>
                 {
                     test(
-                        "Checking whether .yaml-files are read correctly…",
+                        "Checking whether `.yaml`-files are read correctly…",
                         () =>
                         {
                             strictEqual(resource.Get(id), value);
