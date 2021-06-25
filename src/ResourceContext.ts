@@ -35,7 +35,7 @@ export class ResourceContext extends Context
     }
 
     /**
-     * Returns the value of the given name in this context, traversing up the context hierarchy if the value is absent in this context's view.
+     * @inheritdoc
      *
      * @param name
      * The name to look up.
