@@ -10,7 +10,7 @@ import { YAMLResource } from "../YAMLResource";
 export function YAMLResourceTests(): void
 {
     suite(
-        "YAMLResource",
+        nameof(YAMLResource),
         () =>
         {
             let tempFile: TempFile;
@@ -36,7 +36,7 @@ export function YAMLResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<YAMLResource>((resource) => resource.Get),
                 () =>
                 {
                     test(

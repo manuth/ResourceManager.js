@@ -11,7 +11,7 @@ import { YAMLResourceHandler } from "../../YAMLResourceHandler";
 export function YAMLResourceHandlerTests(): void
 {
     suite(
-        "YAMLResourceHandler",
+        nameof(YAMLResourceHandler),
         () =>
         {
             let fileHandler: IResourceFileHandler;
@@ -49,7 +49,7 @@ export function YAMLResourceHandlerTests(): void
                 });
 
             suite(
-                "CheckApplicability",
+                nameof<YAMLResourceHandler>((handler) => handler.CheckApplicability),
                 () =>
                 {
                     test(
@@ -63,7 +63,7 @@ export function YAMLResourceHandlerTests(): void
                 });
 
             suite(
-                "Create",
+                nameof<YAMLResourceHandler>((handler) => handler.Create),
                 () =>
                 {
                     test(

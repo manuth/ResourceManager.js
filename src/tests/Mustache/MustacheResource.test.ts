@@ -9,7 +9,7 @@ import { TestResource } from "../TestResource";
 export function MustacheResourceTests(): void
 {
     suite(
-        "MustacheResource",
+        nameof(MustacheResource),
         () =>
         {
             let resource: MustacheResource;
@@ -46,7 +46,7 @@ export function MustacheResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<MustacheResource>((resource) => resource.Get),
                 () =>
                 {
                     test(

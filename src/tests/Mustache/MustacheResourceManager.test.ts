@@ -11,7 +11,7 @@ import { TestResource } from "../TestResource";
 export function MustacheResourceManagerTests(): void
 {
     suite(
-        "MustacheResourceManager",
+        nameof(MustacheResourceManager),
         () =>
         {
             let manager: MustacheResourceManager;
@@ -56,7 +56,7 @@ export function MustacheResourceManagerTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<MustacheResourceManager>((manager) => manager.Get),
                 () =>
                 {
                     test(

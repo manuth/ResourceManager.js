@@ -11,7 +11,7 @@ import { TestResource } from "../TestResource";
 export function ResourceManagerContextTests(): void
 {
     suite(
-        "ResourceManagerContext",
+        nameof(ResourceManagerContext),
         () =>
         {
             let context: ResourceManagerContext;
@@ -58,7 +58,7 @@ export function ResourceManagerContextTests(): void
                 });
 
             suite(
-                "lookup",
+                nameof<ResourceManagerContext>((context) => context.lookup),
                 () =>
                 {
                     test(
@@ -98,7 +98,7 @@ export function ResourceManagerContextTests(): void
                 });
 
             suite(
-                "Locale",
+                nameof<ResourceManagerContext>((context) => context.Locale),
                 () =>
                 {
                     test(

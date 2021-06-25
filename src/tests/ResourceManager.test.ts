@@ -16,7 +16,7 @@ import { TestResourceManager } from "./TestResourceManager";
 export function ResourceManagerTests(): void
 {
     suite(
-        "ResourceManager",
+        nameof(ResourceManager),
         () =>
         {
             let randomCulture: CultureInfo;
@@ -45,7 +45,7 @@ export function ResourceManagerTests(): void
                 });
 
             suite(
-                "constructor",
+                nameof(ResourceManager.constructor),
                 () =>
                 {
                     suite(
@@ -186,7 +186,7 @@ export function ResourceManagerTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<ResourceManager>((manager) => manager.Get),
                 () =>
                 {
                     let locale: CultureInfo;

@@ -12,7 +12,7 @@ import { TestResource } from "./TestResource";
 export function ResourceTests(): void
 {
     suite(
-        "Resource",
+        nameof<Resource>(),
         () =>
         {
             let resource: TestResource;
@@ -91,7 +91,7 @@ export function ResourceTests(): void
                 });
 
             suite(
-                "constructor",
+                nameof<Resource>((resource) => resource.constructor),
                 () =>
                 {
                     test(
@@ -105,7 +105,7 @@ export function ResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<Resource>((resource) => resource.Get),
                 () =>
                 {
                     test(
@@ -166,7 +166,7 @@ export function ResourceTests(): void
                 });
 
             suite(
-                "Exists",
+                nameof<Resource>((resource) => resource.Exists),
                 () =>
                 {
                     test(

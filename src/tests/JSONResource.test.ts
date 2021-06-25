@@ -9,7 +9,7 @@ import { JSONResource } from "../JSONResource";
 export function JSONResourceTests(): void
 {
     suite(
-        "JSONResource",
+        nameof(JSONResource),
         () =>
         {
             let tempFile: TempFile;
@@ -40,7 +40,7 @@ export function JSONResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<JSONResource>((resource) => resource.Get),
                 () =>
                 {
                     test(

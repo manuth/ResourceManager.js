@@ -10,7 +10,7 @@ import { JavaScriptResource } from "../JavaScriptResource";
 export function JavaScriptResourceTests(): void
 {
     suite(
-        "JavaScriptResource",
+        nameof(JavaScriptResource),
         () =>
         {
             let tempFile: TempFile;

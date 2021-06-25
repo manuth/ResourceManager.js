@@ -10,7 +10,7 @@ import { TestResource } from "../TestResource";
 export function ResourceContextTests(): void
 {
     suite(
-        "ResourceContext",
+        nameof(ResourceContext),
         () =>
         {
             let context: ResourceContext;
@@ -48,7 +48,7 @@ export function ResourceContextTests(): void
                 });
 
             suite(
-                "lookup",
+                nameof<ResourceContext>((context) => context.lookup),
                 () =>
                 {
                     test(

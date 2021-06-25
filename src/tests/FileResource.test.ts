@@ -8,7 +8,7 @@ import { TestFileResource } from "./TestFileResource";
 export function FileResourceTests(): void
 {
     suite(
-        "FileResource",
+        nameof<FileResource>(),
         () =>
         {
             let resource: TestFileResource;
@@ -42,7 +42,7 @@ export function FileResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<TestFileResource>((resource) => resource.Get),
                 () =>
                 {
                     test(
@@ -54,7 +54,7 @@ export function FileResourceTests(): void
                 });
 
             suite(
-                "Cached",
+                nameof<TestFileResource>((resource) => resource.Cached),
                 () =>
                 {
                     suite(

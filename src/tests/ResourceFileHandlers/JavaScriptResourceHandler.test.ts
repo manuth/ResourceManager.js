@@ -11,7 +11,7 @@ import { JavaScriptResourceHandler } from "../../JavaScriptResourceHandler";
 export function JavaScriptResourceHandlerTests(): void
 {
     suite(
-        "JavaScriptResourceHandler",
+        nameof(JavaScriptResourceHandler),
         () =>
         {
             let fileHandler: IResourceFileHandler;
@@ -42,7 +42,7 @@ export function JavaScriptResourceHandlerTests(): void
                 });
 
             suite(
-                "CheckApplicability",
+                nameof<JavaScriptResourceHandler>((handler) => handler.CheckApplicability),
                 () =>
                 {
                     test(
@@ -55,7 +55,7 @@ export function JavaScriptResourceHandlerTests(): void
                 });
 
             suite(
-                "Create",
+                nameof<JavaScriptResourceHandler>((handler) => handler.Create),
                 () =>
                 {
                     test(
