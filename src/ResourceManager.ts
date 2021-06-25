@@ -136,7 +136,7 @@ export class ResourceManager implements IResourceManager
     }
 
     /**
-     * Gets the file-handlers of the resrouce-manager.
+     * Gets the file-handlers of the resource-manager.
      */
     protected get ResourceFileHandlers(): IResourceFileHandler[]
     {

@@ -54,7 +54,7 @@ export function ResourceTests(): void
                     composedInIndependent = randexp(/.{16}/);
                     composedInComposed = randexp(/.{17}/);
 
-                    inexistentID = "This.ID.Doesn.Not.Exist";
+                    inexistentID = "This.ID.Does.Not.Exist";
 
                     resource.Resource = {
                         [rootID]: rootValue,

@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
   - A workflow for automatically merging Dependabot-PRs
-  - A workflow for analyzin the source-code
+  - A workflow for analyzing the source-code
 
 ### Updated
   - Drone-pipelines to use smaller docker-images

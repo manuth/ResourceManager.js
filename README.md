@@ -159,7 +159,7 @@ This might be very useful if you work with similar languages and dialects.
 {
     "WelcomeMessage": "Welcome to my awesome web-developer tool",
     "CopyItem": "Copy to Clipboard",
-    "UnknownError": "An unexpected error occured",
+    "UnknownError": "An unexpected error occurred",
     "ColorError": "Please specify a valid color",
     "Duplicate.File": "",
     "Duplicate.Test": "",
@@ -196,7 +196,7 @@ console.log(manager.Get("Duplicate.File")); // Throws a DuplicateKeyException
 ```
 
 ### Mustache-ResourceManager
-The resource-manager is mustachable, too!  
+The resource-manager is is able to work with `mustache`, too!  
 The above example can be simplified by wrapping the resource-manager with a `MustacheResourceManager` which allows you to pre-process localized resource-items.
 
 #### Example
@@ -206,7 +206,7 @@ The above example can be simplified by wrapping the resource-manager with a `Mus
     "Color": "color",
     "WelcomeMessage": "Welcome to my awesome web-developer tool",
     "CopyItem": "Copy to Clipboard",
-    "UnknownError": "An unexpected error occured",
+    "UnknownError": "An unexpected error occurred",
     "ColorError": "Please specify a valid {{Color}}"
 }
 ```
