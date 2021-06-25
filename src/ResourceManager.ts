@@ -158,6 +158,9 @@ export class ResourceManager implements IResourceManager
     /**
      * @inheritdoc
      *
+     * @template T
+     * The type of the resource-item to get.
+     *
      * @param name
      * The {@link name `name`} of the resource-item to get.
      *
@@ -175,6 +178,9 @@ export class ResourceManager implements IResourceManager
 
     /**
      * Extracts all items with the specified {@link name `name`} from the resources.
+     *
+     * @template T
+     * The type of the resource-item to get.
      *
      * @param name
      * The {@link name `name`} of the resource-item to get.

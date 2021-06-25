@@ -40,6 +40,9 @@ export abstract class ResourceBase implements IResource
     /**
      * @inheritdoc
      *
+     * @template T
+     * The type of the object to get.
+     *
      * @param name
      * The {@link name `name`} of the object to get.
      *
@@ -80,6 +83,9 @@ export abstract class ResourceBase implements IResource
 
     /**
      * Extracts all items with the specified {@link name `name`} from the {@link resourceStore `resourceStore`}.
+     *
+     * @template T
+     * The type of the resource-items to get.
      *
      * @param name
      * The {@link name `name`} to look for.

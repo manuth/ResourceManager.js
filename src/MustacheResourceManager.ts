@@ -59,6 +59,9 @@ export class MustacheResourceManager implements IResourceManager
     /**
      * @inheritdoc
      *
+     * @template T
+     * The type of the resource-item to get.
+     *
      * @param name
      * The {@link name `name`} of the resource-item to get.
      *

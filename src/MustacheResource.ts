@@ -43,6 +43,9 @@ export class MustacheResource implements IResource
     /**
      * @inheritdoc
      *
+     * @template T
+     * The type of the object to get.
+     *
      * @param name
      * The {@link name `name`} of the object to get.
      *
