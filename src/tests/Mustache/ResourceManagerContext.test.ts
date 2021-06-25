@@ -40,6 +40,7 @@ export function ResourceManagerContextTests(): void
                     swissResource.Resource = {
                         [id]: value
                     };
+
                     let germanResource = new TestResource(new CultureInfo("de"));
 
                     germanResource.Resource = {
