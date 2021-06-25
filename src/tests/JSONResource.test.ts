@@ -4,7 +4,7 @@ import { readFile, writeFile, writeJSON } from "fs-extra";
 import { JSONResource } from "../JSONResource";
 
 /**
- * Registers tests for the `JSONResource` class.
+ * Registers tests for the {@link JSONResource `JSONResource`} class.
  */
 export function JSONResourceTests(): void
 {

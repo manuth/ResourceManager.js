@@ -5,7 +5,7 @@ import { stringify } from "yaml";
 import { YAMLResource } from "../YAMLResource";
 
 /**
- * Registers tests for the `YAMLResource` class.
+ * Registers tests for the {@link YAMLResource `YAMLResource`} class.
  */
 export function YAMLResourceTests(): void
 {

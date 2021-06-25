@@ -6,7 +6,7 @@ import { ResourceManager } from "../../ResourceManager";
 import { TestResource } from "../TestResource";
 
 /**
- * Registers tests for the `MustacheResourceManager` class.
+ * Registers tests for the {@link MustacheResourceManager `MustacheResourceManager`} class.
  */
 export function MustacheResourceManagerTests(): void
 {

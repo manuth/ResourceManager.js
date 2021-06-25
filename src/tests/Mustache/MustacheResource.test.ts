@@ -4,7 +4,7 @@ import { MustacheResource } from "../../MustacheResource";
 import { TestResource } from "../TestResource";
 
 /**
- * Regsiters tests for the `MustacheResourceManager` class.
+ * Registers tests for the {@link MustacheResource `MustacheResource`} class.
  */
 export function MustacheResourceTests(): void
 {

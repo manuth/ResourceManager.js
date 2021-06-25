@@ -6,7 +6,7 @@ import { JSONResource } from "../../JSONResource";
 import { JSONResourceHandler } from "../../JSONResourceHandler";
 
 /**
- * Registers tests for the `JSONResourceHandler` class.
+ * Registers tests for the {@link JSONResourceHandler `JSONResourceHandler`} class.
  */
 export function JSONResourceHandlerTests(): void
 {

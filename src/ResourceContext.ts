@@ -12,7 +12,7 @@ export class ResourceContext extends Context
     private resource: IResource;
 
     /**
-     * Initializes a new instance of the `ResourceContext` class.
+     * Initializes a new instance of the {@link ResourceContext `ResourceContext`} class.
      *
      * @param resource
      * The resource to get the lookup-values from.
@@ -41,7 +41,7 @@ export class ResourceContext extends Context
      * The name to look up.
      *
      * @returns
-     * The value of the resource with the specified `name`.
+     * The value of the resource with the specified {@link name `name`}.
      */
     public override lookup(name: string): unknown
     {

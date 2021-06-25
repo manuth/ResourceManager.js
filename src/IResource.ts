@@ -14,21 +14,21 @@ export interface IResource
      * Gets an object of the resource-store.
      *
      * @param name
-     * The `name` of the object to get.
+     * The {@link name `name`} of the object to get.
      *
      * @returns
-     * The value with the specified `name`.
+     * The value with the specified {@link name `name`}.
      */
     Get<T>(name: string): T;
 
     /**
-     * Checks whether a resource-element with the specified `name` exists.
+     * Checks whether a resource-element with the specified {@link name `name`} exists.
      *
      * @param name
-     * The `name` that is to be checked for existence.
+     * The {@link name `name`} that is to be checked for existence.
      *
      * @returns
-     * A value indicating whether a resource-element with the specified `name` exists.
+     * A value indicating whether a resource-element with the specified {@link name `name`} exists.
      */
     Exists(name: string): boolean;
 }

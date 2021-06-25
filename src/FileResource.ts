@@ -22,7 +22,7 @@ export abstract class FileResource extends ResourceBase
     private cache: any;
 
     /**
-     * Initializes a new instance of the `FileResource` class.
+     * Initializes a new instance of the {@link FileResource `FileResource`} class.
      *
      * @param fileName
      * The path to the resource-file.

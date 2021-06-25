@@ -9,7 +9,7 @@ import { ResourceFileHandler } from "./ResourceFileHandler";
 export class JavaScriptResourceHandler extends ResourceFileHandler<JavaScriptResource>
 {
     /**
-     * Initializes a new instance of the `JavaScriptResourceHandler` class.
+     * Initializes a new instance of the {@link JavaScriptResourceHandler `JavaScriptResourceHandler`} class.
      */
     public constructor()
     {

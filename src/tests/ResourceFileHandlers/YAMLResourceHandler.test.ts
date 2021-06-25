@@ -6,7 +6,7 @@ import { YAMLResource } from "../../YAMLResource";
 import { YAMLResourceHandler } from "../../YAMLResourceHandler";
 
 /**
- * Registers tests for the `YAMLResourceHandler` class.
+ * Registers tests for the {@link YAMLResourceHandler `YAMLResourceHandler`} class.
  */
 export function YAMLResourceHandlerTests(): void
 {

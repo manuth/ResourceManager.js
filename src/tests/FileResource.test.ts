@@ -1,8 +1,9 @@
 import { strictEqual, throws } from "assert";
+import type { FileResource } from "../FileResource";
 import { TestFileResource } from "./TestFileResource";
 
 /**
- * Registers tests for the `FileResource` class.
+ * Registers tests for the {@link FileResource `FileResource`} class.
  */
 export function FileResourceTests(): void
 {

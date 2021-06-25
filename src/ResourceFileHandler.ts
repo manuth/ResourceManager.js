@@ -8,7 +8,7 @@ import { IResourceFileHandler } from "./IResourceFileHandler";
 export abstract class ResourceFileHandler<T extends FileResource> implements IResourceFileHandler
 {
     /**
-     * Initializes a new instance of the `ResourceFileHandler` class.
+     * Initializes a new instance of the {@link `ResourceFileHandler<T>`} class.
      */
     public constructor()
     {

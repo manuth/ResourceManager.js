@@ -14,13 +14,13 @@ export interface IResourceManager
      * Gets a resource-item from the a resource with the locale of the resource-manager.
      *
      * @param name
-     * The `name` of the resource-item to get.
+     * The {@link name `name`} of the resource-item to get.
      *
      * @param locale
      * The locale of the resource-item to get.
      *
      * @returns
-     * The resource-item with the specified `name`.
+     * The resource-item with the specified {@link name `name`}.
      */
     Get<T>(name: string, locale?: CultureInfo): T;
 }

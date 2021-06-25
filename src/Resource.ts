@@ -2,7 +2,7 @@ import { CultureInfo } from "@manuth/culture-info";
 import { ResourceBase } from "./ResourceBase";
 
 /**
- * Provides an implementation of the `Resource` which loads resources from an object.
+ * Provides an implementation of the {@link ResourceBase `ResourceBase`} which loads resources from an object.
  */
 export class Resource extends ResourceBase
 {
@@ -12,7 +12,7 @@ export class Resource extends ResourceBase
     private resource: Record<string, unknown>;
 
     /**
-     * Initializes a new instance of the `Resource` class.
+     * Initializes a new instance of the {@link Resource `Resource`} class.
      *
      * @param resource
      * The store of the resource.

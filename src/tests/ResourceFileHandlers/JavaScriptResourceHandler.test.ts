@@ -6,7 +6,7 @@ import { JavaScriptResource } from "../../JavaScriptResource";
 import { JavaScriptResourceHandler } from "../../JavaScriptResourceHandler";
 
 /**
- * Registers tests for the `JavaScriptResourceHandler` class.
+ * Registers tests for the {@link JavaScriptResourceHandler `JavaScriptResourceHandler`} class.
  */
 export function JavaScriptResourceHandlerTests(): void
 {

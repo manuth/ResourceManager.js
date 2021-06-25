@@ -3,10 +3,11 @@ import { CultureInfo } from "@manuth/culture-info";
 import { randexp } from "randexp";
 import { DuplicateKeyException } from "../DuplicateKeyException";
 import { KeyNotFoundException } from "../KeyNotFoundException";
+import type { Resource } from "../Resource";
 import { TestResource } from "./TestResource";
 
 /**
- * Registers tests for the `Resource` class.
+ * Registers tests for the {@link Resource `Resource`} class.
  */
 export function ResourceTests(): void
 {

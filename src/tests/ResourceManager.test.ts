@@ -11,7 +11,7 @@ import { TestResource } from "./TestResource";
 import { TestResourceManager } from "./TestResourceManager";
 
 /**
- * Registers tests for the `ResourceManager` class.
+ * Registers tests for the {@link ResourceManager `ResourceManager`} class.
  */
 export function ResourceManagerTests(): void
 {

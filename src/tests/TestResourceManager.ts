@@ -3,7 +3,7 @@ import { IResourceFileHandler } from "../IResourceFileHandler";
 import { ResourceManager } from "../ResourceManager";
 
 /**
- * Provides an implementation of the `ResourceManager` for testing.
+ * Provides an implementation of the {@link ResourceManager `ResourceManager`} for testing.
  */
 export class TestResourceManager extends ResourceManager
 {

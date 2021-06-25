@@ -5,7 +5,7 @@ import { ResourceContext } from "../../ResourceContext";
 import { TestResource } from "../TestResource";
 
 /**
- * Registers tests for the `ResourceContext` class.
+ * Registers tests for the {@link ResourceContext `ResourceContext`} class.
  */
 export function ResourceContextTests(): void
 {

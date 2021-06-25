@@ -14,7 +14,7 @@ export class MustacheResourceManager implements IResourceManager
     private resourceManager: IResourceManager;
 
     /**
-     * Initializes a new instance of the `MustacheResourceManager` class.
+     * Initializes a new instance of the {@link MustacheResourceManager `MustacheResourceManager`} class.
      *
      * @param resourceManager
      * The resource-manager which serves the resource-items.
@@ -60,13 +60,13 @@ export class MustacheResourceManager implements IResourceManager
      * @inheritdoc
      *
      * @param name
-     * The `name` of the resource-item to get.
+     * The {@link name `name`} of the resource-item to get.
      *
      * @param locale
      * The locale of the resource-item to get.
      *
      * @returns
-     * The resource-item with the specified `name`.
+     * The resource-item with the specified {@link name `name`}.
      */
     public Get<T>(name: string, locale?: CultureInfo): T
     {

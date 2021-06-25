@@ -5,7 +5,7 @@ import { writeFile } from "fs-extra";
 import { JavaScriptResource } from "../JavaScriptResource";
 
 /**
- * Registers tests for the `JavaScriptResource` class.
+ * Registers tests for the {@link JavaScriptResource `JavaScriptResource`} class.
  */
 export function JavaScriptResourceTests(): void
 {

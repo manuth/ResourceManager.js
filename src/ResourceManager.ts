@@ -26,7 +26,7 @@ export class ResourceManager implements IResourceManager
     private resources: IResource[];
 
     /**
-     * Initializes a new instance of the `ResourceManager` class.
+     * Initializes a new instance of the {@link ResourceManager `ResourceManager`} class.
      *
      * @param locale
      * The locale of the resource-items to resolve.
@@ -34,7 +34,7 @@ export class ResourceManager implements IResourceManager
     public constructor(locale: CultureInfo);
 
     /**
-     * Initializes a new instance of the `ResourceManager` class.
+     * Initializes a new instance of the {@link ResourceManager `ResourceManager`} class.
      *
      * @param baseFileName
      * The base-filename of the resource-manager.
@@ -45,7 +45,7 @@ export class ResourceManager implements IResourceManager
     public constructor(baseFileName: string, locale?: CultureInfo);
 
     /**
-     * Initializes a new instance of the `ResourceManager` class.
+     * Initializes a new instance of the {@link ResourceManager `ResourceManager`} class.
      *
      * @param resources
      * The resources managed by the resource-manager.
@@ -56,7 +56,7 @@ export class ResourceManager implements IResourceManager
     public constructor(resources?: IResource[], locale?: CultureInfo);
 
     /**
-     * Initializes a new instance of the `ResourceManager` class.
+     * Initializes a new instance of the {@link ResourceManager `ResourceManager`} class.
      *
      * @param resourceDeclarations
      * The resources or the locale.
@@ -159,13 +159,13 @@ export class ResourceManager implements IResourceManager
      * @inheritdoc
      *
      * @param name
-     * The `name` of the resource-item to get.
+     * The {@link name `name`} of the resource-item to get.
      *
      * @param locale
      * The locale of the resource-item to get.
      *
      * @returns
-     * The resource-item with the specified `name`.
+     * The resource-item with the specified {@link name `name`}.
      */
     public Get<T>(name: string, locale?: CultureInfo): T
     {
@@ -174,16 +174,16 @@ export class ResourceManager implements IResourceManager
     }
 
     /**
-     * Extracts all items with the specified `name` from the resources.
+     * Extracts all items with the specified {@link name `name`} from the resources.
      *
      * @param name
-     * The `name` of the resource-item to get.
+     * The {@link name `name`} of the resource-item to get.
      *
      * @param locale
      * The locale of the resource-item to get.
      *
      * @returns
-     * The resource-item with the specified `name`.
+     * The resource-item with the specified {@link name `name`}.
      */
     protected Extract<T>(name: string, locale: CultureInfo): T
     {

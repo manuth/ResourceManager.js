@@ -18,7 +18,7 @@ export class ResourceManagerContext extends Context
     private locale: CultureInfo;
 
     /**
-     * Initializes a new instance of the `ResourceManagerContext` class.
+     * Initializes a new instance of the {@link ResourceManagerContext `ResourceManagerContext`} class.
      *
      * @param resourceManager
      * The resource-manager to get the lookup-values from.
@@ -67,7 +67,7 @@ export class ResourceManagerContext extends Context
      * The name to look up.
      *
      * @returns
-     * The value with the specified `name`.
+     * The value with the specified {@link name `name`}.
      */
     public override lookup(name: string): any
     {

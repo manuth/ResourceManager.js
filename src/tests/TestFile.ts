@@ -22,7 +22,7 @@ export class TestFile
     private extension: string;
 
     /**
-     * Initializes a new instance of the `TestFile` class.
+     * Initializes a new instance of the {@link TestFile `TestFile`} class.
      *
      * @param baseFileName
      * The base-name of the file.
