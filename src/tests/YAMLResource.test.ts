@@ -5,12 +5,12 @@ import { stringify } from "yaml";
 import { YAMLResource } from "../YAMLResource";
 
 /**
- * Registers tests for the `YAMLResource` class.
+ * Registers tests for the {@link YAMLResource `YAMLResource`} class.
  */
 export function YAMLResourceTests(): void
 {
     suite(
-        "YAMLResource",
+        nameof(YAMLResource),
         () =>
         {
             let tempFile: TempFile;
@@ -36,11 +36,11 @@ export function YAMLResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<YAMLResource>((resource) => resource.Get),
                 () =>
                 {
                     test(
-                        "Checking whether .yaml-files are read correctly…",
+                        "Checking whether `.yaml`-files are read correctly…",
                         () =>
                         {
                             strictEqual(resource.Get(id), value);

@@ -4,12 +4,12 @@ import { MustacheResource } from "../../MustacheResource";
 import { TestResource } from "../TestResource";
 
 /**
- * Regsiters tests for the `MustacheResourceManager` class.
+ * Registers tests for the {@link MustacheResource `MustacheResource`} class.
  */
 export function MustacheResourceTests(): void
 {
     suite(
-        "MustacheResource",
+        nameof(MustacheResource),
         () =>
         {
             let resource: MustacheResource;
@@ -20,7 +20,7 @@ export function MustacheResourceTests(): void
             let compositeItemID: string;
             let compositeItemValue: string;
             let inexistentID: string;
-            let inexistenceTestID: string;
+            let nonexistenceTestID: string;
 
             suiteSetup(
                 () =>
@@ -33,20 +33,20 @@ export function MustacheResourceTests(): void
                     compositeItemID = "CopyRight";
                     compositeItemValue = `{{${firstItemID}}} © by {{${secondItemID}}} ${new Date().getFullYear()}`;
                     inexistentID = "This.ID.Does.Not.Exist";
-                    inexistenceTestID = "Inexistence.Test";
+                    nonexistenceTestID = "Nonexistence.Test";
 
                     internalResource.Resource = {
                         [firstItemID]: firstItemValue,
                         [secondItemID]: secondItemValue,
                         [compositeItemID]: compositeItemValue,
-                        [inexistenceTestID]: inexistentID
+                        [nonexistenceTestID]: inexistentID
                     };
 
                     resource = new MustacheResource(internalResource);
                 });
 
             suite(
-                "Get",
+                nameof<MustacheResource>((resource) => resource.Get),
                 () =>
                 {
                     test(

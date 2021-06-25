@@ -6,12 +6,12 @@ import { ResourceManagerContext } from "../../ResourceManagerContext";
 import { TestResource } from "../TestResource";
 
 /**
- * Registers tests for the `ResourceManagerContext` class.
+ * Registers tests for the {@link ResourceManagerContext `ResourceManagerContext`} class.
  */
 export function ResourceManagerContextTests(): void
 {
     suite(
-        "ResourceManagerContext",
+        nameof(ResourceManagerContext),
         () =>
         {
             let context: ResourceManagerContext;
@@ -40,6 +40,7 @@ export function ResourceManagerContextTests(): void
                     swissResource.Resource = {
                         [id]: value
                     };
+
                     let germanResource = new TestResource(new CultureInfo("de"));
 
                     germanResource.Resource = {
@@ -57,7 +58,7 @@ export function ResourceManagerContextTests(): void
                 });
 
             suite(
-                "lookup",
+                nameof<ResourceManagerContext>((context) => context.lookup),
                 () =>
                 {
                     test(
@@ -97,7 +98,7 @@ export function ResourceManagerContextTests(): void
                 });
 
             suite(
-                "Locale",
+                nameof<ResourceManagerContext>((context) => context.Locale),
                 () =>
                 {
                     test(

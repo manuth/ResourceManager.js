@@ -14,7 +14,7 @@ export abstract class ResourceBase implements IResource
     private locale: CultureInfo;
 
     /**
-     * Initializes a new instance of the `Resource` class.
+     * Initializes a new instance of the {@link ResourceBase `ResourceBase`} class.
      *
      * @param locale
      * The locale of the resource.
@@ -40,11 +40,14 @@ export abstract class ResourceBase implements IResource
     /**
      * @inheritdoc
      *
+     * @template T
+     * The type of the object to get.
+     *
      * @param name
-     * The `name` of the object to get.
+     * The {@link name `name`} of the object to get.
      *
      * @returns
-     * The value with the specified `name`.
+     * The value with the specified {@link name `name`}.
      */
     public Get<T>(name: string): T
     {
@@ -68,10 +71,10 @@ export abstract class ResourceBase implements IResource
      * @inheritdoc
      *
      * @param name
-     * The `name` that is to be checked for existence.
+     * The {@link name `name`} that is to be checked for existence.
      *
      * @returns
-     * A value indicating whether a resource-element with the specified `name` exists.
+     * A value indicating whether a resource-element with the specified {@link name `name`} exists.
      */
     public Exists(name: string): boolean
     {
@@ -79,16 +82,19 @@ export abstract class ResourceBase implements IResource
     }
 
     /**
-     * Extracts all items with the specified `name` from the `resourceStore`.
+     * Extracts all items with the specified {@link name `name`} from the {@link resourceStore `resourceStore`}.
+     *
+     * @template T
+     * The type of the resource-items to get.
      *
      * @param name
-     * The `name` to look for.
+     * The {@link name `name`} to look for.
      *
      * @param resourceStore
      * The resource-store to browse.
      *
      * @returns
-     * All resource-items with the specified `name`.
+     * All resource-items with the specified {@link name `name`}.
      */
     protected Extract<T>(name: string, resourceStore: any): T[]
     {

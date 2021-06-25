@@ -6,12 +6,12 @@ import { JSONResource } from "../../JSONResource";
 import { JSONResourceHandler } from "../../JSONResourceHandler";
 
 /**
- * Registers tests for the `JSONResourceHandler` class.
+ * Registers tests for the {@link JSONResourceHandler `JSONResourceHandler`} class.
  */
 export function JSONResourceHandlerTests(): void
 {
     suite(
-        "JSONResourceHandler",
+        nameof(JSONResourceHandler),
         () =>
         {
             let fileHandler: IResourceFileHandler;
@@ -49,7 +49,7 @@ export function JSONResourceHandlerTests(): void
                 });
 
             suite(
-                "CheckApplicability",
+                nameof<JSONResourceHandler>((handler) => handler.CheckApplicability),
                 () =>
                 {
                     test(
@@ -63,7 +63,7 @@ export function JSONResourceHandlerTests(): void
                 });
 
             suite(
-                "Create",
+                nameof<JSONResourceHandler>((handler) => handler.Create),
                 () =>
                 {
                     test(

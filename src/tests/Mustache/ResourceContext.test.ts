@@ -5,12 +5,12 @@ import { ResourceContext } from "../../ResourceContext";
 import { TestResource } from "../TestResource";
 
 /**
- * Registers tests for the `ResourceContext` class.
+ * Registers tests for the {@link ResourceContext `ResourceContext`} class.
  */
 export function ResourceContextTests(): void
 {
     suite(
-        "ResourceContext",
+        nameof(ResourceContext),
         () =>
         {
             let context: ResourceContext;
@@ -48,7 +48,7 @@ export function ResourceContextTests(): void
                 });
 
             suite(
-                "lookup",
+                nameof<ResourceContext>((context) => context.lookup),
                 () =>
                 {
                     test(

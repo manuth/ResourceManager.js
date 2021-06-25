@@ -9,7 +9,7 @@ import { FileResource } from "./FileResource";
 export class YAMLResource extends FileResource
 {
     /**
-     * Initializes a new instance of the `YAMLResource` class.
+     * Initializes a new instance of the {@link YAMLResource `YAMLResource`} class.
      *
      * @param fileName
      * The path to the resource-file.

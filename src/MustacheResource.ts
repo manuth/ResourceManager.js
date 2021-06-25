@@ -14,7 +14,7 @@ export class MustacheResource implements IResource
     private resource: IResource;
 
     /**
-     * Initializes a new instance of the `MustacheResource`.
+     * Initializes a new instance of the {@link MustacheResource `MustacheResource`}.
      *
      * @param resource
      * The resource which contains the resource-items.
@@ -43,11 +43,14 @@ export class MustacheResource implements IResource
     /**
      * @inheritdoc
      *
+     * @template T
+     * The type of the object to get.
+     *
      * @param name
-     * The `name` of the object to get.
+     * The {@link name `name`} of the object to get.
      *
      * @returns
-     * The value with the specified `name`.
+     * The value with the specified {@link name `name`}.
      */
     public Get<T>(name: string): T
     {
@@ -67,10 +70,10 @@ export class MustacheResource implements IResource
      * @inheritdoc
      *
      * @param name
-     * The `name` that is to be checked for existence.
+     * The {@link name `name`} that is to be checked for existence.
      *
      * @returns
-     * A value indicating whether a resource-element with the specified `name` exists.
+     * A value indicating whether a resource-element with the specified {@link name `name`} exists.
      */
     public Exists(name: string): boolean
     {

@@ -9,7 +9,7 @@ import { ResourceFileHandler } from "./ResourceFileHandler";
 export class JSONResourceHandler extends ResourceFileHandler<JSONResource>
 {
     /**
-     * Initializes a new instance of the `JSONResourceHandler` class.
+     * Initializes a new instance of the {@link JSONResourceHandler `JSONResourceHandler`} class.
      */
     public constructor()
     {

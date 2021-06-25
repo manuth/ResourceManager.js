@@ -4,12 +4,12 @@ import { readFile, writeFile, writeJSON } from "fs-extra";
 import { JSONResource } from "../JSONResource";
 
 /**
- * Registers tests for the `JSONResource` class.
+ * Registers tests for the {@link JSONResource `JSONResource`} class.
  */
 export function JSONResourceTests(): void
 {
     suite(
-        "JSONResource",
+        nameof(JSONResource),
         () =>
         {
             let tempFile: TempFile;
@@ -40,7 +40,7 @@ export function JSONResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<JSONResource>((resource) => resource.Get),
                 () =>
                 {
                     test(

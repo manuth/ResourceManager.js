@@ -38,9 +38,9 @@ interface IResource
     Exists(string name) : bool
 }
 
-Resource --|> IResource
+ResourceBase --|> IResource
 
-abstract class Resource
+abstract class ResourceBase
 {
     - locale : CultureInfo
     + Resource()
@@ -52,7 +52,18 @@ abstract class Resource
     # Extract<T>(string name, object resourceStore) : T[]
 }
 
-FileResource -|> Resource
+Resource --|> ResourceBase
+
+abstract class Resource
+{
+    - resource: object
+    + Resource(object resource)
+    + Resource(object resource, CultureInfo locale)
+    # ResourceStore { get; } : object
+    + Resource { get; set; } : object
+}
+
+FileResource -|> ResourceBase
 
 abstract class FileResource
 {
@@ -63,7 +74,7 @@ abstract class FileResource
     + FileResource(string fileName, CultureInfo locale)
     + FileName { get; } : string
     + Cached { get; set; } : bool
-    # Cache { get; set; } : object
+    # Cache { get; } : object
     # ResourceStore { get; } : object
     + Refresh() : void
     # {abstract} Load() : object

@@ -11,12 +11,12 @@ import { TestResource } from "./TestResource";
 import { TestResourceManager } from "./TestResourceManager";
 
 /**
- * Registers tests for the `ResourceManager` class.
+ * Registers tests for the {@link ResourceManager `ResourceManager`} class.
  */
 export function ResourceManagerTests(): void
 {
     suite(
-        "ResourceManager",
+        nameof(ResourceManager),
         () =>
         {
             let randomCulture: CultureInfo;
@@ -45,7 +45,7 @@ export function ResourceManagerTests(): void
                 });
 
             suite(
-                "constructor",
+                nameof(ResourceManager.constructor),
                 () =>
                 {
                     suite(
@@ -186,7 +186,7 @@ export function ResourceManagerTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<ResourceManager>((manager) => manager.Get),
                 () =>
                 {
                     let locale: CultureInfo;

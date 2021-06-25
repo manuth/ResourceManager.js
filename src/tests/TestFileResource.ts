@@ -1,7 +1,7 @@
 import { FileResource } from "../FileResource";
 
 /**
- * Provides an implementation of the `FileResource` class for testing.
+ * Provides an implementation of the {@link FileResource `FileResource`} class for testing.
  */
 export class TestFileResource extends FileResource
 {
@@ -11,7 +11,7 @@ export class TestFileResource extends FileResource
     private resource: Record<string, unknown>;
 
     /**
-     * Initializes a new instance of the `TestFileResource` class.
+     * Initializes a new instance of the {@link TestFileResource `TestFileResource`} class.
      */
     public constructor()
     {

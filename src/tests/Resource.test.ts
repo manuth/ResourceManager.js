@@ -3,15 +3,16 @@ import { CultureInfo } from "@manuth/culture-info";
 import { randexp } from "randexp";
 import { DuplicateKeyException } from "../DuplicateKeyException";
 import { KeyNotFoundException } from "../KeyNotFoundException";
+import type { Resource } from "../Resource";
 import { TestResource } from "./TestResource";
 
 /**
- * Registers tests for the `Resource` class.
+ * Registers tests for the {@link Resource `Resource`} class.
  */
 export function ResourceTests(): void
 {
     suite(
-        "Resource",
+        nameof<Resource>(),
         () =>
         {
             let resource: TestResource;
@@ -53,7 +54,7 @@ export function ResourceTests(): void
                     composedInIndependent = randexp(/.{16}/);
                     composedInComposed = randexp(/.{17}/);
 
-                    inexistentID = "This.ID.Doesn.Not.Exist";
+                    inexistentID = "This.ID.Does.Not.Exist";
 
                     resource.Resource = {
                         [rootID]: rootValue,
@@ -90,7 +91,7 @@ export function ResourceTests(): void
                 });
 
             suite(
-                "constructor",
+                nameof<Resource>((resource) => resource.constructor),
                 () =>
                 {
                     test(
@@ -104,7 +105,7 @@ export function ResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<Resource>((resource) => resource.Get),
                 () =>
                 {
                     test(
@@ -165,7 +166,7 @@ export function ResourceTests(): void
                 });
 
             suite(
-                "Exists",
+                nameof<Resource>((resource) => resource.Exists),
                 () =>
                 {
                     test(

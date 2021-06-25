@@ -6,12 +6,12 @@ import { ResourceManager } from "../../ResourceManager";
 import { TestResource } from "../TestResource";
 
 /**
- * Registers tests for the `MustacheResourceManager` class.
+ * Registers tests for the {@link MustacheResourceManager `MustacheResourceManager`} class.
  */
 export function MustacheResourceManagerTests(): void
 {
     suite(
-        "MustacheResourceManager",
+        nameof(MustacheResourceManager),
         () =>
         {
             let manager: MustacheResourceManager;
@@ -21,7 +21,7 @@ export function MustacheResourceManagerTests(): void
             let compositeItemID: string;
             let compositeItemValue: string;
             let inexistentID: string;
-            let inexistenceTestID: string;
+            let nonexistenceTestID: string;
 
             suiteSetup(
                 () =>
@@ -34,7 +34,7 @@ export function MustacheResourceManagerTests(): void
                     compositeItemID = "UnitMessage";
                     compositeItemValue = "Bitte wähle eine {{Unit}}.";
                     inexistentID = "This.ID.Does.Not.Exist";
-                    inexistenceTestID = "Inexistence.Test.ID";
+                    nonexistenceTestID = "Nonexistence.Test.ID";
 
                     swissResource.Resource = {
                         [id]: value
@@ -43,7 +43,7 @@ export function MustacheResourceManagerTests(): void
                     germanResource.Resource = {
                         [id]: parentValue,
                         [compositeItemID]: compositeItemValue,
-                        [inexistenceTestID]: `{{${inexistentID}}}`
+                        [nonexistenceTestID]: `{{${inexistentID}}}`
                     };
 
                     manager = new MustacheResourceManager(
@@ -56,7 +56,7 @@ export function MustacheResourceManagerTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<MustacheResourceManager>((manager) => manager.Get),
                 () =>
                 {
                     test(
@@ -89,7 +89,7 @@ export function MustacheResourceManagerTests(): void
                         "Checking whether processing a resource-item with an inexistent ID throws…",
                         () =>
                         {
-                            throws(() => manager.Get(inexistenceTestID));
+                            throws(() => manager.Get(nonexistenceTestID));
                         });
                 });
         });

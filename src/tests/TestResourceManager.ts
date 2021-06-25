@@ -3,12 +3,12 @@ import { IResourceFileHandler } from "../IResourceFileHandler";
 import { ResourceManager } from "../ResourceManager";
 
 /**
- * Provides an implementation of the `ResourceManager` for testing.
+ * Provides an implementation of the {@link ResourceManager `ResourceManager`} for testing.
  */
 export class TestResourceManager extends ResourceManager
 {
     /**
-     * Gets the file-handlers of thie resource-manager.
+     * Gets the file-handlers of this resource-manager.
      */
     public get FileHandlers(): IResourceFileHandler[]
     {

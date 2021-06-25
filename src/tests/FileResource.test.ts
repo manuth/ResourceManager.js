@@ -1,13 +1,14 @@
 import { strictEqual, throws } from "assert";
+import type { FileResource } from "../FileResource";
 import { TestFileResource } from "./TestFileResource";
 
 /**
- * Registers tests for the `FileResource` class.
+ * Registers tests for the {@link FileResource `FileResource`} class.
  */
 export function FileResourceTests(): void
 {
     suite(
-        "FileResource",
+        nameof<FileResource>(),
         () =>
         {
             let resource: TestFileResource;
@@ -41,7 +42,7 @@ export function FileResourceTests(): void
                 });
 
             suite(
-                "Get",
+                nameof<TestFileResource>((resource) => resource.Get),
                 () =>
                 {
                     test(
@@ -53,7 +54,7 @@ export function FileResourceTests(): void
                 });
 
             suite(
-                "Cached",
+                nameof<TestFileResource>((resource) => resource.Cached),
                 () =>
                 {
                     suite(

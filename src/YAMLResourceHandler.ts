@@ -9,7 +9,7 @@ import { YAMLResource } from "./YAMLResource";
 export class YAMLResourceHandler extends ResourceFileHandler<YAMLResource>
 {
     /**
-     * Initializes a new instance of the `YAMLResourceHandler` class.
+     * Initializes a new instance of the {@link YAMLResourceHandler `YAMLResourceHandler`} class.
      */
     public constructor()
     {

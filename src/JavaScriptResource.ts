@@ -9,7 +9,7 @@ import { FileResource } from "./FileResource";
 export class JavaScriptResource extends FileResource
 {
     /**
-     * Initializes a new instance of the `JavaScriptResource` class.
+     * Initializes a new instance of the {@link JavaScriptResource `JavaScriptResource`} class.
      *
      * @param fileName
      * The path to the resource-file.
