@@ -4,7 +4,7 @@ import { JavaScriptResource } from "./JavaScriptResource";
 import { ResourceFileHandler } from "./ResourceFileHandler";
 
 /**
- * Provides the functionality to handle ECMAScript-files with comments.
+ * Provides the functionality to handle ECMAScript-files.
  */
 export class JavaScriptResourceHandler extends ResourceFileHandler<JavaScriptResource>
 {

@@ -4,7 +4,7 @@ import { readFileSync } from "fs-extra";
 import { FileResource } from "./FileResource";
 
 /**
- * Represents a resource which bases on a `.json`-file.
+ * Represents a resource which bases on a `.json`-file with comments.
  */
 export class JSONResource extends FileResource
 {
