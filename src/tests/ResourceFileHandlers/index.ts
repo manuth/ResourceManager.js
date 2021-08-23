@@ -1,3 +1,4 @@
+import { basename } from "path";
 import { JavaScriptResourceHandlerTests } from "./JavaScriptResourceHandler.test";
 import { JSONResourceHandlerTests } from "./JSONResourceHandler.test";
 import { YAMLResourceHandlerTests } from "./YAMLResourceHandler.test";
@@ -8,7 +9,7 @@ import { YAMLResourceHandlerTests } from "./YAMLResourceHandler.test";
 export function ResourceFileHandlerTests(): void
 {
     suite(
-        "ResourceFileHandlers",
+        basename(__dirname),
         () =>
         {
             YAMLResourceHandlerTests();
