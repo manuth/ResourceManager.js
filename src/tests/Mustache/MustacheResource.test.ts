@@ -29,7 +29,7 @@ export function MustacheResourceTests(): void
                     firstItemID = "ProjectName";
                     firstItemValue = "My Awesome Project";
                     secondItemID = "Author";
-                    secondItemValue = "m@nuth";
+                    secondItemValue = "manuth";
                     compositeItemID = "CopyRight";
                     compositeItemValue = `{{${firstItemID}}} © by {{${secondItemID}}} ${new Date().getFullYear()}`;
                     inexistentID = "This.ID.Does.Not.Exist";
