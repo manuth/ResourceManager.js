@@ -6,7 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## ResourceManager.js [Unreleased]
 
-[Show differences](https://github.com/manuth/ResourceManager.js/compare/v2.0.1...dev)
+[Show differences](https://github.com/manuth/ResourceManager.js/compare/v2.0.2...dev)
+
+## ResourceManager.js v2.0.2
+### Fixed
+  - Vulnerabilities in dependencies
+  - Broken publish-script
+
+### Added
+  - Support for parallel step-execution in drone-pipelines
+
+### Updated
+  - All dependencies
+  - Settings to disable timeouts for mocha unit-tests
+
+[Show differences](https://github.com/manuth/ResourceManager.js/compare/v2.0.1...v2.0.2)
 
 ## ResourceManager.js v2.0.1
 ### Fixed
