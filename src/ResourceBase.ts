@@ -108,13 +108,13 @@ export abstract class ResourceBase implements IResource
 
         while (dotIndex >= 0)
         {
-            let namePart = name.substr(0, dotIndex);
+            let namePart = name.substring(0, dotIndex);
 
             if (namePart in resourceStore)
             {
                 if (typeof resourceStore[namePart] === "object")
                 {
-                    result.push(...this.Extract<T>(name.substr(dotIndex + 1), resourceStore[namePart]));
+                    result.push(...this.Extract<T>(name.substring(dotIndex + 1), resourceStore[namePart]));
                 }
             }
 
