@@ -56,7 +56,6 @@
     "@manuth/eslint-plugin-typescript": "^3.2.6",
     "@manuth/temp-files": "^2.0.8",
     "@manuth/tsconfig": "^3.0.0",
-    "@manuth/typescript-eslint-plugin": "^1.4.2",
     "@types/comment-json": "^2.4.1",
     "@types/dedent": "^0.7.0",
     "@types/fs-extra": "^9.0.13",

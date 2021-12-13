@@ -1,8 +1,8 @@
 {
     "recommendations": [
+        "dbaeumer.vscode-eslint",
         "hbenl.vscode-mocha-test-adapter",
         "hbenl.vscode-test-explorer",
-        "manuth.eslint-language-service",
         "yzhang.markdown-all-in-one"
     ]
 }
