@@ -2,7 +2,7 @@
     "extends": "@manuth/tsconfig/recommended",
     "compilerOptions": {
         "declaration": true,
-        "module": "CommonJS",
+        "module": "Node16",
         "lib": [
             "ES2020"
         ],
@@ -12,6 +12,11 @@
                 "type": "raw"
             }
         ],
-        "target": "ES6"
+        "target": "ES6",
+        "paths": {
+            "comment-json": [
+                "./node_modules/@types/comment-json"
+            ]
+        }
     }
 }
