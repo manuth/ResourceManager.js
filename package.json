@@ -1,6 +1,6 @@
 {
   "name": "@manuth/resource-manager",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "type": "module",
   "description": "A manager for localized resources.",
   "author": "Manuel Thalmann <m@nuth.ch>",
