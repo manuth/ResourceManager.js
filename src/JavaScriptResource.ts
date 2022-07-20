@@ -1,7 +1,8 @@
-import { createRequire } from "module";
-import { resolve } from "path";
+import { createRequire } from "node:module";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { CultureInfo } from "@manuth/culture-info";
-import { FileResource } from "./FileResource";
+import { FileResource } from "./FileResource.js";
 
 /**
  * Represents a resource which bases on a `.js`-file.
@@ -30,6 +31,6 @@ export class JavaScriptResource extends FileResource
      */
     protected Load(): Record<string, unknown>
     {
-        return createRequire(__dirname)(resolve(this.FileName));
+        return createRequire(fileURLToPath(new URL(".", import.meta.url)))(resolve(this.FileName));
     }
 }

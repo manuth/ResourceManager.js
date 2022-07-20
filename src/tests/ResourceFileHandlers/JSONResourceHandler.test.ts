@@ -1,9 +1,11 @@
-import { strictEqual } from "assert";
+import { strictEqual } from "node:assert";
 import { TempFile } from "@manuth/temp-files";
-import { random } from "case";
-import { IResourceFileHandler } from "../../IResourceFileHandler";
-import { JSONResource } from "../../JSONResource";
-import { JSONResourceHandler } from "../../JSONResourceHandler";
+import Case from "case";
+import { IResourceFileHandler } from "../../IResourceFileHandler.js";
+import { JSONResource } from "../../JSONResource.js";
+import { JSONResourceHandler } from "../../JSONResourceHandler.js";
+
+const { random } = Case;
 
 /**
  * Registers tests for the {@link JSONResourceHandler `JSONResourceHandler`} class.

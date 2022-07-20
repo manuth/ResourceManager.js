@@ -1,10 +1,10 @@
-import { Context } from "mustache";
-import { IResource } from "./IResource";
+import Mustache from "mustache";
+import { IResource } from "./IResource.js";
 
 /**
  * Provides the functionality to resolve resource-items.
  */
-export class ResourceContext extends Context
+export class ResourceContext extends Mustache.Context
 {
     /**
      * The resource of the context.

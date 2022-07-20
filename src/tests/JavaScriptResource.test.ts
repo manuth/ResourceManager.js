@@ -1,8 +1,10 @@
-import { strictEqual } from "assert";
+import { strictEqual } from "node:assert";
 import { TempFile } from "@manuth/temp-files";
-import dedent = require("dedent");
-import { writeFile } from "fs-extra";
-import { JavaScriptResource } from "../JavaScriptResource";
+import dedent from "dedent";
+import fs from "fs-extra";
+import { JavaScriptResource } from "../JavaScriptResource.js";
+
+const { writeFile } = fs;
 
 /**
  * Registers tests for the {@link JavaScriptResource `JavaScriptResource`} class.

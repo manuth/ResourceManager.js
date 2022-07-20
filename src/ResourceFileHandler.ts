@@ -1,6 +1,6 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { FileResource } from "./FileResource";
-import { IResourceFileHandler } from "./IResourceFileHandler";
+import { FileResource } from "./FileResource.js";
+import { IResourceFileHandler } from "./IResourceFileHandler.js";
 
 /**
  * Provides the functionality to handle a specific type of resource-file.

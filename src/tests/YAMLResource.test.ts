@@ -1,8 +1,10 @@
-import { strictEqual } from "assert";
+import { strictEqual } from "node:assert";
 import { TempFile } from "@manuth/temp-files";
-import { writeFile } from "fs-extra";
+import fs from "fs-extra";
 import { stringify } from "yaml";
-import { YAMLResource } from "../YAMLResource";
+import { YAMLResource } from "../YAMLResource.js";
+
+const { writeFile } = fs;
 
 /**
  * Registers tests for the {@link YAMLResource `YAMLResource`} class.

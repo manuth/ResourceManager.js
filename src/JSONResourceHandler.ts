@@ -1,7 +1,7 @@
-import { parse } from "path";
+import { parse } from "node:path";
 import { CultureInfo } from "@manuth/culture-info";
-import { JSONResource } from "./JSONResource";
-import { ResourceFileHandler } from "./ResourceFileHandler";
+import { JSONResource } from "./JSONResource.js";
+import { ResourceFileHandler } from "./ResourceFileHandler.js";
 
 /**
  * Provides the functionality to handle json-files with comments.

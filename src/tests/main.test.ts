@@ -1,11 +1,11 @@
-import { FileResourceTests } from "./FileResource.test";
-import { JavaScriptResourceTests } from "./JavaScriptResource.test";
-import { JSONResourceTests } from "./JSONResource.test";
-import { MustacheTests } from "./Mustache";
-import { ResourceTests } from "./Resource.test";
-import { ResourceFileHandlerTests } from "./ResourceFileHandlers";
-import { ResourceManagerTests } from "./ResourceManager.test";
-import { YAMLResourceTests } from "./YAMLResource.test";
+import { FileResourceTests } from "./FileResource.test.js";
+import { JavaScriptResourceTests } from "./JavaScriptResource.test.js";
+import { JSONResourceTests } from "./JSONResource.test.js";
+import { MustacheTests } from "./Mustache/index.test.js";
+import { ResourceTests } from "./Resource.test.js";
+import { ResourceFileHandlerTests } from "./ResourceFileHandlers/index.test.js";
+import { ResourceManagerTests } from "./ResourceManager.test.js";
+import { YAMLResourceTests } from "./YAMLResource.test.js";
 
 suite(
     "ResourceManager.js",

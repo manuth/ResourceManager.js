@@ -1,8 +1,8 @@
-import { strictEqual, throws } from "assert";
-import dedent = require("dedent");
-import { render } from "mustache";
-import { ResourceContext } from "../../ResourceContext";
-import { TestResource } from "../TestResource";
+import { strictEqual, throws } from "node:assert";
+import dedent from "dedent";
+import Mustache from "mustache";
+import { ResourceContext } from "../../ResourceContext.js";
+import { TestResource } from "../TestResource.js";
 
 /**
  * Registers tests for the {@link ResourceContext `ResourceContext`} class.
@@ -56,8 +56,8 @@ export function ResourceContextTests(): void
                         () =>
                         {
                             strictEqual(
-                                render(templateString, context),
-                                render(
+                                Mustache.render(templateString, context),
+                                Mustache.render(
                                     templateString,
                                     {
                                         [id]: value
@@ -68,7 +68,7 @@ export function ResourceContextTests(): void
                         "Checking whether resolving inexistent IDs throws…",
                         () =>
                         {
-                            throws(() => render(`{{${inexistentID}}}`, context));
+                            throws(() => Mustache.render(`{{${inexistentID}}}`, context));
                         });
                 });
         });

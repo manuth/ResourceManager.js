@@ -1,10 +1,12 @@
-import { strictEqual, throws } from "assert";
+import { strictEqual, throws } from "node:assert";
 import { CultureInfo } from "@manuth/culture-info";
-import { randexp } from "randexp";
-import { DuplicateKeyException } from "../DuplicateKeyException";
-import { KeyNotFoundException } from "../KeyNotFoundException";
-import type { Resource } from "../Resource";
-import { TestResource } from "./TestResource";
+import RandExp from "randexp";
+import { DuplicateKeyException } from "../DuplicateKeyException.js";
+import { KeyNotFoundException } from "../KeyNotFoundException.js";
+import type { Resource } from "../Resource.js";
+import { TestResource } from "./TestResource.js";
+
+const { randexp } = RandExp;
 
 /**
  * Registers tests for the {@link Resource `Resource`} class.

@@ -1,7 +1,7 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { DuplicateKeyException } from "./DuplicateKeyException";
-import { IResource } from "./IResource";
-import { KeyNotFoundException } from "./KeyNotFoundException";
+import { DuplicateKeyException } from "./DuplicateKeyException.js";
+import { IResource } from "./IResource.js";
+import { KeyNotFoundException } from "./KeyNotFoundException.js";
 
 /**
  * Represents a resource.

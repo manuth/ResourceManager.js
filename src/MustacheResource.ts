@@ -1,7 +1,7 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { render } from "mustache";
-import { IResource } from "./IResource";
-import { ResourceContext } from "./ResourceContext";
+import Mustache from "mustache";
+import { IResource } from "./IResource.js";
+import { ResourceContext } from "./ResourceContext.js";
 
 /**
  * Represents a resource which provides the functionality to interpret mustache-templates in resource-items.
@@ -58,7 +58,7 @@ export class MustacheResource implements IResource
 
         if (typeof result === "string")
         {
-            return render(result, new ResourceContext(this)) as any;
+            return Mustache.render(result, new ResourceContext(this)) as any;
         }
         else
         {

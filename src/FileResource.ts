@@ -1,5 +1,5 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { ResourceBase } from "./ResourceBase";
+import { ResourceBase } from "./ResourceBase.js";
 
 /**
  * Represents a resource which bases on a file.

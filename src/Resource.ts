@@ -1,5 +1,5 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { ResourceBase } from "./ResourceBase";
+import { ResourceBase } from "./ResourceBase.js";
 
 /**
  * Provides an implementation of the {@link ResourceBase `ResourceBase`} which loads resources from an object.

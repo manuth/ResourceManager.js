@@ -1,9 +1,11 @@
-import { strictEqual } from "assert";
+import { strictEqual } from "node:assert";
 import { TempFile } from "@manuth/temp-files";
-import { random } from "case";
-import { IResourceFileHandler } from "../../IResourceFileHandler";
-import { YAMLResource } from "../../YAMLResource";
-import { YAMLResourceHandler } from "../../YAMLResourceHandler";
+import Case from "case";
+import { IResourceFileHandler } from "../../IResourceFileHandler.js";
+import { YAMLResource } from "../../YAMLResource.js";
+import { YAMLResourceHandler } from "../../YAMLResourceHandler.js";
+
+const { random } = Case;
 
 /**
  * Registers tests for the {@link YAMLResourceHandler `YAMLResourceHandler`} class.

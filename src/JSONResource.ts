@@ -1,7 +1,9 @@
 import { CultureInfo } from "@manuth/culture-info";
 import { parse } from "comment-json";
-import { readFileSync } from "fs-extra";
-import { FileResource } from "./FileResource";
+import fs from "fs-extra";
+import { FileResource } from "./FileResource.js";
+
+const { readFileSync } = fs;
 
 /**
  * Represents a resource which bases on a `.json`-file with comments.
@@ -30,6 +32,6 @@ export class JSONResource extends FileResource
      */
     protected Load(): Record<string, unknown>
     {
-        return parse(readFileSync(this.FileName).toString(), null, true);
+        return parse(readFileSync(this.FileName).toString(), null, true) as Record<string, unknown>;
     }
 }

@@ -1,7 +1,9 @@
-import { strictEqual } from "assert";
+import { strictEqual } from "node:assert";
 import { TempFile } from "@manuth/temp-files";
-import { readFile, writeFile, writeJSON } from "fs-extra";
-import { JSONResource } from "../JSONResource";
+import fs from "fs-extra";
+import { JSONResource } from "../JSONResource.js";
+
+const { readFile, writeFile, writeJSON } = fs;
 
 /**
  * Registers tests for the {@link JSONResource `JSONResource`} class.

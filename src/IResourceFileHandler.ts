@@ -1,5 +1,5 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { FileResource } from "./FileResource";
+import { FileResource } from "./FileResource.js";
 
 /**
  * Represents a component for handling resource-files.

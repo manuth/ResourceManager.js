@@ -1,14 +1,16 @@
-import { strictEqual, throws } from "assert";
+import { strictEqual, throws } from "node:assert";
 import { CultureInfo } from "@manuth/culture-info";
 import { TempDirectory } from "@manuth/temp-files";
-import { ensureFile, writeFile, writeJSON } from "fs-extra";
+import fs from "fs-extra";
 import { stringify } from "yaml";
-import { DuplicateKeyException } from "../DuplicateKeyException";
-import { Resource } from "../Resource";
-import { ResourceManager } from "../ResourceManager";
-import { TestFile } from "./TestFile";
-import { TestResource } from "./TestResource";
-import { TestResourceManager } from "./TestResourceManager";
+import { DuplicateKeyException } from "../DuplicateKeyException.js";
+import { Resource } from "../Resource.js";
+import { ResourceManager } from "../ResourceManager.js";
+import { TestFile } from "./TestFile.js";
+import { TestResource } from "./TestResource.js";
+import { TestResourceManager } from "./TestResourceManager.js";
+
+const { ensureFile, writeFile, writeJSON } = fs;
 
 /**
  * Registers tests for the {@link ResourceManager `ResourceManager`} class.
