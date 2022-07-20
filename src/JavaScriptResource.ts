@@ -1,6 +1,6 @@
-import { createRequire } from "module";
-import { resolve } from "path";
-import { fileURLToPath } from "url";
+import { createRequire } from "node:module";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { CultureInfo } from "@manuth/culture-info";
 import { FileResource } from "./FileResource.js";
 

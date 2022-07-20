@@ -1,4 +1,4 @@
-import { strictEqual, throws } from "assert";
+import { strictEqual, throws } from "node:assert";
 import type { FileResource } from "../FileResource.js";
 import { TestFileResource } from "./TestFileResource.js";
 

@@ -1,4 +1,4 @@
-import { strictEqual } from "assert";
+import { strictEqual } from "node:assert";
 import Mustache from "mustache";
 import { MustacheResource } from "../../MustacheResource.js";
 import { TestResource } from "../TestResource.js";

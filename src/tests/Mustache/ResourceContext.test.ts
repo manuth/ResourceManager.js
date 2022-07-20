@@ -1,4 +1,4 @@
-import { strictEqual, throws } from "assert";
+import { strictEqual, throws } from "node:assert";
 import dedent from "dedent";
 import Mustache from "mustache";
 import { ResourceContext } from "../../ResourceContext.js";

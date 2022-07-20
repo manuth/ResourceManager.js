@@ -1,4 +1,4 @@
-import { strictEqual, throws } from "assert";
+import { strictEqual, throws } from "node:assert";
 import { CultureInfo } from "@manuth/culture-info";
 import Mustache from "mustache";
 import { MustacheResourceManager } from "../../MustacheResourceManager.js";

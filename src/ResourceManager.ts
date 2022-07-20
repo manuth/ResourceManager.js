@@ -1,4 +1,4 @@
-import { basename, dirname, join } from "path";
+import { basename, dirname, join } from "node:path";
 import { CultureInfo } from "@manuth/culture-info";
 import fs from "fs-extra";
 import { DuplicateKeyException } from "./DuplicateKeyException.js";

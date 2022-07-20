@@ -1,4 +1,4 @@
-import { basename } from "path";
+import { basename } from "node:path";
 import { MustacheResourceTests } from "./MustacheResource.test.js";
 import { MustacheResourceManagerTests } from "./MustacheResourceManager.test.js";
 import { ResourceContextTests } from "./ResourceContext.test.js";

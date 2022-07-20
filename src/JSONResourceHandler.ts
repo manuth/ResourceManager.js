@@ -1,4 +1,4 @@
-import { parse } from "path";
+import { parse } from "node:path";
 import { CultureInfo } from "@manuth/culture-info";
 import { JSONResource } from "./JSONResource.js";
 import { ResourceFileHandler } from "./ResourceFileHandler.js";

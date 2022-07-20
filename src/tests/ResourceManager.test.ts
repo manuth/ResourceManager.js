@@ -1,4 +1,4 @@
-import { strictEqual, throws } from "assert";
+import { strictEqual, throws } from "node:assert";
 import { CultureInfo } from "@manuth/culture-info";
 import { TempDirectory } from "@manuth/temp-files";
 import fs from "fs-extra";

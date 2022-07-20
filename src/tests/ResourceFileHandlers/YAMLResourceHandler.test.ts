@@ -1,4 +1,4 @@
-import { strictEqual } from "assert";
+import { strictEqual } from "node:assert";
 import { TempFile } from "@manuth/temp-files";
 import Case from "case";
 import { IResourceFileHandler } from "../../IResourceFileHandler.js";
