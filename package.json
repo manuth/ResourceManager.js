@@ -52,7 +52,7 @@
     "patchTypeScript": "ts-patch install"
   },
   "dependencies": {
-    "@manuth/culture-info": "^2.0.3",
+    "@manuth/culture-info": "^3.0.0",
     "@types/mustache": "^4.2.1",
     "comment-json": "^4.2.2",
     "fs-extra": "^10.1.0",
