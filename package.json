@@ -1,6 +1,7 @@
 {
   "name": "@manuth/resource-manager",
   "version": "2.0.4",
+  "type": "module",
   "description": "A manager for localized resources.",
   "author": "Manuel Thalmann <m@nuth.ch>",
   "license": "MIT",
@@ -37,7 +38,7 @@
     "rebuild": "npm run clean && npm run build",
     "watch": "npm run build -- --watch",
     "clean": "npm run build -- --clean && rimraf ./lib",
-    "lint": "eslint --max-warnings 0 ./src .eslintrc.js",
+    "lint": "eslint --max-warnings 0 ./src .eslintrc.cjs",
     "lint-ide": "npm run lint || exit 0",
     "test": "mocha",
     "prepare": "npm run patchTypeScript && npm run rebuild",
@@ -45,7 +46,7 @@
   },
   "dependencies": {
     "@manuth/culture-info": "^2.0.3",
-    "@types/mustache": "^4.1.3",
+    "@types/mustache": "^4.2.1",
     "comment-json": "^4.2.2",
     "fs-extra": "^10.1.0",
     "mustache": "^4.2.0",

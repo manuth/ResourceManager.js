@@ -1,9 +1,9 @@
 import { strictEqual, throws } from "assert";
 import { CultureInfo } from "@manuth/culture-info";
-import { render } from "mustache";
-import { ResourceManager } from "../../ResourceManager";
-import { ResourceManagerContext } from "../../ResourceManagerContext";
-import { TestResource } from "../TestResource";
+import Mustache from "mustache";
+import { ResourceManager } from "../../ResourceManager.js";
+import { ResourceManagerContext } from "../../ResourceManagerContext.js";
+import { TestResource } from "../TestResource.js";
 
 /**
  * Registers tests for the {@link ResourceManagerContext `ResourceManagerContext`} class.
@@ -66,8 +66,8 @@ export function ResourceManagerContextTests(): void
                         () =>
                         {
                             strictEqual(
-                                render(templateString, context),
-                                render(
+                                Mustache.render(templateString, context),
+                                Mustache.render(
                                     templateString,
                                     {
                                         [id]: value,
@@ -80,8 +80,8 @@ export function ResourceManagerContextTests(): void
                         () =>
                         {
                             strictEqual(
-                                render(fallbackTemplateString, context),
-                                render(
+                                Mustache.render(fallbackTemplateString, context),
+                                Mustache.render(
                                     fallbackTemplateString,
                                     {
                                         [id]: value,
@@ -93,7 +93,7 @@ export function ResourceManagerContextTests(): void
                         "Checking whether resolving an inexistent ID throws…",
                         () =>
                         {
-                            throws(() => render(`{{${inexistentID}}}`, context));
+                            throws(() => Mustache.render(`{{${inexistentID}}}`, context));
                         });
                 });
 
@@ -108,8 +108,8 @@ export function ResourceManagerContextTests(): void
                             context.Locale = new CultureInfo("de");
 
                             strictEqual(
-                                render(templateString, context),
-                                render(
+                                Mustache.render(templateString, context),
+                                Mustache.render(
                                     templateString,
                                     {
                                         [id]: parentValue

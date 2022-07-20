@@ -1,7 +1,7 @@
 import { strictEqual } from "assert";
-import { render } from "mustache";
-import { MustacheResource } from "../../MustacheResource";
-import { TestResource } from "../TestResource";
+import Mustache from "mustache";
+import { MustacheResource } from "../../MustacheResource.js";
+import { TestResource } from "../TestResource.js";
 
 /**
  * Registers tests for the {@link MustacheResource `MustacheResource`} class.
@@ -55,7 +55,7 @@ export function MustacheResourceTests(): void
                         {
                             strictEqual(
                                 resource.Get(compositeItemID),
-                                render(
+                                Mustache.render(
                                     compositeItemValue,
                                     {
                                         [firstItemID]: firstItemValue,

@@ -1,11 +1,11 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { Context } from "mustache";
-import { IResourceManager } from "./IResourceManager";
+import Mustache from "mustache";
+import { IResourceManager } from "./IResourceManager.js";
 
 /**
  * Provides the functionality to resolve resource-items from a resource-manager.
  */
-export class ResourceManagerContext extends Context
+export class ResourceManagerContext extends Mustache.Context
 {
     /**
      * The resource-manager of the context.

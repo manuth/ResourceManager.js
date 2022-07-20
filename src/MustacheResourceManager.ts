@@ -1,7 +1,7 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { render } from "mustache";
-import { IResourceManager } from "./IResourceManager";
-import { ResourceManagerContext } from "./ResourceManagerContext";
+import Mustache from "mustache";
+import { IResourceManager } from "./IResourceManager.js";
+import { ResourceManagerContext } from "./ResourceManagerContext.js";
 
 /**
  * Represents a resource-manager which provides the functionality to interpret mustache-templates in resource-items.
@@ -77,7 +77,7 @@ export class MustacheResourceManager implements IResourceManager
 
         if (typeof result === "string")
         {
-            return render(result, new ResourceManagerContext(this, locale)) as any;
+            return Mustache.render(result, new ResourceManagerContext(this, locale)) as any;
         }
         else
         {

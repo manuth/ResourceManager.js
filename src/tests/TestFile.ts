@@ -1,5 +1,7 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { random } from "case";
+import Case from "case";
+
+const { random } = Case;
 
 /**
  * Represents a test-file.

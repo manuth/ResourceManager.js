@@ -1,6 +1,6 @@
-import { IResource } from "../IResource";
-import { IResourceFileHandler } from "../IResourceFileHandler";
-import { ResourceManager } from "../ResourceManager";
+import { IResource } from "../IResource.js";
+import { IResourceFileHandler } from "../IResourceFileHandler.js";
+import { ResourceManager } from "../ResourceManager.js";
 
 /**
  * Provides an implementation of the {@link ResourceManager `ResourceManager`} for testing.

@@ -1,9 +1,9 @@
 import { strictEqual, throws } from "assert";
 import { CultureInfo } from "@manuth/culture-info";
-import { render } from "mustache";
-import { MustacheResourceManager } from "../../MustacheResourceManager";
-import { ResourceManager } from "../../ResourceManager";
-import { TestResource } from "../TestResource";
+import Mustache from "mustache";
+import { MustacheResourceManager } from "../../MustacheResourceManager.js";
+import { ResourceManager } from "../../ResourceManager.js";
+import { TestResource } from "../TestResource.js";
 
 /**
  * Registers tests for the {@link MustacheResourceManager `MustacheResourceManager`} class.
@@ -65,7 +65,7 @@ export function MustacheResourceManagerTests(): void
                         {
                             strictEqual(
                                 manager.Get(compositeItemID),
-                                render(
+                                Mustache.render(
                                     compositeItemValue,
                                     {
                                         [id]: value
@@ -78,7 +78,7 @@ export function MustacheResourceManagerTests(): void
                         {
                             strictEqual(
                                 manager.Get(compositeItemID, new CultureInfo("de")),
-                                render(
+                                Mustache.render(
                                     compositeItemValue,
                                     {
                                         [id]: parentValue

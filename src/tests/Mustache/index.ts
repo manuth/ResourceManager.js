@@ -1,8 +1,8 @@
 import { basename } from "path";
-import { MustacheResourceTests } from "./MustacheResource.test";
-import { MustacheResourceManagerTests } from "./MustacheResourceManager.test";
-import { ResourceContextTests } from "./ResourceContext.test";
-import { ResourceManagerContextTests } from "./ResourceManagerContext.test";
+import { MustacheResourceTests } from "./MustacheResource.test.js";
+import { MustacheResourceManagerTests } from "./MustacheResourceManager.test.js";
+import { ResourceContextTests } from "./ResourceContext.test.js";
+import { ResourceManagerContextTests } from "./ResourceManagerContext.test.js";
 
 /**
  * Registers tests for mustache components.
@@ -10,7 +10,7 @@ import { ResourceManagerContextTests } from "./ResourceManagerContext.test";
 export function MustacheTests(): void
 {
     suite(
-        basename(__dirname),
+        basename(new URL(".", import.meta.url).pathname),
         () =>
         {
             ResourceContextTests();

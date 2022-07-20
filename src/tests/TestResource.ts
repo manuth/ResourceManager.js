@@ -1,5 +1,5 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { Resource } from "../Resource";
+import { Resource } from "../Resource.js";
 
 /**
  * Provides an implementation of the {@link Resource `Resource`} class for testing.

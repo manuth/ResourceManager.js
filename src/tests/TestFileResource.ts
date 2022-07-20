@@ -1,4 +1,4 @@
-import { FileResource } from "../FileResource";
+import { FileResource } from "../FileResource.js";
 
 /**
  * Provides an implementation of the {@link FileResource `FileResource`} class for testing.

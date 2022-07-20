@@ -1,7 +1,7 @@
 import { basename } from "path";
-import { JavaScriptResourceHandlerTests } from "./JavaScriptResourceHandler.test";
-import { JSONResourceHandlerTests } from "./JSONResourceHandler.test";
-import { YAMLResourceHandlerTests } from "./YAMLResourceHandler.test";
+import { JavaScriptResourceHandlerTests } from "./JavaScriptResourceHandler.test.js";
+import { JSONResourceHandlerTests } from "./JSONResourceHandler.test.js";
+import { YAMLResourceHandlerTests } from "./YAMLResourceHandler.test.js";
 
 /**
  * Registers tests for resource file handlers.
@@ -9,7 +9,7 @@ import { YAMLResourceHandlerTests } from "./YAMLResourceHandler.test";
 export function ResourceFileHandlerTests(): void
 {
     suite(
-        basename(__dirname),
+        basename(new URL(".", import.meta.url).pathname),
         () =>
         {
             YAMLResourceHandlerTests();

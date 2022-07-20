@@ -1,14 +1,16 @@
 import { basename, dirname, join } from "path";
 import { CultureInfo } from "@manuth/culture-info";
-import { readdirSync } from "fs-extra";
-import { DuplicateKeyException } from "./DuplicateKeyException";
-import { IResource } from "./IResource";
-import { IResourceFileHandler } from "./IResourceFileHandler";
-import { IResourceManager } from "./IResourceManager";
-import { JavaScriptResourceHandler } from "./JavaScriptResourceHandler";
-import { JSONResourceHandler } from "./JSONResourceHandler";
-import { KeyNotFoundException } from "./KeyNotFoundException";
-import { YAMLResourceHandler } from "./YAMLResourceHandler";
+import fs from "fs-extra";
+import { DuplicateKeyException } from "./DuplicateKeyException.js";
+import { IResource } from "./IResource.js";
+import { IResourceFileHandler } from "./IResourceFileHandler.js";
+import { IResourceManager } from "./IResourceManager.js";
+import { JavaScriptResourceHandler } from "./JavaScriptResourceHandler.js";
+import { JSONResourceHandler } from "./JSONResourceHandler.js";
+import { KeyNotFoundException } from "./KeyNotFoundException.js";
+import { YAMLResourceHandler } from "./YAMLResourceHandler.js";
+
+const { readdirSync } = fs;
 
 /**
  * Provides the functionality to manage localized resources.

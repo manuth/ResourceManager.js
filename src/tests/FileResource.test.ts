@@ -1,6 +1,6 @@
 import { strictEqual, throws } from "assert";
-import type { FileResource } from "../FileResource";
-import { TestFileResource } from "./TestFileResource";
+import type { FileResource } from "../FileResource.js";
+import { TestFileResource } from "./TestFileResource.js";
 
 /**
  * Registers tests for the {@link FileResource `FileResource`} class.

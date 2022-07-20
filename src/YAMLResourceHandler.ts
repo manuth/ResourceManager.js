@@ -1,7 +1,7 @@
 import { parse } from "path";
 import { CultureInfo } from "@manuth/culture-info";
-import { ResourceFileHandler } from "./ResourceFileHandler";
-import { YAMLResource } from "./YAMLResource";
+import { ResourceFileHandler } from "./ResourceFileHandler.js";
+import { YAMLResource } from "./YAMLResource.js";
 
 /**
  * Provides the functionality to handle yaml-files with comments.

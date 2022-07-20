@@ -1,7 +1,9 @@
 import { CultureInfo } from "@manuth/culture-info";
-import { readFileSync } from "fs-extra";
+import fs from "fs-extra";
 import { parse } from "yaml";
-import { FileResource } from "./FileResource";
+import { FileResource } from "./FileResource.js";
+
+const { readFileSync } = fs;
 
 /**
  * Represents a resource which bases on a `.yml`-file.
