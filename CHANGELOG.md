@@ -6,7 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## ResourceManager.js [Unreleased]
 
-[Show differences](https://github.com/manuth/ResourceManager.js/compare/v3.0.0...dev)
+[Show differences](https://github.com/manuth/ResourceManager.js/compare/v3.0.1...dev)
+
+## ResourceManager.js v3.0.1
+### Fixed
+  - Incorrect entries in the `package.json` file
+
+### Updated
+  - All dependencies
+
+[Show differences](https://github.com/manuth/ResourceManager.js/compare/v3.0.0...v3.0.1)
 
 ## ResourceManager.js v3.0.0
 ### Breaking
