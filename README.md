@@ -1,3 +1,10 @@
+# THIS PROJECT IS MOVING
+This project is moving to [Codeberg.org](https://codeberg.org).
+
+If you wish to check out the most recent source code, file an issue or contribute to this project, please head to the [new repository on Codeberg.org](https://codeberg.org/lordgizmo/ResourceManager.js):
+
+<https://codeberg.org/lordgizmo/ResourceManager.js>
+
 # ResourceManager.js
 A manager for localized resources.
 
@@ -7,6 +14,7 @@ A manager for localized resources.
 It also has the capability to load and manage localized resources which allows you to resolve resource-items for the locale of your choice and to take care of locales and their parental relationships which simplifies the creation of resources for different dialects of the same language.
 
 ## Table of Contents
+- [THIS PROJECT IS MOVING](#this-project-is-moving)
 - [ResourceManager.js](#resourcemanagerjs)
   - [General](#general)
   - [Table of Contents](#table-of-contents)
